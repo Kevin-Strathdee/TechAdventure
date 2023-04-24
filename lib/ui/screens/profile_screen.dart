@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/ui/components/main_nav_bar.dart';
 
-class ProfileScreen extends StatelessWidget{
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(bottomNavigationBar: MainNavBar(), body: Text("Profile Screen"),);
+    return Scaffold(
+      appBar: AppBar(title: const Text("Profile")),
+      body: const Center(
+        child: Text("This is the profile screen"),
+      ),
+    );
   }
 }

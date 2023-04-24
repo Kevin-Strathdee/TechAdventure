@@ -159,6 +159,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Home`
+  String get navbarHome {
+    return Intl.message(
+      'Home',
+      name: 'navbarHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan`
+  String get navbarScan {
+    return Intl.message(
+      'Scan',
+      name: 'navbarScan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get navbarProfile {
+    return Intl.message(
+      'Profile',
+      name: 'navbarProfile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

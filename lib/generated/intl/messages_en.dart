@@ -28,6 +28,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("go to register"),
         "loginPasswordHint": MessageLookupByLibrary.simpleMessage("password"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
+        "navbarHome": MessageLookupByLibrary.simpleMessage("Home"),
+        "navbarProfile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "navbarScan": MessageLookupByLibrary.simpleMessage("Scan"),
         "registerCreateAccountButton":
             MessageLookupByLibrary.simpleMessage("Create Account"),
         "registerEmailHint": MessageLookupByLibrary.simpleMessage("email"),

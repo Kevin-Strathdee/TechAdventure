@@ -1,62 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/counter/counter_bloc.dart';
-import 'package:tech_adventure/ui/components/main_nav_bar.dart';
+import 'package:tech_adventure/generated/l10n.dart';
+import 'package:tech_adventure/ui/screens/counter_page.dart';
+import 'package:tech_adventure/ui/screens/profile_screen.dart';
+import 'package:tech_adventure/ui/screens/scan_screen.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _HomePageState extends State<HomePage> {
+  int _selectedTab = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MainNavBar(),
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            BlocBuilder<CounterBloc, CounterState>(
-              builder: (context, state) {
-                return Text(
-                  (state is CounterPositive) ? 'counter is positive' : 'counter is negative',
-                );
-              },
-            ),
-            BlocBuilder<CounterBloc, CounterState>(
-              builder: (context, state) {
-                return Text(
-                  '${state.currentCount}',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                );
-              },
-            ),
-            ElevatedButton(
-                onPressed: () => BlocProvider.of<CounterBloc>(context).add(IncrementButtonTapped()),
-                child: Text("Increment")),
-            ElevatedButton(
-                onPressed: () => BlocProvider.of<CounterBloc>(context).add(DecrementButtonTapped()),
-                child: Text("Decrement"))
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: S.of(context).navbarHome,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.camera),
+            label: S.of(context).navbarScan,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_rounded),
+            label: S.of(context).navbarProfile,
+          ),
+        ],
+        onTap: (index) => _onItemTapped(index, context), //New
+        currentIndex: _selectedTab,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => BlocProvider.of<CounterBloc>(context).add(IncrementButtonTapped()),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      body: _getHomeScreenContent(_selectedTab),
     );
+  }
+
+  Widget _getHomeScreenContent(int selectedTab) {
+    switch (selectedTab) {
+      case 0:
+        return const CounterPage();
+      case 1:
+        return ScanScreen();
+      case 2:
+        return const ProfileScreen();
+      default:
+        return const CounterPage();
+    }
+  }
+
+  _onItemTapped(int index, BuildContext context) {
+    setState(() {
+      _selectedTab = index;
+    });
   }
 }
