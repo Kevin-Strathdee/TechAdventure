@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_adventure/bloc/counter/counter_bloc.dart';
 import 'package:tech_adventure/generated/l10n.dart';
+import 'package:tech_adventure/ui/screens/home_page.dart';
 import 'package:tech_adventure/ui/screens/login_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const LoginScreen(),
+        home: MyHomePage(),
       ),
     );
   }
