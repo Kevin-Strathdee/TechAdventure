@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
 
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});
@@ -12,7 +14,6 @@ class ScanScreen extends StatefulWidget {
 
 class _ScanScreenState extends State<ScanScreen> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  Barcode? result;
   QRViewController? controller;
   StreamSubscription<Barcode>? scannerStreamSubscription;
 
@@ -24,43 +25,36 @@ class _ScanScreenState extends State<ScanScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Scan"),
-      ),
-      body: Stack(
-        children: [
-          QRView(
-            overlay: QrScannerOverlayShape(
-              borderRadius: 8,
-            ),
-            key: qrKey,
-            onQRViewCreated: _onQRViewCreated,
+    return BlocListener<ScanBloc, ScanState>(
+        listener: (context, state) {
+          if (state is ScanCompleted) {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text(state.code),
+                  );
+                }).then((value) => BlocProvider.of<ScanBloc>(context).add(ScanStarted()));
+          }
+        },
+        child: QRView(
+          overlay: QrScannerOverlayShape(
+            borderRadius: 8,
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 18.0),
-              child: Card(
-                child: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Text(result?.code != null ? "${result?.code}" : "No code found"),
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
+          key: qrKey,
+          onQRViewCreated: _onQRViewCreated,
+        ));
   }
 
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
+    BlocProvider.of<ScanBloc>(context).add(ScanStarted());
     setState(() {
       scannerStreamSubscription = controller.scannedDataStream.listen((scanData) {
-        setState(() {
-          result = scanData;
-        });
+        final code = scanData.code;
+        if (code != null && BlocProvider.of<ScanBloc>(context).state is! ScanCompleted) {
+          BlocProvider.of<ScanBloc>(context).add(ScanCodeDetected(code));
+        }
       });
     });
   }
