@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyHomePage(title: 'jambit Pokemopoly')));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
                 },
                 child: Text(S.of(context).loginButton)),
             TextButton(
