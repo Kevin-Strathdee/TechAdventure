@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/counter/counter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'bloc/user/user_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +15,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CounterBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => UserBloc(),
+        ),
+      ],
       child: MaterialApp(
         localizationsDelegates: const [
           S.delegate,
