@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        title: 'Flutter Demo',
+        title: 'jambit: Das Spiel',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.orange,
         ),
         home: const LoginScreen(),
       ),

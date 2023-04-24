@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_adventure/generated/l10n.dart';
+import 'package:tech_adventure/ui/screens/home_page.dart';
 import 'package:tech_adventure/ui/screens/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -26,7 +27,11 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            ElevatedButton(onPressed: () => print("login"), child: Text(S.of(context).loginButton)),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyHomePage(title: 'jambit Pokemopoly')));
+                },
+                child: Text(S.of(context).loginButton)),
             TextButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
