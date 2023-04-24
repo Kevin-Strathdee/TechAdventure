@@ -9,5 +9,8 @@
   "registerPasswordHint": "password",
   "registerRepeatPasswordHint": "repeat password",
   "registerCreateAccountButton": "Create Account",
-  "registerGoToLogin": "go to login"
+  "registerGoToLogin": "go to login",
+  "navbarHome": "Home",
+  "navbarScan": "Scan",
+  "navbarProfile": "Profile"
 }
