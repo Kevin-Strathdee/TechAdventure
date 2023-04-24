@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tech_adventure/bloc/bloc/counter_bloc.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -28,18 +30,32 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            BlocBuilder<CounterBloc, CounterState>(
+              builder: (context, state) {
+                return Text(
+                  (state is CounterPositive) ? 'counter is positive' : 'counter is negative',
+                );
+              },
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            BlocBuilder<CounterBloc, CounterState>(
+              builder: (context, state) {
+                return Text(
+                  '${state.currentCount}',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                );
+              },
             ),
+            ElevatedButton(
+                onPressed: () => BlocProvider.of<CounterBloc>(context).add(IncrementButtonTapped()),
+                child: Text("Increment")),
+            ElevatedButton(
+                onPressed: () => BlocProvider.of<CounterBloc>(context).add(DecrementButtonTapped()),
+                child: Text("Decrement"))
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () => BlocProvider.of<CounterBloc>(context).add(IncrementButtonTapped()),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
