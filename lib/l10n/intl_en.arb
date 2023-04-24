@@ -1,0 +1,13 @@
+{
+  "loginEmailHint": "email",
+  "loginPasswordHint": "password",
+  "loginButton": "login",
+  "loginGoToRegister": "go to register",
+  "loginTitle": "Login",
+  "registerTitle": "Register",
+  "registerEmailHint": "email",
+  "registerPasswordHint": "password",
+  "registerRepeatPasswordHint": "repeat password",
+  "registerCreateAccountButton": "Create Account",
+  "registerGoToLogin": "go to login"
+}
