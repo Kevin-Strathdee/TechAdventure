@@ -49,6 +49,116 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `email`
+  String get loginEmailHint {
+    return Intl.message(
+      'email',
+      name: 'loginEmailHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password`
+  String get loginPasswordHint {
+    return Intl.message(
+      'password',
+      name: 'loginPasswordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `login`
+  String get loginButton {
+    return Intl.message(
+      'login',
+      name: 'loginButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `go to register`
+  String get loginGoToRegister {
+    return Intl.message(
+      'go to register',
+      name: 'loginGoToRegister',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get loginTitle {
+    return Intl.message(
+      'Login',
+      name: 'loginTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get registerTitle {
+    return Intl.message(
+      'Register',
+      name: 'registerTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `email`
+  String get registerEmailHint {
+    return Intl.message(
+      'email',
+      name: 'registerEmailHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password`
+  String get registerPasswordHint {
+    return Intl.message(
+      'password',
+      name: 'registerPasswordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `repeat password`
+  String get registerRepeatPasswordHint {
+    return Intl.message(
+      'repeat password',
+      name: 'registerRepeatPasswordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get registerCreateAccountButton {
+    return Intl.message(
+      'Create Account',
+      name: 'registerCreateAccountButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `go to login`
+  String get registerGoToLogin {
+    return Intl.message(
+      'go to login',
+      name: 'registerGoToLogin',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

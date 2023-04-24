@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/ui/screens/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -9,28 +10,28 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
+        title: Text(S.of(context).loginTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const TextField(
-              decoration: InputDecoration(hintText: "email"),
+            TextField(
+              decoration: InputDecoration(hintText: S.of(context).loginEmailHint),
             ),
-            const TextField(
-              decoration: InputDecoration(hintText: "password"),
+            TextField(
+              decoration: InputDecoration(hintText: S.of(context).loginPasswordHint),
             ),
             const SizedBox(
               height: 50,
             ),
-            ElevatedButton(onPressed: () => print("login"), child: const Text("login")),
+            ElevatedButton(onPressed: () => print("login"), child: Text(S.of(context).loginButton)),
             TextButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
                 },
-                child: const Text("go to register"))
+                child: Text(S.of(context).loginGoToRegister))
           ],
         ),
       ),
