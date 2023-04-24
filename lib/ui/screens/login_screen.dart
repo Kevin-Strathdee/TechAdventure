@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_adventure/generated/l10n.dart';
-import 'package:tech_adventure/ui/components/main_nav_bar.dart';
 import 'package:tech_adventure/ui/screens/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -10,7 +8,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MainNavBar(),
       appBar: AppBar(
         title: Text(S.of(context).loginTitle),
       ),
