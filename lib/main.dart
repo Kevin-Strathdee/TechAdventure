@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/bloc/counter_bloc.dart';
+import 'package:tech_adventure/bloc/counter/counter_bloc.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
 
 void main() {
