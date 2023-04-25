@@ -40,11 +40,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     final Link link = authLink.concat(httpLink);
     GraphQLClient client = GraphQLClient(link: link, cache: GraphQLCache(store: InMemoryStore()));
 
-    on<CoffeeBeansIncremented>((event, emit) {
-      int newCount = max(state.numCoffeeBeans + event.numBeans, 0);
-      emit(UserCoffeeBeans(newCount));
-    });
-    on<GetUser>((event, emit) async {
+    on<UserRequested>((event, emit) async {
       //TODO to be tested
       QueryOptions<User> queryOptions = QueryOptions<User>(
         document: gql(getUserInfo), // this is the query string you just created
@@ -53,9 +49,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         },
       );
       QueryResult<User> userInfo = await client.query(queryOptions);
-      emit(UserInfo(userInfo.data as User));
+      emit(UserLoadSuccess(getMockUser()));
     });
   }
+
   //Testing Data
   User getMockUser(){
     return User(1, "max.mustemann@jambit.com", "MadMax", "Max", "Mustermann", [getMockPlace()], "image", 300);
