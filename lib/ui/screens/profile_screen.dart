@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(30),
                   child: Text(
                     (state.numCoffeeBeans > 0)
-                        ? 'You have ${state.numCoffeeBeans} coffee beans.'
+                        ? 'You have ${state.numCoffeeBeans} coffee beans.' : (state is UserInfo && state.user.score > 0) ? 'You have ${state.user.score} coffee beans.'
                         : "You haven't collected any coffee beans yet. Scan a code to play!",
                     textAlign: TextAlign.center,
                   )
@@ -37,10 +37,17 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 BlocBuilder<UserBloc, UserState>(
                   builder: (context, state) {
+                    if(state is UserInfo){
+                      return Text(
+                        '${state.user.score}',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      );
+                    } else {
                     return Text(
                       '${state.numCoffeeBeans}',
                       style: Theme.of(context).textTheme.headlineMedium,
                     );
+                    }
                   },
                 ),
               ],
@@ -50,7 +57,10 @@ class ProfileScreen extends StatelessWidget {
                 child: const Text("Increment")),
             ElevatedButton(
                 onPressed: () => BlocProvider.of<UserBloc>(context).add(CoffeeBeansIncremented(-5)),
-                child: const Text("Decrement"))
+                child: const Text("Decrement")),
+            ElevatedButton(
+                onPressed: () => BlocProvider.of<UserBloc>(context).add(GetUser()),
+                child: const Text("Get User Info"))
           ],
         ),
       ),

@@ -12,3 +12,8 @@ class UserCoffeeBeans extends UserState {
     numCoffeeBeans = numBeans;
   }
 }
+
+class UserInfo extends UserState {
+  User user;
+  UserInfo(this.user);
+}

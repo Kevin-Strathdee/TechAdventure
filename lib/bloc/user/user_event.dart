@@ -9,3 +9,5 @@ class CoffeeBeansIncremented extends UserEvent {
 
   CoffeeBeansIncremented(this.numBeans);
 }
+
+class GetUser extends UserEvent {}
