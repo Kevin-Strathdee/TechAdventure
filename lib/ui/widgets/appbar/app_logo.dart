@@ -12,6 +12,6 @@ class AppLogo extends StatelessWidget {
       assetName,
       semanticsLabel: 'jambit logo',
       width: 160,
-    );
+    ); // TODO: Replace with app logo
   }
 }

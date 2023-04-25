@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_adventure/ui/widgets/appbar/app_logo.dart';
-import 'package:tech_adventure/ui/widgets/appbar/score_counter.dart';
+import 'package:tech_adventure/ui/widgets/appbar/score_display.dart';
 
 class OverviewAppBar extends StatelessWidget implements PreferredSizeWidget {
   const OverviewAppBar({super.key});
@@ -20,7 +20,7 @@ class OverviewAppBar extends StatelessWidget implements PreferredSizeWidget {
             AppLogo(),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: ScoreCounter(),
+              child: SizedBox(height: 40, width: 40, child: ScoreDisplay()),
             )
           ],
         ),
@@ -32,7 +32,7 @@ class OverviewAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: true,
       elevation: 2,
       leadingWidth: 0,
-      actions: const <Widget>[ScoreCounter()],
+      actions: const <Widget>[ScoreDisplay()],
     );
   }
 
