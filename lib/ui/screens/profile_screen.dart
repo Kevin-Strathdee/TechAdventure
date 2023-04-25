@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/user/user_bloc.dart';
-import '../widgets/coffee_bean_widget.dart';
+import '../widgets/coffee_bean.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -17,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
           children: <Widget>[
             BlocBuilder<UserBloc, UserState>(
               builder: (context, state) {
-                if(state is UserLoadFailure){
+                if (state is UserLoadFailure) {
                   return Text("Could not load user info");
                 }
                 return Container(
@@ -35,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.only(right: 10),
-                  child: svgCoffeeBean,
+                  child: CoffeeBean(),
                 ),
                 BlocBuilder<UserBloc, UserState>(
                   builder: (context, state) {

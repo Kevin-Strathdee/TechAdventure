@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/ui/screens/maps_page.dart';
+import 'package:tech_adventure/ui/screens/overview_screen.dart';
 import 'package:tech_adventure/ui/screens/profile_screen.dart';
 import 'package:tech_adventure/ui/screens/scan_screen.dart';
+import 'package:tech_adventure/ui/widgets/appbar/overview_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,18 +19,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const OverviewAppBar(),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.map),
+            icon: const Icon(Icons.map),
             label: S.of(context).navbarHome,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
+            icon: const Icon(Icons.qr_code_scanner),
             label: S.of(context).navbarScan,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_rounded),
+            icon: const Icon(Icons.account_circle_rounded),
             label: S.of(context).navbarProfile,
           ),
         ],
@@ -42,9 +45,9 @@ class _HomePageState extends State<HomePage> {
   Widget _getHomeScreenContent(int selectedTab) {
     switch (selectedTab) {
       case 0:
-        return const MapsPage();
+        return const OverviewScreen();
       case 1:
-        return ScanScreen();
+        return const ScanScreen();
       case 2:
         return const ProfileScreen();
       default:
