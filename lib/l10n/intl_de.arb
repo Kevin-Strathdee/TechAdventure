@@ -23,5 +23,7 @@
       }
     }
   },
-  "overviewPoints": "Points"
+  "overviewPoints": "Points",
+  "overviewPlacesTitle": "My Places",
+  "profileTitle": "My Profile"
 }
