@@ -5,6 +5,9 @@ import 'package:tech_adventure/ui/screens/overview_screen.dart';
 import 'package:tech_adventure/ui/screens/profile_screen.dart';
 import 'package:tech_adventure/ui/screens/scan_screen.dart';
 import 'package:tech_adventure/ui/widgets/appbar/overview_app_bar.dart';
+import 'package:tech_adventure/ui/widgets/coffee_bean.dart';
+
+import '../../theme/colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,7 +26,12 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: const Icon(Icons.map),
+            icon: const SizedBox(height: 23, child: CoffeeBean()),
+            activeIcon: const SizedBox(
+                height: 23,
+                child: CoffeeBean(
+                  color: jambitOrange,
+                )),
             label: S.of(context).navbarHome,
           ),
           BottomNavigationBarItem(

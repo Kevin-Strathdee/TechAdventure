@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_adventure/bloc/user/user_bloc.dart';
+import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/ui/widgets/overview/place_tile.dart';
 
 class UserPlacesCard extends StatelessWidget {
@@ -20,7 +21,7 @@ class UserPlacesCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "My Places",
+                      S.of(context).overviewPlacesTitle,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     const SizedBox(

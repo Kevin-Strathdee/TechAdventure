@@ -11,7 +11,6 @@ class BackendMock extends IBackend {
   }
 
   User getMockUser2() {
-
     return User(2, "grixon0@yahoo.com", "Garey", "Garey", "Rixon", [], "image", 0);
   }
 
@@ -37,5 +36,11 @@ class BackendMock extends IBackend {
       Place(2, "Sarah's Office", getMockUser2(), Minigame("DiceRolling", 5), office, "image", "tdb"),
       Place(3, "Java", getMockUser2(), Minigame("DiceRolling", 5), cafeteria, "image", "tdb"),
     ];
+  }
+
+  @override
+  Future<User> updateUser(User user) async {
+    await Future.delayed(Duration(seconds: 1));
+    return user;
   }
 }

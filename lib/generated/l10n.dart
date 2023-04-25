@@ -209,6 +209,26 @@ class S {
       args: [],
     );
   }
+
+  /// `My Places`
+  String get overviewPlacesTitle {
+    return Intl.message(
+      'My Places',
+      name: 'overviewPlacesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Profile`
+  String get profileTitle {
+    return Intl.message(
+      'My Profile',
+      name: 'profileTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

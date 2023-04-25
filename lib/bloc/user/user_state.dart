@@ -8,8 +8,15 @@ class UserInitial extends UserState {}
 class UserLoadInProgress extends UserState {}
 
 class UserLoadSuccess extends UserState {
-  User user;
+  final User user;
   UserLoadSuccess(this.user);
 }
 
-class UserLoadFailure extends UserState {}
+class UserLoadFailure extends UserState {
+  final String error;
+  UserLoadFailure(this.error);
+}
+
+class UserUpdateInProgress extends UserLoadSuccess {
+  UserUpdateInProgress(super.user);
+}

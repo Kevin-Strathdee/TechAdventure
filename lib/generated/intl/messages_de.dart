@@ -33,8 +33,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "navbarHome": MessageLookupByLibrary.simpleMessage("Home"),
         "navbarProfile": MessageLookupByLibrary.simpleMessage("Profile"),
         "navbarScan": MessageLookupByLibrary.simpleMessage("Scan"),
+        "overviewPlacesTitle":
+            MessageLookupByLibrary.simpleMessage("My Places"),
         "overviewPoints": MessageLookupByLibrary.simpleMessage("Points"),
         "overviewWelcomeMessage": m0,
+        "profileTitle": MessageLookupByLibrary.simpleMessage("My Profile"),
         "registerCreateAccountButton":
             MessageLookupByLibrary.simpleMessage("Create Account"),
         "registerEmailHint": MessageLookupByLibrary.simpleMessage("email"),

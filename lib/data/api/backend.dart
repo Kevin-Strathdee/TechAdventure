@@ -5,6 +5,7 @@ import 'package:tech_adventure/data/models/user.dart';
 abstract class IBackend {
   Future<User> getUser();
   Future<Place> getPlace();
+  Future<User> updateUser(User user);
 }
 
 class Backend extends IBackend {
@@ -18,7 +19,6 @@ class Backend extends IBackend {
     // OR
     // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
   );
-
 
   String userQuery = """
       query user (\$userId: ID) {
@@ -43,7 +43,7 @@ class Backend extends IBackend {
 
   late GraphQLClient client;
 
-  Backend(){
+  Backend() {
     final Link link = authLink.concat(httpLink);
     client = GraphQLClient(link: link, cache: GraphQLCache(store: InMemoryStore()));
   }
@@ -64,6 +64,12 @@ class Backend extends IBackend {
   @override
   Future<Place> getPlace() {
     // TODO: implement getPlace
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<User> updateUser(User user) {
+    // TODO: implement updateUser
     throw UnimplementedError();
   }
 }
