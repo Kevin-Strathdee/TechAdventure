@@ -1,5 +1,5 @@
-import 'package:tech_adventure/data/minigame.dart';
-import 'package:tech_adventure/data/user.dart';
+import 'package:tech_adventure/data/models/minigame.dart';
+import 'package:tech_adventure/data/models/user.dart';
 
 
 class Place {

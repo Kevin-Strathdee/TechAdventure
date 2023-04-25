@@ -1,4 +1,4 @@
-import 'package:tech_adventure/data/place.dart';
+import 'package:tech_adventure/data/models/place.dart';
 
 class User {
   int id;
