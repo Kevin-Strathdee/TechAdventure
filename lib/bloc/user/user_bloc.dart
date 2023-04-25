@@ -11,15 +11,10 @@ part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(UserInitial()) {
-    on<CoffeeBeansIncremented>((event, emit) {
-      int newCount = max(state.numCoffeeBeans + event.numBeans, 0);
-      emit(UserCoffeeBeans(newCount));
-    });
-    on<GetUser>((event, emit) {
-      emit(UserInfo(getMockUser()));
+    on<UserRequested>((event, emit) {
+      emit(UserLoadSuccess(getMockUser()));
     });
   }
-
 
   //Testing Data
   User getMockUser(){

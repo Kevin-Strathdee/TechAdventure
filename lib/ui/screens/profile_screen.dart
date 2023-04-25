@@ -17,15 +17,17 @@ class ProfileScreen extends StatelessWidget {
           children: <Widget>[
             BlocBuilder<UserBloc, UserState>(
               builder: (context, state) {
+                if(state is UserLoadFailure){
+                  return Text("Could not load user info");
+                }
                 return Container(
-                  padding: const EdgeInsets.all(30),
-                  child: Text(
-                    (state.numCoffeeBeans > 0)
-                        ? 'You have ${state.numCoffeeBeans} coffee beans.' : (state is UserInfo && state.user.score > 0) ? 'You have ${state.user.score} coffee beans.'
-                        : "You haven't collected any coffee beans yet. Scan a code to play!",
-                    textAlign: TextAlign.center,
-                  )
-                );
+                    padding: const EdgeInsets.all(30),
+                    child: Text(
+                      (state is UserLoadSuccess && state.user.score > 0)
+                          ? 'Hi ${state.user.firstName}. \n You have ${state.user.score} coffee beans.'
+                          : "You haven't collected any coffee beans yet. Scan a code to play!",
+                      textAlign: TextAlign.center,
+                    ));
               },
             ),
             Row(
@@ -37,30 +39,25 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 BlocBuilder<UserBloc, UserState>(
                   builder: (context, state) {
-                    if(state is UserInfo){
+                    if (state is UserLoadSuccess) {
                       return Text(
                         '${state.user.score}',
                         style: Theme.of(context).textTheme.headlineMedium,
                       );
                     } else {
-                    return Text(
-                      '${state.numCoffeeBeans}',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    );
+                      return Text(
+                        '0',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      );
                     }
                   },
                 ),
               ],
             ),
             ElevatedButton(
-                onPressed: () => BlocProvider.of<UserBloc>(context).add(CoffeeBeansIncremented(5)),
-                child: const Text("Increment")),
-            ElevatedButton(
-                onPressed: () => BlocProvider.of<UserBloc>(context).add(CoffeeBeansIncremented(-5)),
-                child: const Text("Decrement")),
-            ElevatedButton(
-                onPressed: () => BlocProvider.of<UserBloc>(context).add(GetUser()),
-                child: const Text("Get User Info"))
+                onPressed: () => BlocProvider.of<UserBloc>(context)
+                    .add(UserRequested()),
+                child: const Text("Get user information"))
           ],
         ),
       ),
