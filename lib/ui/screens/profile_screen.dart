@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tech_adventure/data/models/user.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 
 import '../../bloc/user/user_bloc.dart';
@@ -34,6 +35,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
       _lastNameController = TextEditingController(text: "");
       _usernameController = TextEditingController(text: "");
     }
+  }
+
+  void _updateUser(UserBloc userBloc, User user) {
+    user.firstName = _firstNameController.text;
+    user.lastName = _lastNameController.text;
+    user.userName = _usernameController.text;
+    userBloc.add(UserUpdated(user));
   }
 
   @override
@@ -76,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("First Name"),
+                            const Text("First Name"),
                             SizedBox(
                                 width: 200,
                                 child: TextField(
@@ -88,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Last Name"),
+                            const Text("Last Name"),
                             SizedBox(
                                 width: 200,
                                 child: TextField(
@@ -100,7 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Username"),
+                            const Text("Username"),
                             SizedBox(
                                 width: 200,
                                 child: TextField(
@@ -109,27 +117,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 )),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
-                        Align(
-                            alignment: Alignment.bottomRight,
-                            child: _inEditMode
-                                ? IconButton(
-                                    onPressed: () => setState(() {
+                        if (state is! UserUpdateInProgress)
+                          Align(
+                              alignment: Alignment.bottomRight,
+                              child: _inEditMode
+                                  ? IconButton(
+                                      onPressed: () {
+                                        _updateUser(BlocProvider.of<UserBloc>(context), state.user);
+                                        setState(() {
                                           _inEditMode = false;
-                                        }),
-                                    icon: Icon(Icons.save))
-                                : IconButton(
-                                    onPressed: () => setState(() {
-                                          _inEditMode = true;
-                                        }),
-                                    icon: Icon(Icons.edit))),
+                                        });
+                                      },
+                                      icon: const Icon(Icons.save))
+                                  : IconButton(
+                                      onPressed: () => setState(() {
+                                            _inEditMode = true;
+                                          }),
+                                      icon: const Icon(Icons.edit)))
+                        else
+                          const Align(alignment: Alignment.bottomRight, child: CircularProgressIndicator()),
                       ],
                     )),
               );
             } else {
-              return Text("oops");
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
           },
         ),

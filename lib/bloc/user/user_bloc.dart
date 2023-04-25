@@ -17,8 +17,21 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(UserInitial()) {
     on<UserRequested>((event, emit) async {
       emit(UserLoadInProgress());
-      User user = await backend.getUser();
-      emit(UserLoadSuccess(user));
+      try {
+        User user = await backend.getUser();
+        emit(UserLoadSuccess(user));
+      } catch (e) {
+        emit(UserLoadFailure(e.toString()));
+      }
+    });
+    on<UserUpdated>((event, emit) async {
+      emit(UserUpdateInProgress(event.user));
+      try {
+        User user = await backend.updateUser(event.user);
+        emit(UserLoadSuccess(user));
+      } catch (e) {
+        emit(UserLoadFailure(e.toString()));
+      }
     });
   }
 }
