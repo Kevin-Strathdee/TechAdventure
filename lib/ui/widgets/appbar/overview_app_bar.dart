@@ -19,7 +19,7 @@ class OverviewAppBar extends StatelessWidget implements PreferredSizeWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AppLogo(),
+            const AppLogo(),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: SizedBox(
@@ -30,7 +30,7 @@ class OverviewAppBar extends StatelessWidget implements PreferredSizeWidget {
                       if (state is UserLoadSuccess) {
                         return ScoreDisplay(score: state.user.score);
                       } else {
-                        return ScoreDisplay(score: 0);
+                        return const ScoreDisplay(score: 0);
                       }
                     },
                   )),

@@ -13,6 +13,15 @@
   "navbarHome": "Home",
   "navbarScan": "Scan",
   "navbarProfile": "Profile",
-  "overviewWelcomeuserfirstname": "Welcome ${state.user.firstName}",
-  "overviewPoints": "{} Points"
+  "overviewWelcomeMessage": "Welcome {firstName}",
+  "@overviewWelcomeMessage": {
+    "description": "Welcome message including first name",
+    "placeholders": {
+      "firstName": {
+        "type": "String",
+        "example": "Bob"
+      }
+    }
+  },
+  "overviewPoints": "Points"
 }

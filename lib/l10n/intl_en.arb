@@ -23,13 +23,5 @@
       }
     }
   },
-  "overviewPoints": "{points} Points",
-  "@overviewPoints": {
-    "placeholders": {
-      "points": {
-        "type": "Int",
-        "example": 42
-      }
-    }
-  }
+  "overviewPoints": "Points"
 }

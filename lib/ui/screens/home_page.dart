@@ -19,19 +19,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: OverviewAppBar(),
+      appBar: const OverviewAppBar(),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.map),
+            icon: const Icon(Icons.map),
             label: S.of(context).navbarHome,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.qr_code_scanner),
+            icon: const Icon(Icons.qr_code_scanner),
             label: S.of(context).navbarScan,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_rounded),
+            icon: const Icon(Icons.account_circle_rounded),
             label: S.of(context).navbarProfile,
           ),
         ],

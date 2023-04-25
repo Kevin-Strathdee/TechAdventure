@@ -28,12 +28,12 @@ class LoginScreen extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
                 },
                 child: Text(S.of(context).loginButton)),
             TextButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegisterScreen()));
                 },
                 child: Text(S.of(context).loginGoToRegister))
           ],

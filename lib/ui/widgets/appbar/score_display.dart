@@ -29,7 +29,7 @@ class ScoreDisplay extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: constraints.maxWidth * .1),
                     child: Text(
                       "$score",
-                      style: TextStyle(fontWeight: FontWeight.w400),
+                      style: const TextStyle(fontWeight: FontWeight.w400),
                       textScaleFactor: 1 * (constraints.maxWidth / 40),
                     ),
                   )),

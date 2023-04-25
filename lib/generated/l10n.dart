@@ -200,13 +200,13 @@ class S {
     );
   }
 
-  /// `{points} Points`
-  String overviewPoints(Object points) {
+  /// `Points`
+  String get overviewPoints {
     return Intl.message(
-      '$points Points',
+      'Points',
       name: 'overviewPoints',
       desc: '',
-      args: [points],
+      args: [],
     );
   }
 }
