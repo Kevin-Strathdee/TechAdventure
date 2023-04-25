@@ -1,14 +1,14 @@
 part of 'user_bloc.dart';
 
 @immutable
-abstract class UserState {
-  int numCoffeeBeans = 0;
-}
+abstract class UserState {}
 
 class UserInitial extends UserState {}
 
-class UserCoffeeBeans extends UserState {
-  UserCoffeeBeans(int numBeans) {
-    numCoffeeBeans = numBeans;
-  }
+class UserLoadSuccess extends UserState {
+  User user;
+  UserLoadSuccess(this.user);
 }
+
+class UserLoadFailure extends UserState {}
+
