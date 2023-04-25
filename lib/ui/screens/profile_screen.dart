@@ -55,7 +55,8 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-                onPressed: () => BlocProvider.of<UserBloc>(context).add(UserRequested()),
+                onPressed: () => BlocProvider.of<UserBloc>(context)
+                    .add(UserRequested()),
                 child: const Text("Get user information"))
           ],
         ),

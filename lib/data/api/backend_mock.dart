@@ -11,6 +11,7 @@ class BackendMock extends IBackend {
   }
 
   User getMockUser2() {
+
     return User(2, "grixon0@yahoo.com", "Garey", "Garey", "Rixon", [], "image", 0);
   }
 
@@ -21,6 +22,7 @@ class BackendMock extends IBackend {
   @override
   Future<User> getUser() async {
     await Future.delayed(const Duration(seconds: 1));
+
     return Future.value(getMockUser());
   }
 
