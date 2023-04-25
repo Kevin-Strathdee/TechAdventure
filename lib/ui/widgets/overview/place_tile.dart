@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_adventure/bloc/user/user_bloc.dart';
-import 'package:tech_adventure/data/place.dart';
+import 'package:tech_adventure/data/models/place.dart';
 
 class PlaceTile extends StatelessWidget {
   const PlaceTile({super.key, required this.place});
