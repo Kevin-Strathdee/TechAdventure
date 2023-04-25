@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tech_adventure/bloc/user/user_bloc.dart';
 import 'package:tech_adventure/ui/widgets/appbar/app_logo.dart';
 import 'package:tech_adventure/ui/widgets/appbar/score_display.dart';
 
@@ -20,19 +22,22 @@ class OverviewAppBar extends StatelessWidget implements PreferredSizeWidget {
             AppLogo(),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: SizedBox(height: 40, width: 40, child: ScoreDisplay()),
+              child: SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: BlocBuilder<UserBloc, UserState>(
+                    builder: (context, state) {
+                      if (state is UserLoadSuccess) {
+                        return ScoreDisplay(score: state.user.score);
+                      } else {
+                        return ScoreDisplay(score: 0);
+                      }
+                    },
+                  )),
             )
           ],
         ),
       ),
-    );
-    return AppBar(
-      backgroundColor: Colors.white,
-      title: AppLogo(),
-      automaticallyImplyLeading: true,
-      elevation: 2,
-      leadingWidth: 0,
-      actions: const <Widget>[ScoreDisplay()],
     );
   }
 

@@ -189,6 +189,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Welcome {firstName}`
+  String overviewWelcomeMessage(String firstName) {
+    return Intl.message(
+      'Welcome $firstName',
+      name: 'overviewWelcomeMessage',
+      desc: 'Welcome message including first name',
+      args: [firstName],
+    );
+  }
+
+  /// `{points} Points`
+  String overviewPoints(Object points) {
+    return Intl.message(
+      '$points Points',
+      name: 'overviewPoints',
+      desc: '',
+      args: [points],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

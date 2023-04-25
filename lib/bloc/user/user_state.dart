@@ -5,10 +5,11 @@ abstract class UserState {}
 
 class UserInitial extends UserState {}
 
+class UserLoadInProgress extends UserState {}
+
 class UserLoadSuccess extends UserState {
   User user;
   UserLoadSuccess(this.user);
 }
 
 class UserLoadFailure extends UserState {}
-

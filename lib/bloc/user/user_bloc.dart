@@ -11,21 +11,24 @@ part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(UserInitial()) {
-    on<UserRequested>((event, emit) {
-      emit(UserLoadSuccess(getMockUser()));
+    on<UserRequested>((event, emit) async {
+      emit(UserLoadInProgress());
+      var user = await getMockUser();
+      emit(UserLoadSuccess(user));
     });
   }
 
   //Testing Data
-  User getMockUser(){
+  Future<User> getMockUser() async {
+    await Future.delayed(const Duration(seconds: 1));
     return User(1, "max.mustemann@jambit.com", "MadMax", "Max", "Mustermann", [getMockPlace()], "image", 300);
   }
 
-  User getMockUser2(){
+  User getMockUser2() {
     return User(2, "grixon0@yahoo.com", "Garey", "Garey", "Rixon", [], "image", 0);
   }
 
   Place getMockPlace() {
-    return Place(1, "Street", getMockUser2(), Minigame("DiceRolling", 5),"confrence room", "image", "tdb");
+    return Place(1, "Street", getMockUser2(), Minigame("DiceRolling", 5), "confrence room", "image", "tdb");
   }
 }

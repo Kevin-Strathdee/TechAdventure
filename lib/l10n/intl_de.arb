@@ -12,5 +12,7 @@
   "registerGoToLogin": "go to login",
   "navbarHome": "Home",
   "navbarScan": "Scan",
-  "navbarProfile": "Profile"
+  "navbarProfile": "Profile",
+  "overviewWelcomeuserfirstname": "Welcome ${state.user.firstName}",
+  "overviewPoints": "{} Points"
 }

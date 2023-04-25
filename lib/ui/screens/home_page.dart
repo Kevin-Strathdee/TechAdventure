@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/ui/screens/maps_page.dart';
+import 'package:tech_adventure/ui/screens/overview_screen.dart';
 import 'package:tech_adventure/ui/screens/profile_screen.dart';
 import 'package:tech_adventure/ui/screens/scan_screen.dart';
 import 'package:tech_adventure/ui/widgets/appbar/overview_app_bar.dart';
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
             label: S.of(context).navbarHome,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
+            icon: Icon(Icons.qr_code_scanner),
             label: S.of(context).navbarScan,
           ),
           BottomNavigationBarItem(
@@ -44,9 +45,9 @@ class _HomePageState extends State<HomePage> {
   Widget _getHomeScreenContent(int selectedTab) {
     switch (selectedTab) {
       case 0:
-        return const MapsPage();
+        return const OverviewScreen();
       case 1:
-        return ScanScreen();
+        return const ScanScreen();
       case 2:
         return const ProfileScreen();
       default:
