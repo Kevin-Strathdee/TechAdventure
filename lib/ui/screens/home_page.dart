@@ -3,6 +3,7 @@ import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/ui/screens/maps_page.dart';
 import 'package:tech_adventure/ui/screens/profile_screen.dart';
 import 'package:tech_adventure/ui/screens/scan_screen.dart';
+import 'package:tech_adventure/ui/widgets/appbar/overview_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: OverviewAppBar(),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(

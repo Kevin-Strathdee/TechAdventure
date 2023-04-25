@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/user/user_bloc.dart';
-import '../widgets/coffee_bean_widget.dart';
+import '../widgets/coffee_bean.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -18,14 +18,13 @@ class ProfileScreen extends StatelessWidget {
             BlocBuilder<UserBloc, UserState>(
               builder: (context, state) {
                 return Container(
-                  padding: const EdgeInsets.all(30),
-                  child: Text(
-                    (state.numCoffeeBeans > 0)
-                        ? 'You have ${state.numCoffeeBeans} coffee beans.'
-                        : "You haven't collected any coffee beans yet. Scan a code to play!",
-                    textAlign: TextAlign.center,
-                  )
-                );
+                    padding: const EdgeInsets.all(30),
+                    child: Text(
+                      (state.numCoffeeBeans > 0)
+                          ? 'You have ${state.numCoffeeBeans} coffee beans.'
+                          : "You haven't collected any coffee beans yet. Scan a code to play!",
+                      textAlign: TextAlign.center,
+                    ));
               },
             ),
             Row(
@@ -33,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.only(right: 10),
-                  child: svgCoffeeBean,
+                  child: CoffeeBean(),
                 ),
                 BlocBuilder<UserBloc, UserState>(
                   builder: (context, state) {
