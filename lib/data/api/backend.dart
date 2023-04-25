@@ -20,7 +20,7 @@ class Backend extends IBackend {
   );
 
 
-  String getUserInfo = """
+  String userQuery = """
       query user (\$userId: ID) {
         user (userId: \$userId) {
             id
@@ -32,6 +32,15 @@ class Backend extends IBackend {
     }
     """;
 
+  String placeQuery = """query place (\$placeId: ID) {
+        place (placeId: \$placeId) {
+            id
+            name
+            type
+            image
+        }
+    }""";
+
   late GraphQLClient client;
 
   Backend(){
@@ -42,7 +51,7 @@ class Backend extends IBackend {
   Future<User> getUser() async {
     //TODO to be tested
     QueryOptions<User> queryOptions = QueryOptions<User>(
-      document: gql(getUserInfo), // this is the query string you just created
+      document: gql(userQuery), // this is the query string you just created
       variables: {
         'userId': 0,
       },
