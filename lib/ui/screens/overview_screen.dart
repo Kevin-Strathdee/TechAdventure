@@ -15,7 +15,8 @@ class OverviewScreen extends StatelessWidget {
         RefreshIndicator(
           displacement: 1,
           triggerMode: RefreshIndicatorTriggerMode.anywhere,
-          onRefresh: () async => BlocProvider.of<UserBloc>(context).add(UserRequested()),
+          onRefresh: () async =>
+              BlocProvider.of<UserBloc>(context).add(UserRequested("1")),
           child: SingleChildScrollView(
             clipBehavior: Clip.none,
             physics: const AlwaysScrollableScrollPhysics(),

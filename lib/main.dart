@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
+import 'package:tech_adventure/ui/screens/home_page.dart';
 import 'package:tech_adventure/ui/screens/welcome_screen.dart';
 
 import 'bloc/user/user_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
+const accessTokenKey = "accessToken";
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? accessToken = prefs.getString(accessTokenKey);
+  runApp(MyApp(accessToken: accessToken));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  String? accessToken;
+
+  MyApp({super.key, this.accessToken});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +47,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: getMaterialColor(jambitOrange),
         ),
-        home: WelcomeScreen(),
+        home: accessToken == null ? WelcomeScreen() : const HomePage(),
       ),
     );
   }

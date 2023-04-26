@@ -1,8 +1,17 @@
+import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tech_adventure/generated/l10n.dart';
+import 'package:tech_adventure/theme/colors.dart';
 import 'package:tech_adventure/ui/delayed_animation.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
+
+import '../../bloc/user/user_bloc.dart';
+import '../../main.dart';
+
+const appScheme = 'flutterdemo';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -37,7 +46,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: const Color(0xfffbb448),
+          backgroundColor: jambitOrange,
           body: Center(
             child: Column(
               children: <Widget>[
@@ -144,10 +153,21 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     _controller.forward();
   }
 
-  void _onTapUp(TapUpDetails details) {
+  Auth0 auth0 = Auth0('{domain}', '{clientId}');
+
+  void _onTapUp(TapUpDetails details) async {
     _controller.reverse();
     //TODO add openid connect authentication flow
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const HomePage()));
+    final Credentials credentials =
+        await auth0.webAuthentication(scheme: appScheme).login();
+    BlocProvider.of<UserBloc>(context).add(UserRequested(credentials.idToken));
+    if (credentials.accessToken != null) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString(accessTokenKey, credentials.accessToken);
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const HomePage()));
+    } else {
+      //TODO handle case if no token could be fetched/login failed. Show toast?
+    }
   }
 }
