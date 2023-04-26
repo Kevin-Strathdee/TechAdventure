@@ -1,5 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:tech_adventure/ui/games/flappyBird/config.dart';
+import 'package:tech_adventure/ui/games/flappyBean/config.dart';
 
 enum PipeOrientation { up, down }
 
@@ -13,7 +13,7 @@ class Pipe extends SpriteComponent {
   bool shouldMove = false;
   final int order;
   final PipeOrientation orientation;
-  final double offset;
+  double offset;
   final double gap;
   double speed = FlappyBeansDimensions.gameSpeed;
   bool crossed = false;

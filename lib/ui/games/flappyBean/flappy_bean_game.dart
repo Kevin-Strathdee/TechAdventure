@@ -5,15 +5,15 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/ui/games/flappyBird/components/background.dart';
-import 'package:tech_adventure/ui/games/flappyBird/components/bean.dart';
-import 'package:tech_adventure/ui/games/flappyBird/components/floor.dart';
-import 'package:tech_adventure/ui/games/flappyBird/components/pipe.dart';
-import 'package:tech_adventure/ui/games/flappyBird/config.dart';
+import 'package:tech_adventure/ui/games/flappyBean/components/background.dart';
+import 'package:tech_adventure/ui/games/flappyBean/components/bean.dart';
+import 'package:tech_adventure/ui/games/flappyBean/components/floor.dart';
+import 'package:tech_adventure/ui/games/flappyBean/components/pipe.dart';
+import 'package:tech_adventure/ui/games/flappyBean/config.dart';
 
 enum GameState { intial, playing, gameOver }
 
-class FlappyBirdGame extends FlameGame with TapDetector {
+class FlappyBeanGame extends FlameGame with TapDetector {
   late Bean _bean;
   late Floor _floor;
   late Pipe _pipe1down;
@@ -26,10 +26,11 @@ class FlappyBirdGame extends FlameGame with TapDetector {
   late double _maxOffset;
   late double _minOffset;
   int score = 0;
+  int highScore = 0;
   GameState _gameState = GameState.intial;
   Function onGameOver;
   final tapToStartOverlayIdentifier = 'TapToStart';
-  FlappyBirdGame(this.onGameOver);
+  FlappyBeanGame(this.onGameOver);
 
   @override
   FutureOr<void> onLoad() async {
@@ -90,8 +91,7 @@ class FlappyBirdGame extends FlameGame with TapDetector {
       _incrementScore();
     }
     if (_isGameOver()) {
-      // _endGame();
-      _resetGame();
+      _showGameOverOverlay();
     } else {
       super.update(dt);
     }
@@ -106,26 +106,41 @@ class FlappyBirdGame extends FlameGame with TapDetector {
     overlays.remove(tapToStartOverlayIdentifier);
   }
 
-  void _resetGame() {
+  void resetGame() {
     _gameState = GameState.intial;
     score = 0;
     _score.text = score.toString();
+
+    var pipe1offset = max(_minOffset, Random().nextDouble() * _maxOffset);
+    var pipe2offset = max(_minOffset, Random().nextDouble() * _maxOffset);
+
+    _pipe1down.offset = pipe1offset;
+    _pipe1up.offset = pipe1offset;
+    _pipe2down.offset = pipe2offset;
+    _pipe2up.offset = pipe2offset;
 
     for (var pipe in pipes) {
       pipe.resetPosition();
     }
     _bean.resetPosition();
     overlays.add(tapToStartOverlayIdentifier);
+    overlays.remove("GameOver");
   }
 
-  void _endGame() {
+  void endGame() {
     _gameState = GameState.gameOver;
     removeFromParent();
     onGameOver();
   }
 
+  void _showGameOverOverlay() {
+    _gameState = GameState.gameOver;
+    overlays.add("GameOver");
+  }
+
   void _incrementScore() {
     score++;
+    highScore = max(highScore, score);
     _score.text = score.toString();
     if (score % 3 == 0) {
       for (var element in pipes) {

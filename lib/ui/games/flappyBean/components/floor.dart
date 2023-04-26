@@ -1,5 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:tech_adventure/ui/games/flappyBird/config.dart';
+import 'package:tech_adventure/ui/games/flappyBean/config.dart';
 
 class Floor extends SpriteComponent {
   Floor(Sprite sprite, Vector2 screenSize)
