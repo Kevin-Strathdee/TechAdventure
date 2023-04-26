@@ -32,7 +32,7 @@ class Bean extends SpriteAnimationComponent {
   void update(double dt) {
     if (!shouldMove) return;
     _speed = max(_speed - FlappyBeansDimensions.gravity, FlappyBeansDimensions.terminalVelocity);
-    position.y = max(min(_bottom, position.y - _speed), 0);
+    position.y = max(min(_bottom + 10, position.y - _speed), 0);
     super.update(dt);
   }
 }

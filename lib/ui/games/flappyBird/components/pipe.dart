@@ -15,20 +15,28 @@ class Pipe extends SpriteComponent {
   final PipeOrientation orientation;
   final double offset;
   final double gap;
+  double speed = FlappyBeansDimensions.gameSpeed;
+  bool crossed = false;
 
   startPosition() => _getPosition(offset, gap, order, orientation, screenSize);
 
   void resetPosition() {
     position = startPosition();
     shouldMove = false;
+    speed = FlappyBeansDimensions.gameSpeed;
+  }
+
+  void speedUp() {
+    speed++;
   }
 
   @override
   void update(double dt) {
     if (!shouldMove) return;
-    position.x -= 5;
+    position.x -= speed;
     if (position.x < -FlappyBeansDimensions.pipeSizeX) {
       position.x += screenSize.x * 2;
+      crossed = false;
     }
     super.update(dt);
   }

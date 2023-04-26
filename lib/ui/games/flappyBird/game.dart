@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:ui';
+import 'dart:math';
 
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -21,9 +21,11 @@ class FlappyBirdGame extends FlameGame with TapDetector {
   late Pipe _pipe2down;
   late Pipe _pipe2up;
   late List<Pipe> pipes;
+  late TextComponent _score;
+
   late double _maxOffset;
   late double _minOffset;
-
+  int score = 0;
   GameState _gameState = GameState.intial;
   Function onGameOver;
   final tapToStartOverlayIdentifier = 'TapToStart';
@@ -32,8 +34,8 @@ class FlappyBirdGame extends FlameGame with TapDetector {
   @override
   FutureOr<void> onLoad() async {
     var playArea = size.y - FlappyBeansDimensions.floorHeight;
-    _minOffset = playArea - FlappyBeansDimensions.pipeSizeY;
-    _maxOffset = FlappyBeansDimensions.pipeSizeY;
+    _minOffset = playArea - FlappyBeansDimensions.pipeSizeY - FlappyBeansDimensions.defaultOffset;
+    _maxOffset = min(FlappyBeansDimensions.pipeSizeY, playArea - FlappyBeansDimensions.defaultPipeGap - 50);
 
     final floorSprite = await Sprite.load("flappyBeans/fbs-04.png");
     final backgroundSprite = await Sprite.load("flappyBeans/fbs-49.png");
@@ -44,15 +46,27 @@ class FlappyBirdGame extends FlameGame with TapDetector {
     _floor = Floor(floorSprite, size);
     final background = Background(backgroundSprite, size);
     _bean = Bean(beanSprites, size);
-    _pipe1up = Pipe(pipeUpSprite, FlappyBeansDimensions.defaultPipeGap, 300, 1, size, PipeOrientation.up);
-    _pipe1down = Pipe(pipeDownSprite, FlappyBeansDimensions.defaultPipeGap, 300, 1, size, PipeOrientation.down);
 
-    _pipe2up = Pipe(pipeUpSprite, FlappyBeansDimensions.defaultPipeGap, 50, 2, size, PipeOrientation.up);
-    _pipe2down = Pipe(pipeDownSprite, FlappyBeansDimensions.defaultPipeGap, 50, 2, size, PipeOrientation.down);
+    var pipe1offset = max(_minOffset, Random().nextDouble() * _maxOffset);
+    var pipe2offset = max(_minOffset, Random().nextDouble() * _maxOffset);
+
+    _pipe1up = Pipe(pipeUpSprite, FlappyBeansDimensions.defaultPipeGap, pipe1offset, 1, size, PipeOrientation.up);
+    _pipe1down = Pipe(pipeDownSprite, FlappyBeansDimensions.defaultPipeGap, pipe1offset, 1, size, PipeOrientation.down);
+
+    _pipe2up = Pipe(pipeUpSprite, FlappyBeansDimensions.defaultPipeGap, pipe2offset, 2, size, PipeOrientation.up);
+    _pipe2down = Pipe(pipeDownSprite, FlappyBeansDimensions.defaultPipeGap, pipe2offset, 2, size, PipeOrientation.down);
+
+    _score = TextComponent(
+        text: "0",
+        textRenderer: TextPaint(
+          style: TextStyle(fontSize: 48.0, color: Colors.black),
+        ),
+        size: Vector2(50, 50),
+        position: Vector2((size.x / 2) - 15, size.y - 100));
 
     pipes = [_pipe1down, _pipe1up, _pipe2down, _pipe2up];
 
-    addAll([background, _pipe1down, _pipe2down, _floor, _bean, _pipe1up, _pipe2up]);
+    addAll([background, _pipe1down, _pipe2down, _floor, _bean, _pipe1up, _pipe2up, _score]);
 
     overlays.add(tapToStartOverlayIdentifier);
 
@@ -72,6 +86,9 @@ class FlappyBirdGame extends FlameGame with TapDetector {
   @override
   void update(double dt) {
     if (_gameState == GameState.gameOver) return;
+    if ([_pipe1up, _pipe2up].any((pipe) => _checkIfBeanCrossedPipe(pipe))) {
+      _incrementScore();
+    }
     if (_isGameOver()) {
       // _endGame();
       _resetGame();
@@ -91,6 +108,9 @@ class FlappyBirdGame extends FlameGame with TapDetector {
 
   void _resetGame() {
     _gameState = GameState.intial;
+    score = 0;
+    _score.text = score.toString();
+
     for (var pipe in pipes) {
       pipe.resetPosition();
     }
@@ -104,6 +124,16 @@ class FlappyBirdGame extends FlameGame with TapDetector {
     onGameOver();
   }
 
+  void _incrementScore() {
+    score++;
+    _score.text = score.toString();
+    if (score % 3 == 0) {
+      for (var element in pipes) {
+        element.speedUp();
+      }
+    }
+  }
+
   bool _isGameOver() {
     // return false;
     final beanTouchesFloor = _check2ItemsCollision(_floor.toRect(), _bean.toRect());
@@ -114,6 +144,19 @@ class FlappyBirdGame extends FlameGame with TapDetector {
 
   bool _check2ItemsCollision(Rect item1, Rect item2) {
     var intersectedRect = item1.intersect(item2);
-    return intersectedRect.width > 0 && intersectedRect.height > 0;
+    return intersectedRect.width > 5 && intersectedRect.height > 5;
+  }
+
+  bool _checkIfBeanCrossedPipe(Pipe pipe) {
+    if (!pipe.crossed) {
+      var rect = pipe.toRect();
+      var pipeCenter = rect.left + rect.width / 2;
+      var beanCenter = _bean.x + _bean.width / 2;
+      if (pipeCenter < beanCenter) {
+        pipe.crossed = true;
+        return true;
+      }
+    }
+    return false;
   }
 }

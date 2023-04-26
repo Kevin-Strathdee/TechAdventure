@@ -4,7 +4,6 @@ import 'package:tech_adventure/ui/games/dice/managers/dice_game_manager.dart';
 import 'package:tech_adventure/ui/games/dice/sprites/die.dart';
 import 'package:tech_adventure/ui/screens/scan_screen.dart';
 
-
 class RollDiceGame extends FlameGame with HasTappables {
   RollDiceGame({super.children});
 
@@ -31,7 +30,7 @@ class RollDiceGame extends FlameGame with HasTappables {
       if (dice.every((die) => die.value > 0)) {
         await Future.delayed(const Duration(milliseconds: 1500));
         endGame();
-      //  TODO: send score
+        //  TODO: send score
       }
     }
   }
@@ -49,16 +48,13 @@ class RollDiceGame extends FlameGame with HasTappables {
   void initializeDice() {
     dice = [Die(), Die(), Die()];
 
-    final Vector2 screenCenter = game.size / 2;
+    final Vector2 screenCenter = size / 2;
     final double diceWidth = (dice[0].width) * 3;
-    final double diceGap = (game.size.x - diceWidth) / 6;
+    final double diceGap = (size.x - diceWidth) / 6;
 
     for (var i = 0; i < 3; i++) {
       final die = dice[i];
-      die.position = Vector2(
-          (diceGap * 2) + (i * (die.width + diceGap)),
-          screenCenter.y
-      );
+      die.position = Vector2((diceGap * 2) + (i * (die.width + diceGap)), screenCenter.y);
     }
 
     addAll(dice);
