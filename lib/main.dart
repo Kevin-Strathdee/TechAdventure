@@ -20,15 +20,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => UserBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ScanBloc(),
-        )
-      ],
-      child: MaterialApp(
+        providers: [
+          BlocProvider(
+            create: (context) => UserBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ScanBloc(),
+          )
+        ],
+        child: MaterialApp(
           localizationsDelegates: const [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -40,8 +40,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: getMaterialColor(jambitOrange),
           ),
-          // home: const HomePage(),
-          home: const FlappyBeanScreen()),
-    );
+          home: const HomePage(),
+        ));
   }
 }
