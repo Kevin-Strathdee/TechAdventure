@@ -31,10 +31,6 @@ class GameOverOverlay extends StatelessWidget {
                         style: Theme.of(context).textTheme.headlineMedium,
                       )
               ),
-              // Text(
-              //   'Your score: ${(game as RollDiceGame).gameManager.score..value}',
-              //   style: Theme.of(context).textTheme.headlineMedium,
-              // ),
               const SizedBox(
                 height: 50,
               ),

@@ -2,7 +2,6 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
 import '../roll_dice_game.dart';
-import '../sprites/die.dart';
 
 // Overlay that appears for the main menu
 class StartOverlay extends StatefulWidget {
@@ -26,10 +25,6 @@ class _StartOverlayState extends State<StartOverlay> {
           ? Theme.of(context).textTheme.displayLarge!
           : Theme.of(context).textTheme.displaySmall!;
 
-      // 760 is the smallest height the browser can have until the
-      // layout is too large to fit.
-      final bool screenHeightIsSmall = constraints.maxHeight < 760;
-
       return Material(
         color: Theme.of(context).colorScheme.background,
         child: GestureDetector(
@@ -52,7 +47,10 @@ class _StartOverlayState extends State<StartOverlay> {
                     const SizedBox(height: 50),
                     const Align(
                       alignment: Alignment.center,
-                      child: Image(image: AssetImage('assets/images/game/dice-pair-icon.png'), height: 250,),
+                      child: Image(
+                        image: AssetImage('assets/images/game/dice-pair-icon.png'),
+                        height: 250,
+                      ),
                     ),
                     const WhiteSpace(height: 50),
                     Center(
