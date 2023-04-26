@@ -13,8 +13,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  late TextEditingController _firstNameController;
-  late TextEditingController _lastNameController;
+  // late TextEditingController _firstNameController;
+  // late TextEditingController _lastNameController;
   late TextEditingController _usernameController;
   bool _inEditMode = false;
 
@@ -27,19 +27,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _initTextFieldControllers(UserState state) {
     if (state is UserLoadSuccess) {
-      _firstNameController = TextEditingController(text: state.user.firstName);
-      _lastNameController = TextEditingController(text: state.user.lastName);
+      // _firstNameController = TextEditingController(text: state.user.firstName);
+      // _lastNameController = TextEditingController(text: state.user.lastName);
       _usernameController = TextEditingController(text: state.user.userName);
     } else {
-      _firstNameController = TextEditingController(text: "");
-      _lastNameController = TextEditingController(text: "");
+      // _firstNameController = TextEditingController(text: "");
+      // _lastNameController = TextEditingController(text: "");
       _usernameController = TextEditingController(text: "");
     }
   }
 
   void _updateUser(UserBloc userBloc, User user) {
-    user.firstName = _firstNameController.text;
-    user.lastName = _lastNameController.text;
+    // user.firstName = _firstNameController.text;
+    // user.lastName = _lastNameController.text;
     user.userName = _usernameController.text;
     userBloc.add(UserUpdated(user));
   }
@@ -81,30 +81,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("First Name"),
-                            SizedBox(
-                                width: 200,
-                                child: TextField(
-                                  enabled: _inEditMode,
-                                  controller: _firstNameController,
-                                )),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("Last Name"),
-                            SizedBox(
-                                width: 200,
-                                child: TextField(
-                                  enabled: _inEditMode,
-                                  controller: _lastNameController,
-                                )),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     const Text("First Name"),
+                        //     SizedBox(
+                        //         width: 200,
+                        //         child: TextField(
+                        //           enabled: _inEditMode,
+                        //           controller: _firstNameController,
+                        //         )),
+                        //   ],
+                        // ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     const Text("Last Name"),
+                        //     SizedBox(
+                        //         width: 200,
+                        //         child: TextField(
+                        //           enabled: _inEditMode,
+                        //           controller: _lastNameController,
+                        //         )),
+                        //   ],
+                        // ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

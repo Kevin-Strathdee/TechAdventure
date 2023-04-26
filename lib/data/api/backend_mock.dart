@@ -16,9 +16,8 @@ class BackendMock extends IBackend {
   }
 
   Place getMockPlace() {
-    return Place(1, "Street", getMockUser2(), Minigame("DiceRolling", 5),
-        "confrence room", "image", Geometry(Map.MUNICH_4, 10, 10));
-
+    return Place(1, "Street", getMockUser2(), Minigame("DiceRolling", 5), "confrence room", "image",
+        Geometry(Map.MUNICH_4, 10, 10));
   }
 
   @override
@@ -31,14 +30,6 @@ class BackendMock extends IBackend {
   @override
   Future<Place> getPlace() {
     throw Future.value(getMockPlace());
-  }
-
-  List<Place> getMockPlaces() {
-    return [
-      Place(1, "Toko", getMockUser2(), Minigame("DiceRolling", 5), conferenceRoom, "image", "tdb"),
-      Place(2, "Sarah's Office", getMockUser2(), Minigame("DiceRolling", 5), office, "image", "tdb"),
-      Place(3, "Java", getMockUser2(), Minigame("DiceRolling", 5), cafeteria, "image", "tdb"),
-    ];
   }
 
   @override

@@ -161,13 +161,23 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.1"
-  convert:
+  connectivity_plus:
+    dependency: transitive
+    description:
       name: connectivity_plus
       sha256: "5c7ad2d90aae958c230b27450044a29f5b0a69ea4b1792e17164b3a53de33e47"
       url: "https://pub.dev"
     source: hosted
     version: "3.0.5"
   connectivity_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: connectivity_plus_platform_interface
+      sha256: cf1d1c28f4416f8c654d7dc3cd638ec586076255d407cef3ddbdaf178272a71a
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.4"
+  convert:
     dependency: transitive
     description:
       name: convert
@@ -199,6 +209,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  dbus:
+    dependency: transitive
+    description:
+      name: dbus
+      sha256: "6f07cba3f7b3448d42d015bfd3d53fe12e5b36da2423f23838efc1d5fb31a263"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.8"
   equatable:
     dependency: "direct main"
     description:
@@ -260,6 +278,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "8.1.2"
+  flutter_hooks:
+    dependency: transitive
+    description:
+      name: flutter_hooks
+      sha256: "6a126f703b89499818d73305e4ce1e3de33b4ae1c5512e3b8eab4b986f46774c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.6"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -331,6 +357,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3+1"
+  gql_error_link:
+    dependency: transitive
+    description:
+      name: gql_error_link
+      sha256: e7bfdd2b6232f3e15861cd96c2ad6b7c9c94693843b3dea18295136a5fb5b534
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.3+1"
   gql_exec:
     dependency: transitive
     description:
@@ -355,6 +389,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
+  gql_transform_link:
+    dependency: transitive
+    description:
+      name: gql_transform_link
+      sha256: b1735a9a92d25a92960002a8b40dfaede95ec1e5ed848906125d69efd878661f
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.2+1"
+  graphql:
+    dependency: transitive
+    description:
+      name: graphql
+      sha256: b061201579040e9548cec2bae17bbdea0ab30666cb4e7ba48b9675f14d982199
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.3"
+  graphql_flutter:
+    dependency: "direct main"
+    description:
+      name: graphql_flutter
+      sha256: "06059ac9e8417c71582f05e28a59b1416d43959d34a6a0d9565341e3a362e117"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.2"
   graphs:
     dependency: transitive
     description:
@@ -363,6 +421,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
+  hive:
+    dependency: transitive
+    description:
+      name: hive
+      sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
   http:
     dependency: transitive
     description:
@@ -483,14 +549,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-  package_config:
+  nm:
     dependency: transitive
     description:
-      name: package_config
-      sha256: "1c5b77ccc91e4823a5af61ee74e6b972db1ef98c2ff5a18d3161c982a55448bd"
+      name: nm
+      sha256: "2c9aae4127bdc8993206464fcc063611e0e36e72018696cd9631023a31b24254"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "0.5.0"
+  normalize:
+    dependency: transitive
+    description:
+      name: normalize
+      sha256: baf8caf2d8b745af5737cca6c24f7fe3cf3158897fdbcde9a909b9c8d3e2e5af
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.2"
   ordered_set:
     dependency: transitive
     description:
@@ -499,6 +573,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.1"
+  package_config:
+    dependency: transitive
+    description:
+      name: package_config
+      sha256: "1c5b77ccc91e4823a5af61ee74e6b972db1ef98c2ff5a18d3161c982a55448bd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   path:
     dependency: transitive
     description:
@@ -643,6 +725,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.0"
+  rxdart:
+    dependency: transitive
+    description:
+      name: rxdart
+      sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.27.7"
   shelf:
     dependency: transitive
     description:
@@ -752,6 +842,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
+  uuid:
+    dependency: transitive
+    description:
+      name: uuid
+      sha256: "648e103079f7c64a36dc7d39369cabb358d377078a051d6ae2ad3aa539519313"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.7"
   vector_graphics:
     dependency: transitive
     description:
