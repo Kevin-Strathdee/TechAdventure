@@ -1,0 +1,24 @@
+query place ($placeId: ID) {
+    place (placeId: $placeId) {
+        id
+        name
+        type
+        geometry {
+            map
+            x
+            y
+        }
+        owner {
+            id
+            username
+            name
+            email
+            score
+        }
+        minigame {
+            type
+            score
+        }
+        image
+    }
+}

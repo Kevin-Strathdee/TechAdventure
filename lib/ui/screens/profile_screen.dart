@@ -17,14 +17,14 @@ class ProfileScreen extends StatelessWidget {
           children: <Widget>[
             BlocBuilder<UserBloc, UserState>(
               builder: (context, state) {
-                if(state is UserLoadFailure){
+                if (state is UserLoadFailure) {
                   return Text("Could not load user info");
                 }
                 return Container(
                     padding: const EdgeInsets.all(30),
                     child: Text(
                       (state is UserLoadSuccess && state.user.score > 0)
-                          ? 'Hi ${state.user.firstName}. \n You have ${state.user.score} coffee beans.'
+                          ? 'Hi ${state.user.userName}. \n You have ${state.user.score} coffee beans.'
                           : "You haven't collected any coffee beans yet. Scan a code to play!",
                       textAlign: TextAlign.center,
                     ));
@@ -55,8 +55,8 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-                onPressed: () => BlocProvider.of<UserBloc>(context)
-                    .add(UserRequested()),
+                onPressed: () =>
+                    BlocProvider.of<UserBloc>(context).add(UserRequested()),
                 child: const Text("Get user information"))
           ],
         ),

@@ -1,0 +1,69 @@
+schema {
+  mutation: RootMutationType
+  query: RootQueryType
+}
+
+"A user"
+type User {
+  id: ID!
+  username: String!
+  name: String!
+  places: [Place!]!
+  email: String!
+  score: Int!
+}
+
+type RootQueryType {
+  "Finds all users or a user by id"
+  user(userId: ID): [User!]!
+
+  "Finds all places or a place by id"
+  place(placeId: ID): [Place!]!
+}
+
+"Geographical location of a place"
+type Geometry {
+  map: Layer!
+  x: Float!
+  y: Float!
+}
+
+enum Layer {
+  MUNICH_4TH
+  MUNICH_5TH
+  MUNICH_6TH
+  MUNICH_13TH
+  LEIPZIG_1ST
+  LEIPZIG_2ND
+  LEIPZIG_3RD
+  STUTTGART
+  ERFURT
+}
+
+"A place"
+type Place {
+  id: ID!
+  name: String!
+  type: String!
+  geometry: Geometry  # optional: hidden locations
+  owner: User
+  minigame: Minigame!
+  image: String
+}
+
+"Information for a minigame"
+type Minigame {
+  type: String!
+  score: Int!
+}
+
+type RootMutationType {
+  "The result of a minigame"
+  minigameOutcome(placeId: ID!, score: Int!): MinigameOutcome!
+}
+
+"Result of a minigame"
+type MinigameOutcome {
+  place: Place!
+  reward: Int!
+}
