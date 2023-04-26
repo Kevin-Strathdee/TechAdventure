@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/ui/games/flappyBean/flappy_bean_game.dart';
 
 class GameOverOverlay extends StatelessWidget {
@@ -17,14 +18,14 @@ class GameOverOverlay extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'GAME OVER',
+                    S.of(context).gameOverOverviewTitle,
                     style: Theme.of(context).textTheme.displaySmall,
                   ),
                   const SizedBox(
                     height: 40,
                   ),
                   Text(
-                    'You scored ${game.score} points!\nYour current high score is ${(game).highScore}',
+                    S.of(context).gameOverOverviewMessage(game.score, game.highScore),
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   Row(
