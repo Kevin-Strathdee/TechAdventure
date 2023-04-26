@@ -189,6 +189,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Welcome {firstName}`
+  String overviewWelcomeMessage(String firstName) {
+    return Intl.message(
+      'Welcome $firstName',
+      name: 'overviewWelcomeMessage',
+      desc: 'Welcome message including first name',
+      args: [firstName],
+    );
+  }
+
+  /// `Points`
+  String get overviewPoints {
+    return Intl.message(
+      'Points',
+      name: 'overviewPoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Places`
+  String get overviewPlacesTitle {
+    return Intl.message(
+      'My Places',
+      name: 'overviewPlacesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Profile`
+  String get profileTitle {
+    return Intl.message(
+      'My Profile',
+      name: 'profileTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

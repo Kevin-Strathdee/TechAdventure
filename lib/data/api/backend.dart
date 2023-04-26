@@ -10,6 +10,7 @@ abstract class IBackend {
   Future<User> getUser();
 
   Future<Place> getPlace();
+  Future<User> updateUser(User user);
 }
 
 class AuthenticatedClient extends http.BaseClient {
@@ -34,6 +35,7 @@ class Backend extends IBackend {
   );
   final placeQuery = PlaceQuery(variables: PlaceArguments(placeId: "1"));
 
+
   Future<User> getUser() async {
     final response = await client.execute(userQuery);
     User$RootQueryType$User user =
@@ -50,5 +52,12 @@ class Backend extends IBackend {
         .first;
     Place appPlace = Place.fromGraphqlPlace(place);
     return Future.value(appPlace);
+  }
+
+
+  @override
+  Future<User> updateUser(User user) {
+    // TODO: implement updateUser
+    throw UnimplementedError();
   }
 }
