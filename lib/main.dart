@@ -4,8 +4,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
-import 'package:tech_adventure/ui/games/flappyBean/flappy_bean_game.dart';
-import 'package:tech_adventure/ui/screens/flappy_bean_screen.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
 
 import 'bloc/user/user_bloc.dart';
@@ -29,19 +27,19 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          title: 'jambit: Das Spiel',
-          theme: ThemeData(
-            primarySwatch: getMaterialColor(jambitOrange),
-          ),
-          // home: const HomePage(),
-          home: const FlappyBeanScreen()),
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        title: 'jambit: Das Spiel',
+        theme: ThemeData(
+          primarySwatch: getMaterialColor(jambitOrange),
+        ),
+        home: const HomePage(),
+      ),
     );
   }
 }
