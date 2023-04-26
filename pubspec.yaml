@@ -43,9 +43,10 @@ dependencies:
   graphql_flutter: ^5.1.2
   google_fonts: ^2.1.0
   avatar_glow: ^2.0.2
-  auth0_flutter: ^1.0.2
   shared_preferences: ^2.1.0
-  
+  openid_client: ^0.4.7
+  url_launcher: ^6.1.10
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

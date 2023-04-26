@@ -47,7 +47,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: getMaterialColor(jambitOrange),
         ),
-        home: accessToken == null ? WelcomeScreen() : const HomePage(),
+        home: (accessToken == null || accessToken == "")
+            ? WelcomeScreen()
+            : const HomePage(),
       ),
     );
   }

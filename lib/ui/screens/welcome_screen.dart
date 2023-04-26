@@ -1,15 +1,15 @@
-import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// import the io version
+import 'package:openid_client/openid_client_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tech_adventure/generated/l10n.dart';
+import 'package:tech_adventure/main.dart';
 import 'package:tech_adventure/theme/colors.dart';
 import 'package:tech_adventure/ui/delayed_animation.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
-
-import '../../bloc/user/user_bloc.dart';
-import '../../main.dart';
+// use url launcher package
+import 'package:url_launcher/url_launcher.dart';
 
 const appScheme = 'flutterdemo';
 
@@ -153,21 +153,48 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     _controller.forward();
   }
 
-  Auth0 auth0 = Auth0('{domain}', '{clientId}');
-
   void _onTapUp(TapUpDetails details) async {
     _controller.reverse();
-    //TODO add openid connect authentication flow
-    final Credentials credentials =
-        await auth0.webAuthentication(scheme: appScheme).login();
-    BlocProvider.of<UserBloc>(context).add(UserRequested(credentials.idToken));
-    if (credentials.accessToken != null) {
+    Credential credential = await authenticate(
+        Uri.parse(
+            "https://login.microsoftonline.com/e6dbe219-77ef-4b6a-af83-f9de7de08923/v2.0"),
+        "85e3244b-298a-4ddd-82c5-9ed85a69ce5e",
+        ["email", "offline_access", "openid", "profile"]);
+    TokenResponse tokenResponse = await credential.getTokenResponse();
+    if (tokenResponse.accessToken != null && tokenResponse.accessToken != "") {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString(accessTokenKey, credentials.accessToken);
+      prefs.setString(accessTokenKey, tokenResponse.accessToken!);
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => const HomePage()));
-    } else {
-      //TODO handle case if no token could be fetched/login failed. Show toast?
     }
+  }
+
+  Future<Credential> authenticate(
+      Uri uri, String clientId, List<String> scopes) async {
+    // create the client
+    var issuer = await Issuer.discover(uri);
+    var client = new Client(issuer, clientId);
+
+    // create a function to open a browser with an url
+    urlLauncher(String url) async {
+      if (await canLaunch(url)) {
+        await launch(url, forceWebView: true, enableJavaScript: true);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
+    // create an authenticator
+    var authenticator = new Authenticator(client,
+        scopes: scopes, port: 4000, urlLancher: urlLauncher);
+
+    // starts the authentication
+    var c = await authenticator.authorize();
+
+    // close the webview when finished
+    closeWebView();
+
+    // return the user info
+    return c;
   }
 }

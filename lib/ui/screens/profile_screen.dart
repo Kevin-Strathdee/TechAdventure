@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tech_adventure/data/models/user.dart';
 import 'package:tech_adventure/generated/l10n.dart';
+import 'package:tech_adventure/main.dart';
 
 import '../../bloc/user/user_bloc.dart';
 
@@ -57,90 +59,113 @@ class _ProfileScreenState extends State<ProfileScreen> {
             if (state is UserLoadFailure) {
               return const Text("Could not load user info");
             } else if (state is UserLoadSuccess) {
-              return Card(
-                child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              return Column(
+                children: [
+                  Card(
+                    child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(30),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              S.of(context).profileTitle,
-                              style: Theme.of(context).textTheme.headlineMedium,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  S.of(context).profileTitle,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium,
+                                ),
+                                CircleAvatar(
+                                  radius: 40,
+                                  foregroundImage:
+                                      Image.asset("assets/dog.png").image,
+                                )
+                              ],
                             ),
-                            CircleAvatar(
-                              radius: 40,
-                              foregroundImage: Image.asset("assets/dog.png").image,
-                            )
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("First Name"),
+                                SizedBox(
+                                    width: 200,
+                                    child: TextField(
+                                      enabled: _inEditMode,
+                                      controller: _firstNameController,
+                                    )),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Last Name"),
+                                SizedBox(
+                                    width: 200,
+                                    child: TextField(
+                                      enabled: _inEditMode,
+                                      controller: _lastNameController,
+                                    )),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Username"),
+                                SizedBox(
+                                    width: 200,
+                                    child: TextField(
+                                      enabled: _inEditMode,
+                                      controller: _usernameController,
+                                    )),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            if (state is! UserUpdateInProgress)
+                              Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: _inEditMode
+                                      ? IconButton(
+                                          onPressed: () {
+                                            _updateUser(
+                                                BlocProvider.of<UserBloc>(
+                                                    context),
+                                                state.user);
+                                            setState(() {
+                                              _inEditMode = false;
+                                            });
+                                          },
+                                          icon: const Icon(Icons.save))
+                                      : IconButton(
+                                          onPressed: () => setState(() {
+                                                _inEditMode = true;
+                                              }),
+                                          icon: const Icon(Icons.edit)))
+                            else
+                              const Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: CircularProgressIndicator()),
                           ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("First Name"),
-                            SizedBox(
-                                width: 200,
-                                child: TextField(
-                                  enabled: _inEditMode,
-                                  controller: _firstNameController,
-                                )),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("Last Name"),
-                            SizedBox(
-                                width: 200,
-                                child: TextField(
-                                  enabled: _inEditMode,
-                                  controller: _lastNameController,
-                                )),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("Username"),
-                            SizedBox(
-                                width: 200,
-                                child: TextField(
-                                  enabled: _inEditMode,
-                                  controller: _usernameController,
-                                )),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        if (state is! UserUpdateInProgress)
-                          Align(
-                              alignment: Alignment.bottomRight,
-                              child: _inEditMode
-                                  ? IconButton(
-                                      onPressed: () {
-                                        _updateUser(BlocProvider.of<UserBloc>(context), state.user);
-                                        setState(() {
-                                          _inEditMode = false;
-                                        });
-                                      },
-                                      icon: const Icon(Icons.save))
-                                  : IconButton(
-                                      onPressed: () => setState(() {
-                                            _inEditMode = true;
-                                          }),
-                                      icon: const Icon(Icons.edit)))
-                        else
-                          const Align(alignment: Alignment.bottomRight, child: CircularProgressIndicator()),
-                      ],
-                    )),
+                        )),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      //TODO
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setString(accessTokenKey, "");
+                    },
+                    child: Text(
+                      "Logout",
+                    ),
+                  )
+                ],
               );
             } else {
               return const Center(
