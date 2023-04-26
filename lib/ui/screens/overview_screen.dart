@@ -9,24 +9,25 @@ class OverviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      displacement: 1,
-      triggerMode: RefreshIndicatorTriggerMode.onEdge,
-      onRefresh: () async => BlocProvider.of<UserBloc>(context).add(UserRequested()),
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: ListView(
-          clipBehavior: Clip.none,
-          physics: const AlwaysScrollableScrollPhysics(),
-          children: const [
-            UserInformationCard(),
-            SizedBox(
-              height: 15,
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        RefreshIndicator(
+          displacement: 1,
+          triggerMode: RefreshIndicatorTriggerMode.anywhere,
+          onRefresh: () async => BlocProvider.of<UserBloc>(context).add(UserRequested()),
+          child: SingleChildScrollView(
+            clipBehavior: Clip.none,
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: const [UserInformationCard(), UserPlacesCard()],
+              ),
             ),
-            UserPlacesCard()
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
