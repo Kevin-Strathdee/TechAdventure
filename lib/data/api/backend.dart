@@ -4,6 +4,8 @@ import 'package:tech_adventure/data/models/place.dart';
 import 'package:tech_adventure/data/models/user.dart';
 import 'package:tech_adventure/graphql/generated/graphql_api.graphql.dart';
 
+const String url = "https://japomo.dev.techadventure2023.jambit.space/graphql";
+
 abstract class IBackend {
   Future<User> getUser();
 
@@ -23,14 +25,14 @@ class AuthenticatedClient extends http.BaseClient {
 
 class Backend extends IBackend {
   final client = ArtemisClient(
-    'https://api.japomo.dev.techadventure2023.jambit.space/',
+    url,
     httpClient: AuthenticatedClient(),
   );
 
   final userQuery = UserQuery(
-    variables: UserArguments(userId: '0'),
+    variables: UserArguments(userId: '1'),
   );
-  final placeQuery = PlaceQuery(variables: PlaceArguments(placeId: "0"));
+  final placeQuery = PlaceQuery(variables: PlaceArguments(placeId: "1"));
 
   Future<User> getUser() async {
     final response = await client.execute(userQuery);
