@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^2.0.5
   qr_code_scanner: ^1.0.1
   graphql_flutter: ^5.1.2
+  flame: ^1.7.3
 
 dev_dependencies:
   flutter_test:
