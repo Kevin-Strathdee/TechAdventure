@@ -23,12 +23,12 @@ type RootQueryType {
 
 "Geographical location of a place"
 type Geometry {
-  map: Layer!
+  map: MapLayer!
   x: Float!
   y: Float!
 }
 
-enum Layer {
+enum MapLayer {
   MUNICH_4TH
   MUNICH_5TH
   MUNICH_6TH

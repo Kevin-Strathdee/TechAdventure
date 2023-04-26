@@ -77,8 +77,8 @@ class Place$RootQueryType$Place$Geometry extends JsonSerializable
           Map<String, dynamic> json) =>
       _$Place$RootQueryType$Place$GeometryFromJson(json);
 
-  @JsonKey(unknownEnumValue: Layer.artemisUnknown)
-  late Layer map;
+  @JsonKey(unknownEnumValue: MapLayer.artemisUnknown)
+  late MapLayer map;
 
   late double x;
 
@@ -177,7 +177,7 @@ class Place$RootQueryType extends JsonSerializable with EquatableMixin {
   Map<String, dynamic> toJson() => _$Place$RootQueryTypeToJson(this);
 }
 
-enum Layer {
+enum MapLayer {
   @JsonValue('MUNICH_4TH')
   munich4th,
   @JsonValue('MUNICH_5TH')

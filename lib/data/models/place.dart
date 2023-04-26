@@ -23,6 +23,5 @@ class Place {
         owner = User.fromGraphqlUser(place.owner as User$RootQueryType$User),
         type = place.type,
         image = place.image,
-        geometry =
-            Geometry(Map.MUNICH_4TH, place.geometry?.x, place.geometry?.y);
+        geometry = Geometry(Map.MUNICH_4, place.geometry?.x, place.geometry?.y);
 }
