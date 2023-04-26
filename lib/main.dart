@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
-import 'package:tech_adventure/ui/screens/home_page.dart';
+import 'package:tech_adventure/ui/screens/welcome_screen.dart';
 
 import 'bloc/user/user_bloc.dart';
 
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: getMaterialColor(jambitOrange),
         ),
-        home: const HomePage(),
+        home: WelcomeScreen(),
       ),
     );
   }

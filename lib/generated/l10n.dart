@@ -229,6 +229,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Hi There,`
+  String get hiThere {
+    return Intl.message(
+      'Hi There,',
+      name: 'hiThere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is JaPoMo`
+  String get thisIs {
+    return Intl.message(
+      'This is JaPoMo',
+      name: 'thisIs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Jambit meets Pokemeon Go`
+  String get jambitMeets {
+    return Intl.message(
+      'Jambit meets Pokemeon Go',
+      name: 'jambitMeets',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `meets Monopoly`
+  String get meets {
+    return Intl.message(
+      'meets Monopoly',
+      name: 'meets',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
