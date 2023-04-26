@@ -1,69 +1,133 @@
 schema {
-  mutation: RootMutationType
   query: RootQueryType
+  mutation: RootMutationType
 }
 
-"A user"
-type User {
-  id: ID!
-  username: String!
-  name: String!
-  places: [Place!]!
-  email: String!
-  score: Int!
-}
-
-type RootQueryType {
-  "Finds all users or a user by id"
-  user(userId: ID): [User!]!
-
-  "Finds all places or a place by id"
-  place(placeId: ID): [Place!]!
-}
-
-"Geographical location of a place"
+"""
+A geometry
+"""
 type Geometry {
-  map: MapLayer!
+  mapLayer: MapLayer!
   x: Float!
   y: Float!
 }
 
+"""
+The map of a geometry
+"""
 enum MapLayer {
-  MUNICH_4TH
-  MUNICH_5TH
-  MUNICH_6TH
-  MUNICH_13TH
-  LEIPZIG_1ST
-  LEIPZIG_2ND
-  LEIPZIG_3RD
-  STUTTGART
-  ERFURT
+  """
+  Erfurt
+  """
+  ERFURT_1
+
+  """
+  Leipzig 1st floor
+  """
+  LEIPZIG_1
+
+  """
+  Leipzig 2nd floor
+  """
+  LEIPZIG_2
+
+  """
+  Leipzig 3rd floor
+  """
+  LEIPZIG_3
+
+  """
+  Munich 13th floor
+  """
+  MUNICH_13
+
+  """
+  Munich 4th floor
+  """
+  MUNICH_4
+
+  """
+  Munich 5th floor
+  """
+  MUNICH_5
+
+  """
+  Munich 6th floor
+  """
+  MUNICH_6
+
+  """
+  Stuttgart
+  """
+  STUTTGART_6
+
+  """
+  Yerevan 2nd floor
+  """
+  YEREVAN_2
+
+  """
+  Yerevan 3nd floor
+  """
+  YEREVAN_3
 }
 
-"A place"
-type Place {
-  id: ID!
-  name: String!
-  type: String!
-  geometry: Geometry  # optional: hidden locations
-  owner: User
-  minigame: Minigame!
-  image: String
-}
-
-"Information for a minigame"
+"""
+Information for a minigame
+"""
 type Minigame {
-  type: String!
   score: Int!
+  type: String!
 }
 
-type RootMutationType {
-  "The result of a minigame"
-  minigameOutcome(placeId: ID!, score: Int!): MinigameOutcome!
-}
-
-"Result of a minigame"
+"""
+Result of a minigame
+"""
 type MinigameOutcome {
   place: Place!
   reward: Int!
+}
+
+type RootMutationType {
+  """
+  The result of a minigame
+  """
+  minigameOutcome(placeId: ID!, score: Int!): MinigameOutcome!
+}
+
+"""
+A place
+"""
+type Place {
+  geometry: Geometry
+  id: ID!
+  image: String
+  minigame: Minigame!
+  name: String!
+  owner: User
+  type: String!
+}
+
+type RootQueryType {
+  """
+  Finds all places or a place by id
+  """
+  place(placeId: ID): [Place!]!
+
+  """
+  Finds all users or a user by id
+  """
+  user(userId: ID): [User!]!
+}
+
+"""
+A user
+"""
+type User {
+  email: String!
+  id: ID!
+  name: String!
+  places: [Place!]!
+  score: Int!
+  username: String!
 }

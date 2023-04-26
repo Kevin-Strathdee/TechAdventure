@@ -78,14 +78,14 @@ class Place$RootQueryType$Place$Geometry extends JsonSerializable
       _$Place$RootQueryType$Place$GeometryFromJson(json);
 
   @JsonKey(unknownEnumValue: MapLayer.artemisUnknown)
-  late MapLayer map;
+  late MapLayer mapLayer;
 
   late double x;
 
   late double y;
 
   @override
-  List<Object?> get props => [map, x, y];
+  List<Object?> get props => [mapLayer, x, y];
   @override
   Map<String, dynamic> toJson() =>
       _$Place$RootQueryType$Place$GeometryToJson(this);
@@ -178,24 +178,28 @@ class Place$RootQueryType extends JsonSerializable with EquatableMixin {
 }
 
 enum MapLayer {
-  @JsonValue('MUNICH_4TH')
-  munich4th,
-  @JsonValue('MUNICH_5TH')
-  munich5th,
-  @JsonValue('MUNICH_6TH')
-  munich6th,
-  @JsonValue('MUNICH_13TH')
-  munich13th,
-  @JsonValue('LEIPZIG_1ST')
-  leipzig1st,
-  @JsonValue('LEIPZIG_2ND')
-  leipzig2nd,
-  @JsonValue('LEIPZIG_3RD')
-  leipzig3rd,
-  @JsonValue('STUTTGART')
-  stuttgart,
-  @JsonValue('ERFURT')
-  erfurt,
+  @JsonValue('ERFURT_1')
+  erfurt1,
+  @JsonValue('LEIPZIG_1')
+  leipzig1,
+  @JsonValue('LEIPZIG_2')
+  leipzig2,
+  @JsonValue('LEIPZIG_3')
+  leipzig3,
+  @JsonValue('MUNICH_13')
+  munich13,
+  @JsonValue('MUNICH_4')
+  munich4,
+  @JsonValue('MUNICH_5')
+  munich5,
+  @JsonValue('MUNICH_6')
+  munich6,
+  @JsonValue('STUTTGART_6')
+  stuttgart6,
+  @JsonValue('YEREVAN_2')
+  yerevan2,
+  @JsonValue('YEREVAN_3')
+  yerevan3,
   @JsonValue('ARTEMIS_UNKNOWN')
   artemisUnknown,
 }
@@ -414,7 +418,7 @@ final PLACE_QUERY_DOCUMENT = DocumentNode(definitions: [
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
-                name: NameNode(value: 'map'),
+                name: NameNode(value: 'mapLayer'),
                 alias: null,
                 arguments: [],
                 directives: [],

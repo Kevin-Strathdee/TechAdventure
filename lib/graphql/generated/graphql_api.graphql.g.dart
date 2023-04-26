@@ -62,7 +62,7 @@ Map<String, dynamic> _$User$RootQueryTypeToJson(User$RootQueryType instance) =>
 Place$RootQueryType$Place$Geometry _$Place$RootQueryType$Place$GeometryFromJson(
         Map<String, dynamic> json) =>
     Place$RootQueryType$Place$Geometry()
-      ..map = $enumDecode(_$MapLayerEnumMap, json['map'],
+      ..mapLayer = $enumDecode(_$MapLayerEnumMap, json['mapLayer'],
           unknownValue: MapLayer.artemisUnknown)
       ..x = (json['x'] as num).toDouble()
       ..y = (json['y'] as num).toDouble();
@@ -70,21 +70,23 @@ Place$RootQueryType$Place$Geometry _$Place$RootQueryType$Place$GeometryFromJson(
 Map<String, dynamic> _$Place$RootQueryType$Place$GeometryToJson(
         Place$RootQueryType$Place$Geometry instance) =>
     <String, dynamic>{
-      'map': _$MapLayerEnumMap[instance.map]!,
+      'mapLayer': _$MapLayerEnumMap[instance.mapLayer]!,
       'x': instance.x,
       'y': instance.y,
     };
 
 const _$MapLayerEnumMap = {
-  MapLayer.munich4th: 'MUNICH_4TH',
-  MapLayer.munich5th: 'MUNICH_5TH',
-  MapLayer.munich6th: 'MUNICH_6TH',
-  MapLayer.munich13th: 'MUNICH_13TH',
-  MapLayer.leipzig1st: 'LEIPZIG_1ST',
-  MapLayer.leipzig2nd: 'LEIPZIG_2ND',
-  MapLayer.leipzig3rd: 'LEIPZIG_3RD',
-  MapLayer.stuttgart: 'STUTTGART',
-  MapLayer.erfurt: 'ERFURT',
+  MapLayer.erfurt1: 'ERFURT_1',
+  MapLayer.leipzig1: 'LEIPZIG_1',
+  MapLayer.leipzig2: 'LEIPZIG_2',
+  MapLayer.leipzig3: 'LEIPZIG_3',
+  MapLayer.munich13: 'MUNICH_13',
+  MapLayer.munich4: 'MUNICH_4',
+  MapLayer.munich5: 'MUNICH_5',
+  MapLayer.munich6: 'MUNICH_6',
+  MapLayer.stuttgart6: 'STUTTGART_6',
+  MapLayer.yerevan2: 'YEREVAN_2',
+  MapLayer.yerevan3: 'YEREVAN_3',
   MapLayer.artemisUnknown: 'ARTEMIS_UNKNOWN',
 };
 

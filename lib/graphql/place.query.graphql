@@ -4,7 +4,7 @@ query place ($placeId: ID) {
         name
         type
         geometry {
-            map
+            mapLayer
             x
             y
         }
