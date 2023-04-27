@@ -26,12 +26,16 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "gameOverOverviewTitle":
             MessageLookupByLibrary.simpleMessage("GAME OVER"),
+        "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
+        "jambitMeets":
+            MessageLookupByLibrary.simpleMessage("Jambit meets Pokemeon Go"),
         "loginButton": MessageLookupByLibrary.simpleMessage("login"),
         "loginEmailHint": MessageLookupByLibrary.simpleMessage("email"),
         "loginGoToRegister":
             MessageLookupByLibrary.simpleMessage("go to register"),
         "loginPasswordHint": MessageLookupByLibrary.simpleMessage("password"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
+        "meets": MessageLookupByLibrary.simpleMessage("meets Monopoly"),
         "navbarHome": MessageLookupByLibrary.simpleMessage("Home"),
         "navbarProfile": MessageLookupByLibrary.simpleMessage("Profile"),
         "navbarScan": MessageLookupByLibrary.simpleMessage("Scan"),
@@ -49,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("password"),
         "registerRepeatPasswordHint":
             MessageLookupByLibrary.simpleMessage("repeat password"),
-        "registerTitle": MessageLookupByLibrary.simpleMessage("Register")
+        "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
+        "thisIs": MessageLookupByLibrary.simpleMessage("This is JaPoMo")
       };
 }

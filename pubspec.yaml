@@ -45,6 +45,10 @@ dependencies:
   json_serializable: ^6.6.1
   gql: ^0.14.0
   graphql_flutter: ^5.1.2
+  avatar_glow: ^2.0.2
+  shared_preferences: ^2.1.0
+  openid_client: ^0.4.7
+  url_launcher: ^6.1.10
   flame: ^1.7.3
 
 dev_dependencies:

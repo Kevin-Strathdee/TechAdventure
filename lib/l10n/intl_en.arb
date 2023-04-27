@@ -40,5 +40,10 @@
         "example": 42
       }
     }
-  }
+  },
+  "profileTitle": "My Profile",
+  "hiThere": "Hi There,",
+  "thisIs": "This is JaPoMo",
+  "jambitMeets": "Jambit meets Pokemeon Go",
+  "meets": "meets Monopoly"
 }

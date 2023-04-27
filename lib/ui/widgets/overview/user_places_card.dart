@@ -13,7 +13,8 @@ class UserPlacesCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(30),
         child: Container(
-          constraints: BoxConstraints(minHeight: 400, minWidth: double.infinity),
+          constraints:
+              BoxConstraints(minHeight: 300, minWidth: double.infinity),
           child: BlocBuilder<UserBloc, UserState>(
             builder: (context, state) {
               if (state is UserLoadSuccess) {
@@ -27,7 +28,8 @@ class UserPlacesCard extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    ...state.user.places.map((place) => PlaceTile(place: place)),
+                    ...state.user.places
+                        .map((place) => PlaceTile(place: place)),
                   ],
                 );
               } else {}
@@ -38,7 +40,8 @@ class UserPlacesCard extends StatelessWidget {
                     height: 40,
                     width: 200,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8), color: Colors.grey.shade300.withOpacity(.3)),
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.grey.shade300.withOpacity(.3)),
                   ),
                   const SizedBox(
                     height: 28,
@@ -47,7 +50,8 @@ class UserPlacesCard extends StatelessWidget {
                     height: 40,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8), color: Colors.grey.shade300.withOpacity(.3)),
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.grey.shade300.withOpacity(.3)),
                   ),
                   const SizedBox(
                     height: 16,
@@ -56,7 +60,8 @@ class UserPlacesCard extends StatelessWidget {
                     height: 40,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8), color: Colors.grey.shade300.withOpacity(.3)),
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.grey.shade300.withOpacity(.3)),
                   ),
                   const SizedBox(
                     height: 16,
@@ -65,7 +70,8 @@ class UserPlacesCard extends StatelessWidget {
                     height: 40,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8), color: Colors.grey.shade300.withOpacity(.3)),
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.grey.shade300.withOpacity(.3)),
                   ),
                   const SizedBox(
                     height: 16,
@@ -74,7 +80,8 @@ class UserPlacesCard extends StatelessWidget {
                     height: 40,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8), color: Colors.grey.shade300.withOpacity(.3)),
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.grey.shade300.withOpacity(.3)),
                   ),
                 ],
               );
