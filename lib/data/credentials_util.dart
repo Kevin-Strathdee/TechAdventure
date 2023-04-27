@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 const authenticateUrl =
     "https://login.microsoftonline.com/e6dbe219-77ef-4b6a-af83-f9de7de08923/v2.0";
 const clientId = "85e3244b-298a-4ddd-82c5-9ed85a69ce5e";
-const scopes = ["email", "offline_access", "openid", "profile"];
+const scopes = ["https://japomo.techadventure2023.jambit.space/profile"];
 
 class CredentialUtil {
   CredentialUtil() {

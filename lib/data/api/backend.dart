@@ -52,7 +52,7 @@ class Backend extends IBackend {
   late final ArtemisClient client;
 
   final userQuery = UserQuery(
-    variables: UserArguments(userId: '1'),
+    variables: UserArguments(),
   );
 
   PlaceQuery placeQuery(String id) =>
