@@ -8,7 +8,6 @@ import 'package:tech_adventure/data/api/backend.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
-import 'package:tech_adventure/ui/screens/place_detail_screen.dart';
 import 'package:tech_adventure/ui/screens/welcome_screen.dart';
 
 import 'bloc/user/user_bloc.dart';
@@ -54,7 +53,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: getMaterialColor(jambitOrange),
         ),
-        home: (accessToken == null || accessToken == "") ? WelcomeScreen() : HomePage(),
+        home: (accessToken == null || accessToken == "")
+            ? WelcomeScreen()
+            : HomePage(),
       ),
     );
   }

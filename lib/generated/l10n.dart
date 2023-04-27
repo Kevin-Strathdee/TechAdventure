@@ -18,15 +18,17 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(
-        _current != null, 'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -239,7 +241,7 @@ class S {
   }
 
   /// `You scored {score} points!\nYour current high score is {highScore}`
-  String gameOverOverviewMessage(Object score, Object highScore) {
+  String gameOverOverviewMessage(int score, int highScore) {
     return Intl.message(
       'You scored $score points!\nYour current high score is $highScore',
       name: 'gameOverOverviewMessage',
@@ -283,6 +285,86 @@ class S {
     return Intl.message(
       'meets Monopoly',
       name: 'meets',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You've discovered a new place!`
+  String get discoveredNewPlaceTitle {
+    return Intl.message(
+      'You\'ve discovered a new place!',
+      name: 'discoveredNewPlaceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No place information were provided`
+  String get noPlaceInformationWereProvided {
+    return Intl.message(
+      'No place information were provided',
+      name: 'noPlaceInformationWereProvided',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `high score`
+  String get highScore {
+    return Intl.message(
+      'high score',
+      name: 'highScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Street name`
+  String get streetName {
+    return Intl.message(
+      'Street name',
+      name: 'streetName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Owned by`
+  String get ownedBy {
+    return Intl.message(
+      'Owned by',
+      name: 'ownedBy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `game`
+  String get game {
+    return Intl.message(
+      'game',
+      name: 'game',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play`
+  String get play {
+    return Intl.message(
+      'Play',
+      name: 'play',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Jambit game`
+  String get JaPoMo {
+    return Intl.message(
+      'Jambit game',
+      name: 'JaPoMo',
       desc: '',
       args: [],
     );

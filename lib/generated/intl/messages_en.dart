@@ -20,19 +20,24 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m1(firstName, score, highScore) =>
+  static String m0(score, highScore) =>
       "You scored ${score} points!\nYour current high score is ${highScore}";
 
-  static String m0(firstName) => "Welcome ${firstName}";
+  static String m1(firstName) => "Welcome ${firstName}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
-        "jambitMeets":
-            MessageLookupByLibrary.simpleMessage("Jambit meets Pokemeon Go"),
-        "gameOverOverviewMessage": m1,
+        "JaPoMo": MessageLookupByLibrary.simpleMessage("Jambit game"),
+        "discoveredNewPlaceTitle": MessageLookupByLibrary.simpleMessage(
+            "You\'ve discovered a new place!"),
+        "game": MessageLookupByLibrary.simpleMessage("game"),
+        "gameOverOverviewMessage": m0,
         "gameOverOverviewTitle":
             MessageLookupByLibrary.simpleMessage("GAME OVER"),
+        "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
+        "highScore": MessageLookupByLibrary.simpleMessage("high score"),
+        "jambitMeets":
+            MessageLookupByLibrary.simpleMessage("Jambit meets Pokemeon Go"),
         "loginButton": MessageLookupByLibrary.simpleMessage("login"),
         "loginEmailHint": MessageLookupByLibrary.simpleMessage("email"),
         "loginGoToRegister":
@@ -43,10 +48,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "navbarHome": MessageLookupByLibrary.simpleMessage("Home"),
         "navbarProfile": MessageLookupByLibrary.simpleMessage("Profile"),
         "navbarScan": MessageLookupByLibrary.simpleMessage("Scan"),
+        "noPlaceInformationWereProvided": MessageLookupByLibrary.simpleMessage(
+            "No place information were provided"),
         "overviewPlacesTitle":
             MessageLookupByLibrary.simpleMessage("My Places"),
         "overviewPoints": MessageLookupByLibrary.simpleMessage("Points"),
-        "overviewWelcomeMessage": m0,
+        "overviewWelcomeMessage": m1,
+        "ownedBy": MessageLookupByLibrary.simpleMessage("Owned by"),
+        "play": MessageLookupByLibrary.simpleMessage("Play"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("My Profile"),
         "registerCreateAccountButton":
             MessageLookupByLibrary.simpleMessage("Create Account"),
@@ -58,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerRepeatPasswordHint":
             MessageLookupByLibrary.simpleMessage("repeat password"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
+        "streetName": MessageLookupByLibrary.simpleMessage("Street name"),
         "thisIs": MessageLookupByLibrary.simpleMessage("This is JaPoMo")
       };
 }
