@@ -118,6 +118,11 @@ type RootQueryType {
   Finds all users or a user by id
   """
   user(userId: ID): [User!]!
+
+  """
+  Finds all users or a user by id
+  """
+  currentUser(): User!
 }
 
 """

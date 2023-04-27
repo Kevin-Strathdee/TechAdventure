@@ -26,10 +26,8 @@ class AuthenticatedClient extends http.BaseClient {
   final http.Client _inner = http.Client();
 
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
-    //TODO update when backend validate access token
     String? accessToken = credentialUtil.getAccessToken();
-    // request.headers['Authorization'] = 'Bearer $accessToken';
-    request.headers['Authorization'] = 'User 1';
+    request.headers['Authorization'] = 'Bearer $accessToken';
     http.StreamedResponse response = await _inner.send(request);
     if (response.statusCode == 401) {
       await credentialUtil.refreshCredential();
@@ -51,9 +49,7 @@ class Backend extends IBackend {
 
   late final ArtemisClient client;
 
-  final userQuery = UserQuery(
-    variables: UserArguments(),
-  );
+  final userQuery = UserQuery();
 
   PlaceQuery placeQuery(String id) =>
       PlaceQuery(variables: PlaceArguments(placeId: id));
@@ -61,10 +57,12 @@ class Backend extends IBackend {
   @override
   Future<User> getUser() async {
     final response = await client.execute(userQuery);
-    User$RootQueryType$User user =
-        (response.data?.user ?? []).whereType<User$RootQueryType$User>().first;
-    User appUser = User.fromGraphqlUser(user);
-    return Future.value(appUser);
+    final currentUser = response.data?.currentUser;
+    if (!response.hasErrors && currentUser != null) {
+      return User.fromGraphqlUser(currentUser);
+    } else {
+      throw Exception();
+    }
   }
 
   @override

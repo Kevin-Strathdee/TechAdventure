@@ -1,11 +1,12 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tech_adventure/bloc/user/user_bloc.dart';
+import 'package:tech_adventure/data/credentials_util.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
 import 'package:tech_adventure/ui/delayed_animation.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
-
-import '../../data/credentials_util.dart';
 
 class WelcomeScreen extends StatefulWidget {
   CredentialUtil credentialUtil;
@@ -155,6 +156,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     _controller.reverse();
     bool authenticateSuccess = await widget.credentialUtil.authenticate();
     if (authenticateSuccess) {
+      BlocProvider.of<UserBloc>(context).add(UserRequested());
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => const HomePage()));
     }
