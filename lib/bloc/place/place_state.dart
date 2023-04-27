@@ -13,22 +13,20 @@ class PlaceLoadedSuccess extends PlaceState {
   PlaceLoadedSuccess(this.place);
 }
 
-class PlaceLoadedFailure extends PlaceState {}
+class PlaceLoadedFailure extends PlaceState {
+  final String error;
 
-class PlaceGameInProgress extends PlaceState {
-  final Place place;
-
-  PlaceGameInProgress(this.place);
+  PlaceLoadedFailure(this.error);
 }
 
-class PlaceGameCompletedSuccess extends PlaceState {
-  final Place place;
-
-  PlaceGameCompletedSuccess(this.place);
+class PlaceGameInProgress extends PlaceLoadedSuccess {
+  PlaceGameInProgress(super.place);
 }
 
-class PlaceGameCompletedFailure extends PlaceState {
-  final Place place;
+class PlaceGameCompletedSuccess extends PlaceLoadedSuccess {
+  PlaceGameCompletedSuccess(super.place);
+}
 
-  PlaceGameCompletedFailure(this.place);
+class PlaceGameCompletedFailure extends PlaceLoadedSuccess {
+  PlaceGameCompletedFailure(super.place);
 }
