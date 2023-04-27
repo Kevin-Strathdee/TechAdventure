@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/bloc/user/user_bloc.dart';
 import 'package:tech_adventure/data/models/place.dart';
 
 class PlaceTile extends StatelessWidget {
@@ -16,7 +15,6 @@ class PlaceTile extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Icon(_getIconDataForPlace(place)),
               const SizedBox(
                 width: 20,
               ),
@@ -34,18 +32,5 @@ class PlaceTile extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  IconData _getIconDataForPlace(Place place) {
-    switch (place.type) {
-      case cafeteria:
-        return Icons.restaurant;
-      case office:
-        return Icons.computer;
-      case conferenceRoom:
-        return Icons.contact_phone;
-      default:
-        return Icons.home;
-    }
   }
 }

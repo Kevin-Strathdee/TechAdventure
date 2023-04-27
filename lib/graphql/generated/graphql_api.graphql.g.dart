@@ -152,7 +152,6 @@ Place$RootQueryType$Place _$Place$RootQueryType$PlaceFromJson(
     Place$RootQueryType$Place()
       ..id = json['id'] as String
       ..name = json['name'] as String
-      ..type = json['type'] as String
       ..geometry = json['geometry'] == null
           ? null
           : Place$RootQueryType$Place$Geometry.fromJson(
@@ -170,7 +169,6 @@ Map<String, dynamic> _$Place$RootQueryType$PlaceToJson(
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'type': instance.type,
       'geometry': instance.geometry?.toJson(),
       'owner': instance.owner?.toJson(),
       'minigame': instance.minigame.toJson(),

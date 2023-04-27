@@ -25,25 +25,13 @@ class _ScanScreenState extends State<ScanScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ScanBloc, ScanState>(
-        listener: (context, state) {
-          if (state is ScanCompleted) {
-            showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text(state.code),
-                  );
-                }).then((value) => BlocProvider.of<ScanBloc>(context).add(ScanStarted()));
-          }
-        },
-        child: QRView(
-          overlay: QrScannerOverlayShape(
-            borderRadius: 8,
-          ),
-          key: qrKey,
-          onQRViewCreated: _onQRViewCreated,
-        ));
+    return QRView(
+      overlay: QrScannerOverlayShape(
+        borderRadius: 8,
+      ),
+      key: qrKey,
+      onQRViewCreated: _onQRViewCreated,
+    );
   }
 
   void _onQRViewCreated(QRViewController controller) {
@@ -54,6 +42,7 @@ class _ScanScreenState extends State<ScanScreen> {
         final code = scanData.code;
         if (code != null && BlocProvider.of<ScanBloc>(context).state is! ScanCompleted) {
           BlocProvider.of<ScanBloc>(context).add(ScanCodeDetected(code));
+          Future.delayed(Duration(seconds: 4), () => BlocProvider.of<ScanBloc>(context).add(ScanStarted()));
         }
       });
     });

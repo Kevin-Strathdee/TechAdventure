@@ -182,8 +182,6 @@ class Place$RootQueryType$Place extends JsonSerializable with EquatableMixin {
 
   late String name;
 
-  late String type;
-
   Place$RootQueryType$Place$Geometry? geometry;
 
   Place$RootQueryType$Place$User? owner;
@@ -193,7 +191,7 @@ class Place$RootQueryType$Place extends JsonSerializable with EquatableMixin {
   String? image;
 
   @override
-  List<Object?> get props => [id, name, type, geometry, owner, minigame, image];
+  List<Object?> get props => [id, name, geometry, owner, minigame, image];
   @override
   Map<String, dynamic> toJson() => _$Place$RootQueryType$PlaceToJson(this);
 }
@@ -532,13 +530,6 @@ final PLACE_QUERY_DOCUMENT = DocumentNode(definitions: [
           ),
           FieldNode(
             name: NameNode(value: 'name'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'type'),
             alias: null,
             arguments: [],
             directives: [],

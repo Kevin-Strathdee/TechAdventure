@@ -39,7 +39,7 @@ class _FlappyBeanScreenState extends State<FlappyBeanScreen> {
                 // () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage())),
                 (score) {
               final place = Place("1", "Street", User(1, "email", "userName", [], score), Minigame("DiceRolling", 5),
-                  "confrence room", "image", Geometry(Map.MUNICH_4, 10, 10));
+                  "image", Geometry(Map.MUNICH_4, 10, 10));
               BlocProvider.of<PlaceBloc>(context).add(PlaceGameFinished(score, place));
             })));
   }

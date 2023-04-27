@@ -16,8 +16,7 @@ class BackendMock extends IBackend {
   }
 
   Place getMockPlace() {
-    return Place("1", "Street", getMockUser2(), Minigame("DiceRolling", 5), "confrence room", "image",
-        Geometry(Map.MUNICH_4, 10, 10));
+    return Place("1", "Street", getMockUser2(), Minigame("DiceRolling", 5), "image", Geometry(Map.MUNICH_4, 10, 10));
   }
 
   @override

@@ -17,6 +17,13 @@ class User {
         //TODO
         places = [],
         score = user.score;
+  User.fromGraphqlPlaceUser(Place$RootQueryType$Place$User user)
+      : id = int.parse(user.id),
+        email = user.email,
+        userName = user.username,
+        //TODO
+        places = [],
+        score = user.score;
 
   User.fromJson(Map<String, dynamic> json)
       : id = json['id'],
