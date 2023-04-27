@@ -24,8 +24,15 @@ class UserInformationCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      S.of(context).overviewWelcomeMessage(state.user.userName),
+                      S.of(context).overviewWelcomeMessage,
                       style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        state.user.email,
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                     ),
                     const SizedBox(
                       height: 20,
@@ -36,14 +43,12 @@ class UserInformationCard extends StatelessWidget {
                         Container(
                             height: 80,
                             width: 80,
-                            decoration: const BoxDecoration(
-                                color: jambitOrange, shape: BoxShape.circle),
+                            decoration: const BoxDecoration(color: jambitOrange, shape: BoxShape.circle),
                             child: const Padding(
                               padding: EdgeInsets.all(13.0),
                               child: CoffeeBean(),
                             )),
-                        Text(
-                            "${state.user.score} ${S.of(context).overviewPoints}",
+                        Text("${state.user.score} ${S.of(context).overviewPoints}",
                             style: Theme.of(context).textTheme.headlineLarge)
                       ],
                     ),
@@ -62,8 +67,7 @@ class UserInformationCard extends StatelessWidget {
                           height: 40,
                           width: 300,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.grey.shade300.withOpacity(.3)),
+                              borderRadius: BorderRadius.circular(8), color: Colors.grey.shade300.withOpacity(.3)),
                         ),
                         const SizedBox(
                           height: 20,
@@ -74,9 +78,7 @@ class UserInformationCard extends StatelessWidget {
                             Container(
                                 height: 80,
                                 width: 80,
-                                decoration: const BoxDecoration(
-                                    color: jambitOrange,
-                                    shape: BoxShape.circle),
+                                decoration: const BoxDecoration(color: jambitOrange, shape: BoxShape.circle),
                                 child: const Padding(
                                   padding: EdgeInsets.all(13.0),
                                   child: CoffeeBean(),
@@ -85,8 +87,7 @@ class UserInformationCard extends StatelessWidget {
                               height: 70,
                               width: 200,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey.shade300.withOpacity(.3)),
+                                  borderRadius: BorderRadius.circular(8), color: Colors.grey.shade300.withOpacity(.3)),
                             )
                           ],
                         ),

@@ -13,16 +13,7 @@
   "navbarHome": "Home",
   "navbarScan": "Scan",
   "navbarProfile": "Profile",
-  "overviewWelcomeMessage": "Welcome {firstName}",
-  "@overviewWelcomeMessage": {
-    "description": "Welcome message including first name",
-    "placeholders": {
-      "firstName": {
-        "type": "String",
-        "example": "Bob"
-      }
-    }
-  },
+  "overviewWelcomeMessage": "Welcome",
   "overviewPoints": "Points",
   "overviewPlacesTitle": "My Places",
   "profileTitle": "My Profile",

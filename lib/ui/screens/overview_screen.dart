@@ -12,10 +12,8 @@ class OverviewScreen extends StatelessWidget {
     return RefreshIndicator(
         displacement: 1,
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
-        onRefresh: () async =>
-            BlocProvider.of<UserBloc>(context).add(UserRequested()),
+        onRefresh: () async => BlocProvider.of<UserBloc>(context).add(UserRequested()),
         child: ListView(
-          //mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
               padding: const EdgeInsets.all(15.0),

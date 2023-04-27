@@ -23,8 +23,6 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m0(score, highScore) =>
       "You scored ${score} points!\nYour current high score is ${highScore}";
 
-  static String m1(firstName) => "Welcome ${firstName}";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "JaPoMo": MessageLookupByLibrary.simpleMessage("Jambit game"),
@@ -53,7 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "overviewPlacesTitle":
             MessageLookupByLibrary.simpleMessage("My Places"),
         "overviewPoints": MessageLookupByLibrary.simpleMessage("Points"),
-        "overviewWelcomeMessage": m1,
+        "overviewWelcomeMessage":
+            MessageLookupByLibrary.simpleMessage("Welcome"),
         "ownedBy": MessageLookupByLibrary.simpleMessage("Owned by"),
         "play": MessageLookupByLibrary.simpleMessage("Play"),
         "practiceIconLabel": MessageLookupByLibrary.simpleMessage("Practice"),

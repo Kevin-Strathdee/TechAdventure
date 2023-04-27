@@ -25,6 +25,7 @@ class AuthenticatedClient extends http.BaseClient {
 
   final http.Client _inner = http.Client();
 
+  @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
     String? accessToken = credentialUtil.getAccessToken();
     request.headers['Authorization'] = 'Bearer $accessToken';

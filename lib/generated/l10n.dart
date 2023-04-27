@@ -190,13 +190,13 @@ class S {
     );
   }
 
-  /// `Welcome {firstName}`
-  String overviewWelcomeMessage(String firstName) {
+  /// `Welcome`
+  String get overviewWelcomeMessage {
     return Intl.message(
-      'Welcome $firstName',
+      'Welcome',
       name: 'overviewWelcomeMessage',
-      desc: 'Welcome message including first name',
-      args: [firstName],
+      desc: '',
+      args: [],
     );
   }
 

@@ -20,23 +20,33 @@ const refreshTokenKey = "refreshTokenKey";
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
+  final CredentialUtil credentialUtil = CredentialUtil();
+  await credentialUtil.init();
   String? accessToken = prefs.getString(accessTokenKey);
-  runApp(MyApp(accessToken: accessToken));
+  runApp(MyApp(
+    accessToken: accessToken,
+    credentialUtil: credentialUtil,
+  ));
 }
 
 class MyApp extends StatelessWidget {
   String? accessToken;
+  final CredentialUtil credentialUtil;
 
-  MyApp({super.key, this.accessToken});
+  MyApp({super.key, this.accessToken, required this.credentialUtil});
 
   @override
   Widget build(BuildContext context) {
-    final CredentialUtil credentialUtil = CredentialUtil();
     final IBackend backend = Backend(credentialUtil);
+    final UserBloc userBloc = UserBloc(backend);
+    if (accessToken != null && accessToken != '') {
+      userBloc.add(UserRequested());
+    }
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => UserBloc(backend),
+          create: (context) => userBloc,
         ),
         BlocProvider(
           create: (context) => ScanBloc(),
@@ -57,9 +67,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: getMaterialColor(jambitOrange),
         ),
-        home: (accessToken == null || accessToken == "")
-            ? WelcomeScreen(credentialUtil)
-            : HomePage(),
+        home: (accessToken == null || accessToken == "") ? WelcomeScreen(credentialUtil) : HomePage(),
       ),
     );
   }

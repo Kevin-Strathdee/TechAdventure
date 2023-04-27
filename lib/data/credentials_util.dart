@@ -8,15 +8,13 @@ const clientId = "85e3244b-298a-4ddd-82c5-9ed85a69ce5e";
 const scopes = ["https://japomo.techadventure2023.jambit.space/profile"];
 
 class CredentialUtil {
-  CredentialUtil() {
-    init();
-  }
+  CredentialUtil();
 
   late Issuer issuer;
   late Client client;
   late SharedPreferences sharedPreferences;
 
-  void init() async {
+  Future<void> init() async {
     issuer = await Issuer.discover(Uri.parse(authenticateUrl));
     client = Client(issuer, clientId);
     sharedPreferences = await SharedPreferences.getInstance();
