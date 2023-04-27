@@ -24,7 +24,9 @@ class PlaceGameInProgress extends PlaceLoadedSuccess {
 }
 
 class PlaceGameCompletedSuccess extends PlaceLoadedSuccess {
-  PlaceGameCompletedSuccess(super.place);
+  final int points;
+  final int score;
+  PlaceGameCompletedSuccess(super.place, {required this.points, required this.score});
 }
 
 class PlaceGameCompletedFailure extends PlaceLoadedSuccess {

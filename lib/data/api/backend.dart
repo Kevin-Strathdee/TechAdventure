@@ -2,6 +2,7 @@ import 'package:artemis/artemis.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tech_adventure/data/models/minigame_outcome.dart';
 import 'package:tech_adventure/data/models/place.dart';
 import 'package:tech_adventure/data/models/user.dart';
 import 'package:tech_adventure/graphql/generated/graphql_api.graphql.dart';
@@ -11,7 +12,7 @@ const String url = "https://japomo.dev.techadventure2023.jambit.space/graphql";
 
 abstract class IBackend {
   Future<User> getUser();
-  Future<int> submitScore(Place place, int score);
+  Future<MinigameOutcome> submitScore(Place place, int score);
   Future<Place> getPlace(String id);
   Future<User> updateUser(User user);
 }
@@ -51,12 +52,12 @@ class Backend extends IBackend {
   }
 
   @override
-  Future<int> submitScore(Place place, int score) async {
+  Future<MinigameOutcome> submitScore(Place place, int score) async {
     final query = MinigameOutcomeMutation(variables: MinigameOutcomeArguments(placeId: place.id, score: score));
     final result = await client.execute(query);
-    final reward = result.data?.minigameOutcome.reward;
-    if (!result.hasErrors && reward != null) {
-      return reward;
+    final outcome = result.data?.minigameOutcome;
+    if (!result.hasErrors && outcome != null) {
+      return MinigameOutcome.fromGraphQPMinigameOutcome(outcome);
     } else {
       throw Exception();
     }

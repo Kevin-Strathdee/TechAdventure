@@ -129,7 +129,6 @@ class FlappyBeanGame extends FlameGame with TapDetector {
 
   void endGame() {
     _gameState = GameState.gameOver;
-    removeFromParent();
     onGameOver(highScore);
   }
 
@@ -150,7 +149,6 @@ class FlappyBeanGame extends FlameGame with TapDetector {
   }
 
   bool _isGameOver() {
-    // return false;
     final beanTouchesFloor = _check2ItemsCollision(_floor.toRect(), _bean.toRect());
     final beanTouchesPipe =
         pipes.map((pipe) => pipe.toRect()).any((pipeRect) => _check2ItemsCollision(pipeRect, _bean.toRect()));

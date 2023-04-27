@@ -1,5 +1,26 @@
-mutation minigameOutcome ($placeId: ID!, $score: Int!) {
-    minigameOutcome (placeId: $placeId, score: $score) {
-        reward
+mutation minigameOutcome($placeId: ID!, $score: Int!) {
+  minigameOutcome(placeId: $placeId, score: $score) {
+    reward
+    place {
+      id
+      name
+      geometry {
+        mapLayer
+        x
+        y
+      }
+      owner {
+        id
+        username
+        name
+        email
+        score
+      }
+      minigame {
+        type
+        score
+      }
+      image
     }
+  }
 }

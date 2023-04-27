@@ -2,6 +2,7 @@ import 'package:tech_adventure/bloc/user/user_bloc.dart';
 import 'package:tech_adventure/data/api/backend.dart';
 import 'package:tech_adventure/data/models/geometry.dart';
 import 'package:tech_adventure/data/models/minigame.dart';
+import 'package:tech_adventure/data/models/minigame_outcome.dart';
 import 'package:tech_adventure/data/models/place.dart';
 import 'package:tech_adventure/data/models/user.dart';
 
@@ -38,8 +39,8 @@ class BackendMock extends IBackend {
   }
 
   @override
-  Future<int> submitScore(Place place, int score) async {
+  Future<MinigameOutcome> submitScore(Place place, int score) async {
     await Future.delayed(Duration(seconds: 1));
-    return 5;
+    return MinigameOutcome(place, 5);
   }
 }

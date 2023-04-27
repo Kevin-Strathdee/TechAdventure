@@ -37,7 +37,6 @@ class GameOverOverlay extends StatelessWidget {
                       ),
                       ElevatedButton(
                           onPressed: () {
-                            //TODO: submit high score
                             (game).endGame();
                           },
                           child: const Text("Submit")),
