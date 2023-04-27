@@ -200,10 +200,10 @@ class User$RootQueryType extends JsonSerializable with EquatableMixin {
   factory User$RootQueryType.fromJson(Map<String, dynamic> json) =>
       _$User$RootQueryTypeFromJson(json);
 
-  late List<User$RootQueryType$User> user;
+  late User$RootQueryType$User currentUser;
 
   @override
-  List<Object?> get props => [user];
+  List<Object?> get props => [currentUser];
   @override
   Map<String, dynamic> toJson() => _$User$RootQueryTypeToJson(this);
 }
@@ -562,49 +562,18 @@ class MinigameOutcomeMutation extends GraphQLQuery<
       MinigameOutcome$RootMutationType.fromJson(json);
 }
 
-@JsonSerializable(explicitToJson: true)
-class UserArguments extends JsonSerializable with EquatableMixin {
-  UserArguments({this.userId});
-
-  @override
-  factory UserArguments.fromJson(Map<String, dynamic> json) =>
-      _$UserArgumentsFromJson(json);
-
-  final String? userId;
-
-  @override
-  List<Object?> get props => [userId];
-  @override
-  Map<String, dynamic> toJson() => _$UserArgumentsToJson(this);
-}
-
 final USER_QUERY_DOCUMENT_OPERATION_NAME = 'user';
 final USER_QUERY_DOCUMENT = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.query,
     name: NameNode(value: 'user'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'userId')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'ID'),
-          isNonNull: false,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
+    variableDefinitions: [],
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'user'),
+        name: NameNode(value: 'currentUser'),
         alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'userId'),
-            value: VariableNode(name: NameNode(value: 'userId')),
-          )
-        ],
+        arguments: [],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
@@ -684,8 +653,8 @@ final USER_QUERY_DOCUMENT = DocumentNode(definitions: [
   )
 ]);
 
-class UserQuery extends GraphQLQuery<User$RootQueryType, UserArguments> {
-  UserQuery({required this.variables});
+class UserQuery extends GraphQLQuery<User$RootQueryType, JsonSerializable> {
+  UserQuery();
 
   @override
   final DocumentNode document = USER_QUERY_DOCUMENT;
@@ -694,10 +663,7 @@ class UserQuery extends GraphQLQuery<User$RootQueryType, UserArguments> {
   final String operationName = USER_QUERY_DOCUMENT_OPERATION_NAME;
 
   @override
-  final UserArguments variables;
-
-  @override
-  List<Object?> get props => [document, operationName, variables];
+  List<Object?> get props => [document, operationName];
   @override
   User$RootQueryType parse(Map<String, dynamic> json) =>
       User$RootQueryType.fromJson(json);

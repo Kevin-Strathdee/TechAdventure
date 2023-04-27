@@ -1,5 +1,5 @@
-query user ($userId: ID) {
-    user (userId: $userId) {
+query user {
+    currentUser {
         id
         username
         name

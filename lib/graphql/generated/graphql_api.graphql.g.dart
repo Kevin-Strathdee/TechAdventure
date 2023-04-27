@@ -181,14 +181,12 @@ Map<String, dynamic> _$User$RootQueryType$UserToJson(
 
 User$RootQueryType _$User$RootQueryTypeFromJson(Map<String, dynamic> json) =>
     User$RootQueryType()
-      ..user = (json['user'] as List<dynamic>)
-          .map((e) =>
-              User$RootQueryType$User.fromJson(e as Map<String, dynamic>))
-          .toList();
+      ..currentUser = User$RootQueryType$User.fromJson(
+          json['currentUser'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$User$RootQueryTypeToJson(User$RootQueryType instance) =>
     <String, dynamic>{
-      'user': instance.user.map((e) => e.toJson()).toList(),
+      'currentUser': instance.currentUser.toJson(),
     };
 
 Place$RootQueryType$Place$Geometry _$Place$RootQueryType$Place$GeometryFromJson(
@@ -292,16 +290,6 @@ Map<String, dynamic> _$MinigameOutcomeArgumentsToJson(
     <String, dynamic>{
       'placeId': instance.placeId,
       'score': instance.score,
-    };
-
-UserArguments _$UserArgumentsFromJson(Map<String, dynamic> json) =>
-    UserArguments(
-      userId: json['userId'] as String?,
-    );
-
-Map<String, dynamic> _$UserArgumentsToJson(UserArguments instance) =>
-    <String, dynamic>{
-      'userId': instance.userId,
     };
 
 PlaceArguments _$PlaceArgumentsFromJson(Map<String, dynamic> json) =>

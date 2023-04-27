@@ -1,22 +1,18 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-// import the io version
-import 'package:openid_client/openid_client_io.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tech_adventure/bloc/user/user_bloc.dart';
+import 'package:tech_adventure/data/credentials_util.dart';
 import 'package:tech_adventure/generated/l10n.dart';
-import 'package:tech_adventure/main.dart';
 import 'package:tech_adventure/theme/colors.dart';
 import 'package:tech_adventure/ui/delayed_animation.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
-// use url launcher package
-import 'package:url_launcher/url_launcher.dart';
-
-const authenticateUrl =
-    "https://login.microsoftonline.com/e6dbe219-77ef-4b6a-af83-f9de7de08923/v2.0";
-const clientId = "85e3244b-298a-4ddd-82c5-9ed85a69ce5e";
-const scope = ["email", "offline_access", "openid", "profile"];
 
 class WelcomeScreen extends StatefulWidget {
+  CredentialUtil credentialUtil;
+
+  WelcomeScreen(this.credentialUtil);
+
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -158,43 +154,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   void _onTapUp(TapUpDetails details) async {
     _controller.reverse();
-    Credential credential =
-        await authenticate(Uri.parse(authenticateUrl), clientId, scope);
-    TokenResponse tokenResponse = await credential.getTokenResponse();
-    if (tokenResponse.accessToken != null && tokenResponse.accessToken != "") {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString(accessTokenKey, tokenResponse.accessToken!);
+    bool authenticateSuccess = await widget.credentialUtil.authenticate();
+    if (authenticateSuccess) {
+      BlocProvider.of<UserBloc>(context).add(UserRequested());
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => const HomePage()));
     }
-  }
-
-  Future<Credential> authenticate(
-      Uri uri, String clientId, List<String> scopes) async {
-    // create the client
-    var issuer = await Issuer.discover(uri);
-    var client = Client(issuer, clientId);
-
-    // create a function to open a browser with an url
-    urlLauncher(String url) async {
-      if (await canLaunchUrl(Uri.parse(url))) {
-        await launchUrl(Uri.parse(url));
-      } else {
-        throw 'Could not launch $url';
-      }
-    }
-
-    // create an authenticator
-    var authenticator = Authenticator(client,
-        scopes: scopes, port: 4000, urlLancher: urlLauncher);
-
-    // starts the authentication
-    var c = await authenticator.authorize();
-
-    // close the webview when finished
-    closeInAppWebView();
-
-    // return the user info
-    return c;
   }
 }
