@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tech_adventure/bloc/place/place_bloc.dart';
 import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
+import 'package:tech_adventure/data/api/backend.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final IBackend backend = Backend();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -33,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ScanBloc(),
+        ),
+        BlocProvider(
+          create: (context) => PlaceBloc(backend),
         )
       ],
       child: MaterialApp(
@@ -47,9 +53,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: getMaterialColor(jambitOrange),
         ),
-        home: (accessToken == null || accessToken == "")
-            ? WelcomeScreen()
-            : const HomePage(),
+        home: (accessToken == null || accessToken == "") ? WelcomeScreen() : const HomePage(),
       ),
     );
   }

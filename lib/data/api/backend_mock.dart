@@ -16,7 +16,7 @@ class BackendMock extends IBackend {
   }
 
   Place getMockPlace() {
-    return Place(1, "Street", getMockUser2(), Minigame("DiceRolling", 5), "confrence room", "image",
+    return Place("1", "Street", getMockUser2(), Minigame("DiceRolling", 5), "confrence room", "image",
         Geometry(Map.MUNICH_4, 10, 10));
   }
 
@@ -28,7 +28,7 @@ class BackendMock extends IBackend {
   }
 
   @override
-  Future<Place> getPlace() {
+  Future<Place> getPlace(String id) {
     throw Future.value(getMockPlace());
   }
 
@@ -36,5 +36,11 @@ class BackendMock extends IBackend {
   Future<User> updateUser(User user) async {
     await Future.delayed(Duration(seconds: 1));
     return user;
+  }
+
+  @override
+  Future<int> submitScore(Place place, int score) async {
+    await Future.delayed(Duration(seconds: 1));
+    return 5;
   }
 }

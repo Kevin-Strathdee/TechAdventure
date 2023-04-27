@@ -1,4 +1,5 @@
 import 'package:artemis/artemis.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:tech_adventure/data/models/place.dart';
 import 'package:tech_adventure/data/models/user.dart';
@@ -8,8 +9,8 @@ const String url = "https://japomo.dev.techadventure2023.jambit.space/graphql";
 
 abstract class IBackend {
   Future<User> getUser();
-
-  Future<Place> getPlace();
+  Future<int> submitScore(Place place, int score);
+  Future<Place> getPlace(String id);
   Future<User> updateUser(User user);
 }
 
@@ -33,27 +34,35 @@ class Backend extends IBackend {
   final userQuery = UserQuery(
     variables: UserArguments(userId: '1'),
   );
-  final placeQuery = PlaceQuery(variables: PlaceArguments(placeId: "1"));
+  PlaceQuery placeQuery(String id) => PlaceQuery(variables: PlaceArguments(placeId: id));
 
-
+  @override
   Future<User> getUser() async {
     final response = await client.execute(userQuery);
-    User$RootQueryType$User user =
-        (response.data?.user ?? []).whereType<User$RootQueryType$User>().first;
+    User$RootQueryType$User user = (response.data?.user ?? []).whereType<User$RootQueryType$User>().first;
     User appUser = User.fromGraphqlUser(user);
     return Future.value(appUser);
   }
 
   @override
-  Future<Place> getPlace() async {
-    final response = await client.execute(placeQuery);
-    Place$RootQueryType$Place place = (response.data?.place ?? [])
-        .whereType<Place$RootQueryType$Place>()
-        .first;
+  Future<int> submitScore(Place place, int score) async {
+    final query = MinigameOutcomeMutation(variables: MinigameOutcomeArguments(placeId: place.id, score: score));
+    final result = await client.execute(query);
+    final reward = result.data?.minigameOutcome.reward;
+    if (!result.hasErrors && reward != null) {
+      return reward;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<Place> getPlace(String id) async {
+    final response = await client.execute(placeQuery(id));
+    Place$RootQueryType$Place place = (response.data?.place ?? []).whereType<Place$RootQueryType$Place>().first;
     Place appPlace = Place.fromGraphqlPlace(place);
     return Future.value(appPlace);
   }
-
 
   @override
   Future<User> updateUser(User user) {
