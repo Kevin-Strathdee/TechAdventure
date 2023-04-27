@@ -289,6 +289,86 @@ class S {
       args: [],
     );
   }
+
+  /// `You've discovered a new place!`
+  String get discoveredNewPlaceTitle {
+    return Intl.message(
+      'You\'ve discovered a new place!',
+      name: 'discoveredNewPlaceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No place information were provided`
+  String get noPlaceInformationWereProvided {
+    return Intl.message(
+      'No place information were provided',
+      name: 'noPlaceInformationWereProvided',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High Score`
+  String get highScore {
+    return Intl.message(
+      'High Score',
+      name: 'highScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Street Name`
+  String get streetName {
+    return Intl.message(
+      'Street Name',
+      name: 'streetName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Owner`
+  String get ownedBy {
+    return Intl.message(
+      'Owner',
+      name: 'ownedBy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Game`
+  String get game {
+    return Intl.message(
+      'Game',
+      name: 'game',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Challenge`
+  String get play {
+    return Intl.message(
+      'Challenge',
+      name: 'play',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Jambit game`
+  String get JaPoMo {
+    return Intl.message(
+      'Jambit game',
+      name: 'JaPoMo',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

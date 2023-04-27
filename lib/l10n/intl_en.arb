@@ -44,5 +44,13 @@
   "hiThere": "Hi There,",
   "thisIs": "This is JaPoMo",
   "jambitMeets": "Jambit meets Pokemeon Go",
-  "meets": "meets Monopoly"
+  "meets": "meets Monopoly",
+  "discoveredNewPlaceTitle": "You've discovered a new place!",
+  "noPlaceInformationWereProvided": "No place information were provided",
+  "highScore": "High Score",
+  "streetName": "Street Name",
+  "ownedBy": "Owner",
+  "game": "Game",
+  "play": "Challenge",
+  "JaPoMo": "Jambit game"
 }

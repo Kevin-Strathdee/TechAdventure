@@ -27,10 +27,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "JaPoMo": MessageLookupByLibrary.simpleMessage("Jambit game"),
+        "discoveredNewPlaceTitle": MessageLookupByLibrary.simpleMessage(
+            "You\'ve discovered a new place!"),
+        "game": MessageLookupByLibrary.simpleMessage("Game"),
         "gameOverOverviewMessage": m0,
         "gameOverOverviewTitle":
             MessageLookupByLibrary.simpleMessage("GAME OVER"),
         "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
+        "highScore": MessageLookupByLibrary.simpleMessage("High Score"),
         "jambitMeets":
             MessageLookupByLibrary.simpleMessage("Jambit meets Pokemeon Go"),
         "loginButton": MessageLookupByLibrary.simpleMessage("login"),
@@ -43,10 +48,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "navbarHome": MessageLookupByLibrary.simpleMessage("Home"),
         "navbarProfile": MessageLookupByLibrary.simpleMessage("Profile"),
         "navbarScan": MessageLookupByLibrary.simpleMessage("Scan"),
+        "noPlaceInformationWereProvided": MessageLookupByLibrary.simpleMessage(
+            "No place information were provided"),
         "overviewPlacesTitle":
             MessageLookupByLibrary.simpleMessage("My Places"),
         "overviewPoints": MessageLookupByLibrary.simpleMessage("Points"),
         "overviewWelcomeMessage": m1,
+        "ownedBy": MessageLookupByLibrary.simpleMessage("Owner"),
+        "play": MessageLookupByLibrary.simpleMessage("Challenge"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("My Profile"),
         "registerCreateAccountButton":
             MessageLookupByLibrary.simpleMessage("Create Account"),
@@ -58,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerRepeatPasswordHint":
             MessageLookupByLibrary.simpleMessage("repeat password"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
+        "streetName": MessageLookupByLibrary.simpleMessage("Street Name"),
         "thisIs": MessageLookupByLibrary.simpleMessage("This is JaPoMo")
       };
 }
