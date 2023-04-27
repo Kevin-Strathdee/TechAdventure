@@ -31,6 +31,9 @@ class AuthenticatedClient extends http.BaseClient {
     http.StreamedResponse response = await _inner.send(request);
     if (response.statusCode == 401) {
       await credentialUtil.refreshCredential();
+      String? accessToken = credentialUtil.getAccessToken();
+
+      request.headers['Authorization'] = 'Bearer $accessToken';
       response = await _inner.send(request);
     }
     return response;
@@ -51,8 +54,7 @@ class Backend extends IBackend {
 
   final userQuery = UserQuery();
 
-  PlaceQuery placeQuery(String id) =>
-      PlaceQuery(variables: PlaceArguments(placeId: id));
+  PlaceQuery placeQuery(String id) => PlaceQuery(variables: PlaceArguments(placeId: id));
 
   @override
   Future<User> getUser() async {
@@ -67,8 +69,7 @@ class Backend extends IBackend {
 
   @override
   Future<MinigameOutcome> submitScore(Place place, int score) async {
-    final query = MinigameOutcomeMutation(
-        variables: MinigameOutcomeArguments(placeId: place.id, score: score));
+    final query = MinigameOutcomeMutation(variables: MinigameOutcomeArguments(placeId: place.id, score: score));
     final result = await client.execute(query);
     final outcome = result.data?.minigameOutcome;
     if (!result.hasErrors && outcome != null) {
@@ -81,9 +82,7 @@ class Backend extends IBackend {
   @override
   Future<Place> getPlace(String id) async {
     final response = await client.execute(placeQuery(id));
-    Place$RootQueryType$Place place = (response.data?.place ?? [])
-        .whereType<Place$RootQueryType$Place>()
-        .first;
+    Place$RootQueryType$Place place = (response.data?.place ?? []).whereType<Place$RootQueryType$Place>().first;
     Place appPlace = Place.fromGraphqlPlace(place);
     return Future.value(appPlace);
   }

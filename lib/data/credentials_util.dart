@@ -3,8 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tech_adventure/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-const authenticateUrl =
-    "https://login.microsoftonline.com/e6dbe219-77ef-4b6a-af83-f9de7de08923/v2.0";
+const authenticateUrl = "https://login.microsoftonline.com/e6dbe219-77ef-4b6a-af83-f9de7de08923/v2.0";
 const clientId = "85e3244b-298a-4ddd-82c5-9ed85a69ce5e";
 const scopes = ["https://japomo.techadventure2023.jambit.space/profile"];
 
@@ -34,8 +33,7 @@ class CredentialUtil {
     }
 
     // create an authenticator
-    var authenticator = Authenticator(client,
-        scopes: scopes, port: 4000, urlLancher: urlLauncher);
+    var authenticator = Authenticator(client, scopes: scopes, port: 4000, urlLancher: urlLauncher);
 
     // starts the authentication
     var credentials = await authenticator.authorize();
@@ -43,20 +41,19 @@ class CredentialUtil {
     // close the webview when finished
     closeInAppWebView();
 
-    saveToken(credentials);
+    await saveToken(credentials);
     // return the user info
     TokenResponse tokenResponse = await credentials.getTokenResponse();
     return tokenResponse.accessToken != null;
   }
 
   Future<Credential> refreshCredential() async {
-    Credential credential = client.createCredential(
-        refreshToken: sharedPreferences.getString(refreshTokenKey));
-    saveToken(credential);
+    Credential credential = client.createCredential(refreshToken: sharedPreferences.getString(refreshTokenKey));
+    await saveToken(credential);
     return credential;
   }
 
-  void saveToken(Credential credential) async {
+  Future<void> saveToken(Credential credential) async {
     TokenResponse tokenResponse = await credential.getTokenResponse();
     if (tokenResponse.accessToken != null) {
       sharedPreferences.setString(accessTokenKey, tokenResponse.accessToken!);
