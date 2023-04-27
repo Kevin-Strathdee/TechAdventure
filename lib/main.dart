@@ -7,6 +7,7 @@ import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
 import 'package:tech_adventure/data/api/backend.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
+import 'package:tech_adventure/ui/screens/bug_squash_screen.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
 import 'package:tech_adventure/ui/screens/welcome_screen.dart';
 
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => UserBloc(),
+          create: (context) => UserBloc()..add(UserRequested('1')),
         ),
         BlocProvider(
           create: (context) => ScanBloc(),
@@ -53,9 +54,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: getMaterialColor(jambitOrange),
         ),
-        home: (accessToken == null || accessToken == "")
-            ? WelcomeScreen()
-            : HomePage(),
+        home: (accessToken == null || accessToken == "") ? WelcomeScreen() : HomePage(),
       ),
     );
   }
