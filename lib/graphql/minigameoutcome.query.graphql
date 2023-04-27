@@ -1,0 +1,5 @@
+mutation minigameOutcome ($placeId: ID!, $score: Int!) {
+    minigameOutcome (placeId: $placeId, score: $score) {
+        reward
+    }
+}

@@ -7,6 +7,42 @@ import 'package:gql/ast.dart';
 part 'graphql_api.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class MinigameOutcome$RootMutationType$MinigameOutcome extends JsonSerializable
+    with EquatableMixin {
+  MinigameOutcome$RootMutationType$MinigameOutcome();
+
+  factory MinigameOutcome$RootMutationType$MinigameOutcome.fromJson(
+          Map<String, dynamic> json) =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcomeFromJson(json);
+
+  late int reward;
+
+  @override
+  List<Object?> get props => [reward];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcomeToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class MinigameOutcome$RootMutationType extends JsonSerializable
+    with EquatableMixin {
+  MinigameOutcome$RootMutationType();
+
+  factory MinigameOutcome$RootMutationType.fromJson(
+          Map<String, dynamic> json) =>
+      _$MinigameOutcome$RootMutationTypeFromJson(json);
+
+  late MinigameOutcome$RootMutationType$MinigameOutcome minigameOutcome;
+
+  @override
+  List<Object?> get props => [minigameOutcome];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$MinigameOutcome$RootMutationTypeToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class User$RootQueryType$User$Place extends JsonSerializable
     with EquatableMixin {
   User$RootQueryType$User$Place();
@@ -202,6 +238,103 @@ enum MapLayer {
   yerevan3,
   @JsonValue('ARTEMIS_UNKNOWN')
   artemisUnknown,
+}
+
+@JsonSerializable(explicitToJson: true)
+class MinigameOutcomeArguments extends JsonSerializable with EquatableMixin {
+  MinigameOutcomeArguments({
+    required this.placeId,
+    required this.score,
+  });
+
+  @override
+  factory MinigameOutcomeArguments.fromJson(Map<String, dynamic> json) =>
+      _$MinigameOutcomeArgumentsFromJson(json);
+
+  late String placeId;
+
+  late int score;
+
+  @override
+  List<Object?> get props => [placeId, score];
+  @override
+  Map<String, dynamic> toJson() => _$MinigameOutcomeArgumentsToJson(this);
+}
+
+final MINIGAME_OUTCOME_MUTATION_DOCUMENT_OPERATION_NAME = 'minigameOutcome';
+final MINIGAME_OUTCOME_MUTATION_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'minigameOutcome'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'placeId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'score')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'minigameOutcome'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'placeId'),
+            value: VariableNode(name: NameNode(value: 'placeId')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'score'),
+            value: VariableNode(name: NameNode(value: 'score')),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'reward'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          )
+        ]),
+      )
+    ]),
+  )
+]);
+
+class MinigameOutcomeMutation extends GraphQLQuery<
+    MinigameOutcome$RootMutationType, MinigameOutcomeArguments> {
+  MinigameOutcomeMutation({required this.variables});
+
+  @override
+  final DocumentNode document = MINIGAME_OUTCOME_MUTATION_DOCUMENT;
+
+  @override
+  final String operationName =
+      MINIGAME_OUTCOME_MUTATION_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final MinigameOutcomeArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  MinigameOutcome$RootMutationType parse(Map<String, dynamic> json) =>
+      MinigameOutcome$RootMutationType.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)

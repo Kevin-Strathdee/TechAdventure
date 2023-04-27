@@ -6,6 +6,31 @@ part of 'graphql_api.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+MinigameOutcome$RootMutationType$MinigameOutcome
+    _$MinigameOutcome$RootMutationType$MinigameOutcomeFromJson(
+            Map<String, dynamic> json) =>
+        MinigameOutcome$RootMutationType$MinigameOutcome()
+          ..reward = json['reward'] as int;
+
+Map<String, dynamic> _$MinigameOutcome$RootMutationType$MinigameOutcomeToJson(
+        MinigameOutcome$RootMutationType$MinigameOutcome instance) =>
+    <String, dynamic>{
+      'reward': instance.reward,
+    };
+
+MinigameOutcome$RootMutationType _$MinigameOutcome$RootMutationTypeFromJson(
+        Map<String, dynamic> json) =>
+    MinigameOutcome$RootMutationType()
+      ..minigameOutcome =
+          MinigameOutcome$RootMutationType$MinigameOutcome.fromJson(
+              json['minigameOutcome'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$MinigameOutcome$RootMutationTypeToJson(
+        MinigameOutcome$RootMutationType instance) =>
+    <String, dynamic>{
+      'minigameOutcome': instance.minigameOutcome.toJson(),
+    };
+
 User$RootQueryType$User$Place _$User$RootQueryType$User$PlaceFromJson(
         Map<String, dynamic> json) =>
     User$RootQueryType$User$Place()
@@ -163,6 +188,20 @@ Map<String, dynamic> _$Place$RootQueryTypeToJson(
         Place$RootQueryType instance) =>
     <String, dynamic>{
       'place': instance.place.map((e) => e.toJson()).toList(),
+    };
+
+MinigameOutcomeArguments _$MinigameOutcomeArgumentsFromJson(
+        Map<String, dynamic> json) =>
+    MinigameOutcomeArguments(
+      placeId: json['placeId'] as String,
+      score: json['score'] as int,
+    );
+
+Map<String, dynamic> _$MinigameOutcomeArgumentsToJson(
+        MinigameOutcomeArguments instance) =>
+    <String, dynamic>{
+      'placeId': instance.placeId,
+      'score': instance.score,
     };
 
 UserArguments _$UserArgumentsFromJson(Map<String, dynamic> json) =>
