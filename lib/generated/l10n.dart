@@ -310,50 +310,50 @@ class S {
     );
   }
 
-  /// `high score`
+  /// `High Score`
   String get highScore {
     return Intl.message(
-      'high score',
+      'High Score',
       name: 'highScore',
       desc: '',
       args: [],
     );
   }
 
-  /// `Street name`
+  /// `Street Name`
   String get streetName {
     return Intl.message(
-      'Street name',
+      'Street Name',
       name: 'streetName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Owned by`
+  /// `Owner`
   String get ownedBy {
     return Intl.message(
-      'Owned by',
+      'Owner',
       name: 'ownedBy',
       desc: '',
       args: [],
     );
   }
 
-  /// `game`
+  /// `Game`
   String get game {
     return Intl.message(
-      'game',
+      'Game',
       name: 'game',
       desc: '',
       args: [],
     );
   }
 
-  /// `Play`
+  /// `Challenge`
   String get play {
     return Intl.message(
-      'Play',
+      'Challenge',
       name: 'play',
       desc: '',
       args: [],

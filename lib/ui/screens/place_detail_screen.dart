@@ -6,6 +6,7 @@ import 'package:tech_adventure/data/models/place.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
 import 'package:tech_adventure/ui/delayed_animation.dart';
+import 'package:tech_adventure/ui/screens/game_screen.dart';
 
 class PlaceDetailScreen extends StatelessWidget {
   const PlaceDetailScreen({super.key});
@@ -18,7 +19,7 @@ class PlaceDetailScreen extends StatelessWidget {
     return Expanded(
         child: Column(children: [
       AvatarGlow(
-        endRadius: 90,
+        endRadius: 100,
         duration: const Duration(seconds: 2),
         glowColor: Colors.white24,
         repeat: true,
@@ -30,11 +31,8 @@ class PlaceDetailScreen extends StatelessWidget {
           child: Card(
               color: Colors.blue,
               child: Text(
-                S.of(context).streetName,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.0,
-                    color: Colors.white),
+                place.name,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.white),
               )),
         ),
       ),
@@ -55,7 +53,7 @@ class PlaceDetailScreen extends StatelessWidget {
                         fontSize: textSize,
                       )),
                   const Spacer(),
-                  Text(place.owner?.userName ?? "",
+                  Text(place.owner?.userName ?? "none",
                       style: TextStyle(
                         color: textColor,
                         fontSize: textSize,
@@ -113,13 +111,10 @@ class PlaceDetailScreen extends StatelessWidget {
             // background (button) color
             foregroundColor: Colors.white, // foreground (text) color
           ),
-          onPressed: () => {},
+          onPressed: () => {Navigator.of(context).push(MaterialPageRoute(builder: (context) => GameScreen(place)))},
           child: Text(
             S.of(context).play,
-            style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 35.0,
-                color: Colors.white),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 35.0, color: Colors.white),
           ),
         ),
       ),
@@ -134,8 +129,7 @@ class PlaceDetailScreen extends StatelessWidget {
         const SizedBox(height: 50),
         Text(
           S.of(context).noPlaceInformationWereProvided,
-          style: const TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black),
         ),
       ],
     );
@@ -150,23 +144,29 @@ class PlaceDetailScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               const SizedBox(
-                height: 100.0,
+                height: 30,
+              ),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                      iconSize: 50,
+                      color: Colors.white,
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: Icon(Icons.close))),
+              const SizedBox(
+                height: 30,
               ),
               DelayedAnimation(
                 delay: delayedAmount + 1000,
                 child: Text(
                   S.of(context).discoveredNewPlaceTitle,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
-                      color: color),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0, color: color),
                 ),
               ),
               const SizedBox(height: 20),
               BlocBuilder<PlaceBloc, PlaceState>(builder: (context, state) {
                 if (state is PlaceLoadInProgress) {
-                  return const CircularProgressIndicator(
-                      backgroundColor: Colors.white);
+                  return const CircularProgressIndicator(backgroundColor: Colors.white);
                 } else if (state is PlaceLoadedSuccess) {
                   return getContent(context, state.place);
                 }
