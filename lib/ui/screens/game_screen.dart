@@ -4,6 +4,7 @@ import 'package:tech_adventure/bloc/place/place_bloc.dart';
 import 'package:tech_adventure/data/models/minigame.dart';
 import 'package:tech_adventure/data/models/place.dart';
 import 'package:tech_adventure/theme/colors.dart';
+import 'package:tech_adventure/ui/screens/bug_squash_screen.dart';
 import 'package:tech_adventure/ui/screens/dice_screen.dart';
 import 'package:tech_adventure/ui/screens/flappy_bean_screen.dart';
 
@@ -43,6 +44,8 @@ class _GameScreenState extends State<GameScreen> {
                 return FlappyBeanScreen(reportGameScore);
               case minigameIdentifierDice:
                 return DiceScreen(reportGameScore);
+              case minigameIdentifierSquash:
+                return BugSquashScreen(reportGameScore);
               default:
                 return DiceScreen(reportGameScore);
             }

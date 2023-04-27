@@ -8,6 +8,7 @@ import 'package:tech_adventure/data/api/backend.dart';
 import 'package:tech_adventure/data/credentials_util.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
+import 'package:tech_adventure/ui/screens/bug_squash_screen.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
 import 'package:tech_adventure/ui/screens/welcome_screen.dart';
 

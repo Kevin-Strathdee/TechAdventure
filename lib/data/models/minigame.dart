@@ -1,5 +1,6 @@
 const String minigameIdentifierDice = "dice";
 const String minigameIdentifierFlappy = "flappy";
+const String minigameIdentifierSquash = "bugsquash";
 
 class Minigame {
   String type;
