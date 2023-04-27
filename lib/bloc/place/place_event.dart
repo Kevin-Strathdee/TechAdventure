@@ -8,6 +8,12 @@ class PlaceScanned extends PlaceEvent {
   PlaceScanned(this.id);
 }
 
+class PlaceGameStarted extends PlaceEvent {
+  final Place place;
+
+  PlaceGameStarted(this.place);
+}
+
 class PlaceGameFinished extends PlaceEvent {
   final int score;
   final Place place;

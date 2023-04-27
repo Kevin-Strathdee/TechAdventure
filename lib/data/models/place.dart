@@ -21,4 +21,11 @@ class Place {
         owner = place.owner != null ? User.fromGraphqlPlaceUser(place.owner as Place$RootQueryType$Place$User) : null,
         image = place.image,
         geometry = Geometry(Map.MUNICH_4, place.geometry?.x, place.geometry?.y);
+  Place.fromGraphqlMinigameOutcomePlace(MinigameOutcome$RootMutationType$MinigameOutcome$Place place)
+      : id = place.id,
+        name = place.name,
+        minigame = Minigame(place.minigame.type, place.minigame.score),
+        owner = place.owner != null ? User.fromGraphqlMinigameOutcomePlaceUser(place.owner!) : null,
+        image = place.image,
+        geometry = Geometry(Map.MUNICH_4, place.geometry?.x, place.geometry?.y);
 }

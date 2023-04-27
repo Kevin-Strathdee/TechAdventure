@@ -33,11 +33,11 @@
     "placeholders": {
       "score": {
         "type": "int",
-        "example": 42
+        "example": "42"
       },
       "highScore": {
         "type": "int",
-        "example": 42
+        "example": "42"
       }
     }
   },

@@ -20,19 +20,19 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m1(firstName, score, highScore) =>
+  static String m0(score, highScore) =>
       "You scored ${score} points!\nYour current high score is ${highScore}";
 
-  static String m0(firstName) => "Welcome ${firstName}";
+  static String m1(firstName) => "Welcome ${firstName}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "gameOverOverviewMessage": m0,
+        "gameOverOverviewTitle":
+            MessageLookupByLibrary.simpleMessage("GAME OVER"),
         "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
         "jambitMeets":
             MessageLookupByLibrary.simpleMessage("Jambit meets Pokemeon Go"),
-        "gameOverOverviewMessage": m1,
-        "gameOverOverviewTitle":
-            MessageLookupByLibrary.simpleMessage("GAME OVER"),
         "loginButton": MessageLookupByLibrary.simpleMessage("login"),
         "loginEmailHint": MessageLookupByLibrary.simpleMessage("email"),
         "loginGoToRegister":
@@ -46,7 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "overviewPlacesTitle":
             MessageLookupByLibrary.simpleMessage("My Places"),
         "overviewPoints": MessageLookupByLibrary.simpleMessage("Points"),
-        "overviewWelcomeMessage": m0,
+        "overviewWelcomeMessage": m1,
         "profileTitle": MessageLookupByLibrary.simpleMessage("My Profile"),
         "registerCreateAccountButton":
             MessageLookupByLibrary.simpleMessage("Create Account"),

@@ -1,3 +1,6 @@
+const String minigameIdentifierDice = "dice";
+const String minigameIdentifierFlappy = "flappy";
+
 class Minigame {
   String type;
   int score;

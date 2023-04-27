@@ -20,10 +20,14 @@ class PlaceBloc extends Bloc<PlaceEvent, PlaceState> {
     });
     on<PlaceGameFinished>((event, emit) async {
       try {
-        await backend.submitScore(event.place, event.score);
+        final outcome = await backend.submitScore(event.place, event.score);
+        emit(PlaceGameCompletedSuccess(outcome.place, points: outcome.points, score: event.score));
       } catch (e) {
         emit(PlaceGameCompletedFailure(event.place));
       }
+    });
+    on<PlaceGameStarted>((event, emit) {
+      emit(PlaceGameInProgress(event.place));
     });
   }
 }

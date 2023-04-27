@@ -5,8 +5,8 @@ import 'package:tech_adventure/ui/games/dice/sprites/die.dart';
 import 'package:tech_adventure/ui/screens/scan_screen.dart';
 
 class RollDiceGame extends FlameGame with HasTappables {
-  RollDiceGame({super.children});
-
+  RollDiceGame(this.onGameFinished, {super.children});
+  final Function(int score) onGameFinished;
   DiceGameManager gameManager = DiceGameManager();
   int screenBufferSpace = 30;
 
@@ -69,6 +69,7 @@ class RollDiceGame extends FlameGame with HasTappables {
   void endGame() {
     gameManager.state = GameState.gameOver;
     overlays.add('gameOverOverlay');
+    onGameFinished(gameManager.score.value);
   }
 
   void resetGame() {

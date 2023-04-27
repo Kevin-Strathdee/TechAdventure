@@ -7,6 +7,108 @@ import 'package:gql/ast.dart';
 part 'graphql_api.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class MinigameOutcome$RootMutationType$MinigameOutcome$Place$Geometry
+    extends JsonSerializable with EquatableMixin {
+  MinigameOutcome$RootMutationType$MinigameOutcome$Place$Geometry();
+
+  factory MinigameOutcome$RootMutationType$MinigameOutcome$Place$Geometry.fromJson(
+          Map<String, dynamic> json) =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcome$Place$GeometryFromJson(
+          json);
+
+  @JsonKey(unknownEnumValue: MapLayer.artemisUnknown)
+  late MapLayer mapLayer;
+
+  late double x;
+
+  late double y;
+
+  @override
+  List<Object?> get props => [mapLayer, x, y];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcome$Place$GeometryToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class MinigameOutcome$RootMutationType$MinigameOutcome$Place$User
+    extends JsonSerializable with EquatableMixin {
+  MinigameOutcome$RootMutationType$MinigameOutcome$Place$User();
+
+  factory MinigameOutcome$RootMutationType$MinigameOutcome$Place$User.fromJson(
+          Map<String, dynamic> json) =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcome$Place$UserFromJson(
+          json);
+
+  late String id;
+
+  late String username;
+
+  late String name;
+
+  late String email;
+
+  late int score;
+
+  @override
+  List<Object?> get props => [id, username, name, email, score];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcome$Place$UserToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class MinigameOutcome$RootMutationType$MinigameOutcome$Place$Minigame
+    extends JsonSerializable with EquatableMixin {
+  MinigameOutcome$RootMutationType$MinigameOutcome$Place$Minigame();
+
+  factory MinigameOutcome$RootMutationType$MinigameOutcome$Place$Minigame.fromJson(
+          Map<String, dynamic> json) =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcome$Place$MinigameFromJson(
+          json);
+
+  late String type;
+
+  late int score;
+
+  @override
+  List<Object?> get props => [type, score];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcome$Place$MinigameToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class MinigameOutcome$RootMutationType$MinigameOutcome$Place
+    extends JsonSerializable with EquatableMixin {
+  MinigameOutcome$RootMutationType$MinigameOutcome$Place();
+
+  factory MinigameOutcome$RootMutationType$MinigameOutcome$Place.fromJson(
+          Map<String, dynamic> json) =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcome$PlaceFromJson(json);
+
+  late String id;
+
+  late String name;
+
+  MinigameOutcome$RootMutationType$MinigameOutcome$Place$Geometry? geometry;
+
+  MinigameOutcome$RootMutationType$MinigameOutcome$Place$User? owner;
+
+  late MinigameOutcome$RootMutationType$MinigameOutcome$Place$Minigame minigame;
+
+  String? image;
+
+  @override
+  List<Object?> get props => [id, name, geometry, owner, minigame, image];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$MinigameOutcome$RootMutationType$MinigameOutcome$PlaceToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class MinigameOutcome$RootMutationType$MinigameOutcome extends JsonSerializable
     with EquatableMixin {
   MinigameOutcome$RootMutationType$MinigameOutcome();
@@ -17,8 +119,10 @@ class MinigameOutcome$RootMutationType$MinigameOutcome extends JsonSerializable
 
   late int reward;
 
+  late MinigameOutcome$RootMutationType$MinigameOutcome$Place place;
+
   @override
-  List<Object?> get props => [reward];
+  List<Object?> get props => [reward, place];
   @override
   Map<String, dynamic> toJson() =>
       _$MinigameOutcome$RootMutationType$MinigameOutcomeToJson(this);
@@ -307,7 +411,130 @@ final MINIGAME_OUTCOME_MUTATION_DOCUMENT = DocumentNode(definitions: [
             arguments: [],
             directives: [],
             selectionSet: null,
-          )
+          ),
+          FieldNode(
+            name: NameNode(value: 'place'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'name'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'geometry'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'mapLayer'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'x'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'y'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'owner'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'username'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'email'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'score'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'minigame'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'type'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'score'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'image'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
         ]),
       )
     ]),

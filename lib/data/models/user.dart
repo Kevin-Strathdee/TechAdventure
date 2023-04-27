@@ -25,6 +25,14 @@ class User {
         places = [],
         score = user.score;
 
+  User.fromGraphqlMinigameOutcomePlaceUser(MinigameOutcome$RootMutationType$MinigameOutcome$Place$User user)
+      : id = int.parse(user.id),
+        email = user.email,
+        userName = user.username,
+        //TODO
+        places = [],
+        score = user.score;
+
   User.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         email = json['email'],
