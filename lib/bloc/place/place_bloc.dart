@@ -15,7 +15,7 @@ class PlaceBloc extends Bloc<PlaceEvent, PlaceState> {
         final place = await backend.getPlace(event.id);
         emit(PlaceLoadedSuccess(place));
       } catch (e) {
-        emit(PlaceLoadedFailure());
+        emit(PlaceLoadedFailure(e.toString()));
       }
     });
     on<PlaceGameFinished>((event, emit) async {
