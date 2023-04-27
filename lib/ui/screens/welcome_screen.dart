@@ -11,7 +11,6 @@ import 'package:tech_adventure/ui/screens/home_page.dart';
 // use url launcher package
 import 'package:url_launcher/url_launcher.dart';
 
-const appScheme = 'flutterdemo';
 const authenticateUrl =
     "https://login.microsoftonline.com/e6dbe219-77ef-4b6a-af83-f9de7de08923/v2.0";
 const clientId = "85e3244b-298a-4ddd-82c5-9ed85a69ce5e";
