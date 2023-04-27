@@ -58,8 +58,12 @@ class CredentialUtil {
 
   void saveToken(Credential credential) async {
     TokenResponse tokenResponse = await credential.getTokenResponse();
-    sharedPreferences.setString(accessTokenKey, tokenResponse.accessToken!);
-    sharedPreferences.setString(refreshTokenKey, tokenResponse.refreshToken!);
+    if (tokenResponse.accessToken != null) {
+      sharedPreferences.setString(accessTokenKey, tokenResponse.accessToken!);
+    }
+    if (tokenResponse.refreshToken != null) {
+      sharedPreferences.setString(refreshTokenKey, tokenResponse.refreshToken!);
+    }
   }
 
   String? getAccessToken() {
