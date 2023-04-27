@@ -13,7 +13,7 @@ class OverviewScreen extends StatelessWidget {
         displacement: 1,
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
         onRefresh: () async =>
-            BlocProvider.of<UserBloc>(context).add(UserRequested("1")),
+            BlocProvider.of<UserBloc>(context).add(UserRequested()),
         child: ListView(
           //mainAxisSize: MainAxisSize.max,
           children: [
