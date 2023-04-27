@@ -1,0 +1,15 @@
+query user ($userId: ID) {
+    user (userId: $userId) {
+        id
+        username
+        name
+        places {
+          id
+          name
+          type
+          image
+        }
+        email
+        score
+    }
+}

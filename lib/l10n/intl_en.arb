@@ -26,6 +26,22 @@
   "overviewPoints": "Points",
   "overviewPlacesTitle": "My Places",
   "profileTitle": "My Profile",
+  "gameOverOverviewTitle": "GAME OVER",
+  "gameOverOverviewMessage": "You scored {score} points!\nYour current high score is {highScore}",
+  "@gameOverOverviewMessage": {
+    "description": "displays score on game over page",
+    "placeholders": {
+      "score": {
+        "type": "int",
+        "example": 42
+      },
+      "highScore": {
+        "type": "int",
+        "example": 42
+      }
+    }
+  },
+  "profileTitle": "My Profile",
   "hiThere": "Hi There,",
   "thisIs": "This is JaPoMo",
   "jambitMeets": "Jambit meets Pokemeon Go",

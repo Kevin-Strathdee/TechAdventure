@@ -20,6 +20,9 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m1(firstName, score, highScore) =>
+      "You scored ${score} points!\nYour current high score is ${highScore}";
+
   static String m0(firstName) => "Welcome ${firstName}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -27,6 +30,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
         "jambitMeets":
             MessageLookupByLibrary.simpleMessage("Jambit meets Pokemeon Go"),
+        "gameOverOverviewMessage": m1,
+        "gameOverOverviewTitle":
+            MessageLookupByLibrary.simpleMessage("GAME OVER"),
         "loginButton": MessageLookupByLibrary.simpleMessage("login"),
         "loginEmailHint": MessageLookupByLibrary.simpleMessage("email"),
         "loginGoToRegister":

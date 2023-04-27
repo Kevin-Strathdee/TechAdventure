@@ -24,7 +24,7 @@ class UserInformationCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      S.of(context).overviewWelcomeMessage(state.user.firstName),
+                      S.of(context).overviewWelcomeMessage(state.user.userName),
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     const SizedBox(
