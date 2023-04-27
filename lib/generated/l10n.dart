@@ -369,6 +369,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Practice`
+  String get practiceIconLabel {
+    return Intl.message(
+      'Practice',
+      name: 'practiceIconLabel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

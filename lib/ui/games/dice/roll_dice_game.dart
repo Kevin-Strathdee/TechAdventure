@@ -27,8 +27,7 @@ class RollDiceGame extends FlameGame with HasTappables {
     }
 
     if (gameManager.isPlaying) {
-      if (dice.every((die) => die.value > 0)) {
-        await Future.delayed(const Duration(milliseconds: 1500));
+      if (dice.every((die) => die.value > 0) && gameManager.state != GameState.gameOver) {
         endGame();
         //  TODO: send score
       }
@@ -66,8 +65,10 @@ class RollDiceGame extends FlameGame with HasTappables {
     overlays.remove('startOverlay');
   }
 
-  void endGame() {
+  void endGame() async {
     gameManager.state = GameState.gameOver;
+    await Future.delayed(const Duration(milliseconds: 1500));
+
     overlays.add('gameOverOverlay');
     onGameFinished(gameManager.score.value);
   }

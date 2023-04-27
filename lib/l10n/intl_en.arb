@@ -52,5 +52,6 @@
   "ownedBy": "Owner",
   "game": "Game",
   "play": "Challenge",
-  "JaPoMo": "Jambit game"
+  "JaPoMo": "Jambit game",
+  "practiceIconLabel": "Practice"
 }

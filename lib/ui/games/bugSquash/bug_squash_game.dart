@@ -9,6 +9,7 @@ import 'package:tech_adventure/ui/games/bugSquash/components/background.dart';
 import 'package:tech_adventure/ui/games/bugSquash/components/bug.dart';
 
 class BugSquashGame extends FlameGame {
+  bool _gameover = false;
   int score = 0;
   double count = 0;
   late TextComponent scoreDisplay;
@@ -25,16 +26,22 @@ class BugSquashGame extends FlameGame {
     scoreDisplay = TextComponent(
         text: "0",
         textRenderer: TextPaint(
-          style: TextStyle(fontSize: 48.0, color: Colors.black),
+          style: TextStyle(fontSize: 48.0, color: Colors.white),
         ),
         size: Vector2(50, 50),
-        position: Vector2(size.x - 50, size.y - 50));
-    addAll([background]);
+        position: Vector2(size.x - 80, 50));
+    addAll([background, scoreDisplay]);
     return super.onLoad();
+  }
+
+  void _incrementScore() {
+    score++;
+    scoreDisplay.text = score.toString();
   }
 
   @override
   void update(double dt) {
+    if (_gameover) return;
     count += dt;
     if (count > (1 - (score * .02))) {
       count = 0;
@@ -45,6 +52,7 @@ class BugSquashGame extends FlameGame {
   }
 
   void endGame() {
+    _gameover = true;
     onGameFinished(score);
   }
 }

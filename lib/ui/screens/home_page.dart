@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_adventure/bloc/place/place_bloc.dart';
 import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
 import 'package:tech_adventure/generated/l10n.dart';
+import 'package:tech_adventure/ui/screens/practice_list_screen.dart';
 import 'package:tech_adventure/ui/screens/maps_page.dart';
 import 'package:tech_adventure/ui/screens/overview_screen.dart';
 import 'package:tech_adventure/ui/screens/place_detail_screen.dart';
@@ -51,8 +52,8 @@ class _HomePageState extends State<HomePage> {
               label: S.of(context).navbarScan,
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.account_circle_rounded),
-              label: S.of(context).navbarProfile,
+              icon: const Icon(Icons.videogame_asset),
+              label: S.of(context).practiceIconLabel,
             ),
           ],
           onTap: (index) => _onItemTapped(index, context), //New
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
       case 1:
         return const ScanScreen();
       case 2:
-        return const ProfileScreen();
+        return const PracticeListScreen();
       default:
         return const MapsPage();
     }
