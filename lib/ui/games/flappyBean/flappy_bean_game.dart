@@ -28,7 +28,7 @@ class FlappyBeanGame extends FlameGame with TapDetector {
   int score = 0;
   int highScore = 0;
   GameState _gameState = GameState.intial;
-  Function onGameOver;
+  Function(int score) onGameOver;
   final tapToStartOverlayIdentifier = 'TapToStart';
   FlappyBeanGame(this.onGameOver);
 
@@ -130,7 +130,7 @@ class FlappyBeanGame extends FlameGame with TapDetector {
   void endGame() {
     _gameState = GameState.gameOver;
     removeFromParent();
-    onGameOver();
+    onGameOver(highScore);
   }
 
   void _showGameOverOverlay() {

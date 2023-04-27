@@ -1,9 +1,11 @@
 import 'package:artemis/artemis.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tech_adventure/data/models/place.dart';
 import 'package:tech_adventure/data/models/user.dart';
 import 'package:tech_adventure/graphql/generated/graphql_api.graphql.dart';
+import 'package:tech_adventure/main.dart';
 
 const String url = "https://japomo.dev.techadventure2023.jambit.space/graphql";
 
@@ -17,10 +19,14 @@ abstract class IBackend {
 class AuthenticatedClient extends http.BaseClient {
   final http.Client _inner = http.Client();
 
-  Future<http.StreamedResponse> send(http.BaseRequest request) {
-    request.headers['Authorization'] = 'Bearer ';
+  Future<http.StreamedResponse> send(http.BaseRequest request) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? accessToken = prefs.getString(accessTokenKey);
+
+    // request.headers['Authorization'] = 'Bearer $accessToken';
+    request.headers['Authorization'] = 'User 1';
     //only for testing purpose
-    request.headers['User'] = '1';
+    // request.headers['User'] = '1';
     return _inner.send(request);
   }
 }
