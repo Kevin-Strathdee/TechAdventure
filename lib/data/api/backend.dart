@@ -6,7 +6,7 @@ import 'package:tech_adventure/data/models/place.dart';
 import 'package:tech_adventure/data/models/user.dart';
 import 'package:tech_adventure/graphql/generated/graphql_api.graphql.dart';
 
-const String url = "https://japomo.dev.techadventure2023.jambit.space/graphql";
+const String url = "https://japomo.prod.techadventure2023.jambit.space/graphql";
 
 abstract class IBackend {
   Future<User> getUser();
@@ -30,7 +30,7 @@ class AuthenticatedClient extends http.BaseClient {
     String? accessToken = credentialUtil.getAccessToken();
     request.headers['Authorization'] = 'Bearer $accessToken';
     http.StreamedResponse response = await _inner.send(request);
-    if (response.statusCode == 401 || response.statusCode == 500) {
+    if (response.statusCode == 401 || response.statusCode == 403) {
       await credentialUtil.refreshCredential();
       String? accessToken = credentialUtil.getAccessToken();
 
