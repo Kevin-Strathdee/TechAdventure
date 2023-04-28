@@ -360,16 +360,6 @@ class S {
     );
   }
 
-  /// `jambit game`
-  String get JaPoMo {
-    return Intl.message(
-      'jambit game',
-      name: 'JaPoMo',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Practice`
   String get practiceIconLabel {
     return Intl.message(
@@ -415,6 +405,16 @@ class S {
     return Intl.message(
       'Minigame: ',
       name: 'miniGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `japomo`
+  String get japomo {
+    return Intl.message(
+      'japomo',
+      name: 'japomo',
       desc: '',
       args: [],
     );

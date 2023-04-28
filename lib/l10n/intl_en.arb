@@ -43,10 +43,10 @@
   "ownedBy": "Owner",
   "game": "Game",
   "play": "Challenge",
-  "JaPoMo": "jambit game",
   "practiceIconLabel": "Practice",
   "rent": "Rent",
   "score": "Score",
   "rank": "Rank",
-  "miniGame": "Minigame: "
+  "miniGame": "Minigame: ",
+  "japomo": "japomo"
 }
