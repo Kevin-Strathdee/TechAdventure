@@ -11,21 +11,28 @@ class Place {
   String? image;
   Geometry geometry;
 
-  Place(this.id, this.name, this.owner, this.minigame, this.image, this.geometry);
+  Place(
+      this.id, this.name, this.owner, this.minigame, this.image, this.geometry);
 
-  //TODO
   Place.fromGraphqlPlace(Place$RootQueryType$Place place)
       : id = place.id,
         name = place.name,
         minigame = Minigame(place.minigame.type, place.minigame.score),
-        owner = place.owner != null ? User.fromGraphqlPlaceUser(place.owner as Place$RootQueryType$Place$User) : null,
+        owner = place.owner != null
+            ? User.fromGraphqlPlaceUserWithoutUserPlaces(place.owner!)
+            : null,
         image = place.image,
         geometry = Geometry(Map.MUNICH_4, place.geometry?.x, place.geometry?.y);
-  Place.fromGraphqlMinigameOutcomePlace(MinigameOutcome$RootMutationType$MinigameOutcome$Place place)
+
+  Place.fromGraphqlMinigameOutcomePlace(
+      MinigameOutcome$RootMutationType$MinigameOutcome$Place place)
       : id = place.id,
         name = place.name,
         minigame = Minigame(place.minigame.type, place.minigame.score),
-        owner = place.owner != null ? User.fromGraphqlMinigameOutcomePlaceUser(place.owner!) : null,
+        owner = place.owner != null
+            ? User.fromGraphqlMinigameOutcomePlaceUserWithoutUserPlaces(
+                place.owner!)
+            : null,
         image = place.image,
         geometry = Geometry(Map.MUNICH_4, place.geometry?.x, place.geometry?.y);
 }

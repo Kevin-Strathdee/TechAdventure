@@ -10,6 +10,7 @@ import 'package:japomo/ui/screens/flappy_bean_screen.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen(this.place, {super.key});
+
   final Place place;
 
   @override
@@ -18,6 +19,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   int score = 0;
+
   @override
   void initState() {
     BlocProvider.of<PlaceBloc>(context).add(PlaceGameStarted(widget.place));
@@ -70,7 +72,7 @@ class _GameScreenState extends State<GameScreen> {
                       Text(
                         state.points > 0
                             ? "you beat the high score and won ${state.points} points!"
-                            : "You werent able to crack ${state.place.owner?.userName ?? "the previous owner"}'s high score of ${state.place.minigame.score}.",
+                            : "You werent able to crack ${state.place.owner?.name ?? "the previous owner"}'s high score of ${state.place.minigame.score}.",
                         style: Theme.of(context).textTheme.headlineSmall,
                         textAlign: TextAlign.center,
                       ),
@@ -82,7 +84,8 @@ class _GameScreenState extends State<GameScreen> {
                         children: [
                           ElevatedButton(
                               onPressed: () {
-                                BlocProvider.of<PlaceBloc>(context).add(PlaceGameStarted(widget.place));
+                                BlocProvider.of<PlaceBloc>(context)
+                                    .add(PlaceGameStarted(widget.place));
                               },
                               child: Text("Play Again")),
                           ElevatedButton(

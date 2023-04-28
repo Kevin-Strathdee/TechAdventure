@@ -138,13 +138,64 @@ Map<String, dynamic> _$MinigameOutcome$RootMutationTypeToJson(
       'minigameOutcome': instance.minigameOutcome.toJson(),
     };
 
+User$RootQueryType$User$Place$User _$User$RootQueryType$User$Place$UserFromJson(
+        Map<String, dynamic> json) =>
+    User$RootQueryType$User$Place$User()..id = json['id'] as String;
+
+Map<String, dynamic> _$User$RootQueryType$User$Place$UserToJson(
+        User$RootQueryType$User$Place$User instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+    };
+
+User$RootQueryType$User$Place$Minigame
+    _$User$RootQueryType$User$Place$MinigameFromJson(
+            Map<String, dynamic> json) =>
+        User$RootQueryType$User$Place$Minigame()
+          ..type = json['type'] as String
+          ..score = json['score'] as int;
+
+Map<String, dynamic> _$User$RootQueryType$User$Place$MinigameToJson(
+        User$RootQueryType$User$Place$Minigame instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'score': instance.score,
+    };
+
+User$RootQueryType$User$Place$Geometry
+    _$User$RootQueryType$User$Place$GeometryFromJson(
+            Map<String, dynamic> json) =>
+        User$RootQueryType$User$Place$Geometry()
+          ..mapLayer = $enumDecode(_$MapLayerEnumMap, json['mapLayer'],
+              unknownValue: MapLayer.artemisUnknown)
+          ..x = (json['x'] as num).toDouble()
+          ..y = (json['y'] as num).toDouble();
+
+Map<String, dynamic> _$User$RootQueryType$User$Place$GeometryToJson(
+        User$RootQueryType$User$Place$Geometry instance) =>
+    <String, dynamic>{
+      'mapLayer': _$MapLayerEnumMap[instance.mapLayer]!,
+      'x': instance.x,
+      'y': instance.y,
+    };
+
 User$RootQueryType$User$Place _$User$RootQueryType$User$PlaceFromJson(
         Map<String, dynamic> json) =>
     User$RootQueryType$User$Place()
       ..id = json['id'] as String
       ..name = json['name'] as String
       ..type = json['type'] as String
-      ..image = json['image'] as String?;
+      ..image = json['image'] as String?
+      ..owner = json['owner'] == null
+          ? null
+          : User$RootQueryType$User$Place$User.fromJson(
+              json['owner'] as Map<String, dynamic>)
+      ..minigame = User$RootQueryType$User$Place$Minigame.fromJson(
+          json['minigame'] as Map<String, dynamic>)
+      ..geometry = json['geometry'] == null
+          ? null
+          : User$RootQueryType$User$Place$Geometry.fromJson(
+              json['geometry'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$User$RootQueryType$User$PlaceToJson(
         User$RootQueryType$User$Place instance) =>
@@ -153,6 +204,9 @@ Map<String, dynamic> _$User$RootQueryType$User$PlaceToJson(
       'name': instance.name,
       'type': instance.type,
       'image': instance.image,
+      'owner': instance.owner?.toJson(),
+      'minigame': instance.minigame.toJson(),
+      'geometry': instance.geometry?.toJson(),
     };
 
 User$RootQueryType$User _$User$RootQueryType$UserFromJson(
@@ -242,6 +296,7 @@ Place$RootQueryType$Place _$Place$RootQueryType$PlaceFromJson(
     Place$RootQueryType$Place()
       ..id = json['id'] as String
       ..name = json['name'] as String
+      ..type = json['type'] as String
       ..geometry = json['geometry'] == null
           ? null
           : Place$RootQueryType$Place$Geometry.fromJson(
@@ -259,6 +314,7 @@ Map<String, dynamic> _$Place$RootQueryType$PlaceToJson(
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'type': instance.type,
       'geometry': instance.geometry?.toJson(),
       'owner': instance.owner?.toJson(),
       'minigame': instance.minigame.toJson(),
