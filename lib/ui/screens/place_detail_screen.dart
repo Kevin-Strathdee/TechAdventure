@@ -7,6 +7,7 @@ import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
 import 'package:tech_adventure/ui/delayed_animation.dart';
 import 'package:tech_adventure/ui/screens/game_screen.dart';
+import 'package:tech_adventure/ui/screens/home_page.dart';
 
 class PlaceDetailScreen extends StatelessWidget {
   const PlaceDetailScreen({super.key});
@@ -151,7 +152,8 @@ class PlaceDetailScreen extends StatelessWidget {
                   child: IconButton(
                       iconSize: 50,
                       color: Colors.white,
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => Navigator.of(context)
+                          .pushReplacement(MaterialPageRoute(builder: (context) => const HomePage())),
                       icon: Icon(Icons.close))),
               const SizedBox(
                 height: 30,
