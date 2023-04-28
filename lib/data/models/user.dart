@@ -5,30 +5,36 @@ class User {
   int id;
   String email;
   String userName;
+  String name;
   List<Place> places;
   int score;
 
-  User(this.id, this.email, this.userName, this.places, this.score);
+  User(this.id, this.email, this.name, this.userName, this.places, this.score);
 
   User.fromGraphqlUser(User$RootQueryType$User user)
       : id = int.parse(user.id),
         email = user.email,
         userName = user.username,
-        //TODO
-        places = [],
-        score = user.score;
-  User.fromGraphqlPlaceUser(Place$RootQueryType$Place$User user)
-      : id = int.parse(user.id),
-        email = user.email,
-        userName = user.username,
+        name = user.name,
         //TODO
         places = [],
         score = user.score;
 
-  User.fromGraphqlMinigameOutcomePlaceUser(MinigameOutcome$RootMutationType$MinigameOutcome$Place$User user)
+  User.fromGraphqlPlaceUser(Place$RootQueryType$Place$User user)
       : id = int.parse(user.id),
         email = user.email,
         userName = user.username,
+        name = user.name,
+        //TODO
+        places = [],
+        score = user.score;
+
+  User.fromGraphqlMinigameOutcomePlaceUser(
+      MinigameOutcome$RootMutationType$MinigameOutcome$Place$User user)
+      : id = int.parse(user.id),
+        email = user.email,
+        userName = user.username,
+        name = user.name,
         //TODO
         places = [],
         score = user.score;
@@ -37,6 +43,7 @@ class User {
       : id = json['id'],
         email = json['email'],
         userName = json['userName'],
+        name = json['name'],
         places = json['places'],
         score = json['score'];
 }
