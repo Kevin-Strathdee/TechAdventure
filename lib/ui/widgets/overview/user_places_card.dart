@@ -29,7 +29,7 @@ class UserPlacesCard extends StatelessWidget {
                     ),
                     if (state.user.places.isEmpty)
                       Text(
-                        "You haven't taken any places yet!",
+                        "You don't have any places yet!",
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ...state.user.places.map((place) => PlaceTile(place: place)),
