@@ -409,6 +409,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Minigame: `
+  String get miniGame {
+    return Intl.message(
+      'Minigame: ',
+      name: 'miniGame',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
