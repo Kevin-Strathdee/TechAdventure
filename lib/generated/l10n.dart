@@ -300,10 +300,10 @@ class S {
     );
   }
 
-  /// `No place information were provided`
+  /// `No place information was provided`
   String get noPlaceInformationWereProvided {
     return Intl.message(
-      'No place information were provided',
+      'No place information was provided',
       name: 'noPlaceInformationWereProvided',
       desc: '',
       args: [],
@@ -375,6 +375,16 @@ class S {
     return Intl.message(
       'Practice',
       name: 'practiceIconLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rent`
+  String get rent {
+    return Intl.message(
+      'Rent',
+      name: 'rent',
       desc: '',
       args: [],
     );

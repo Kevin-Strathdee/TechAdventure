@@ -37,12 +37,13 @@
   "jambitMeets": "Jambit meets Pokemeon Go",
   "meets": "meets Monopoly",
   "discoveredNewPlaceTitle": "You've discovered a new place!",
-  "noPlaceInformationWereProvided": "No place information were provided",
+  "noPlaceInformationWereProvided": "No place information was provided",
   "highScore": "High Score",
   "streetName": "Street Name",
   "ownedBy": "Owner",
   "game": "Game",
   "play": "Challenge",
   "JaPoMo": "Jambit game",
-  "practiceIconLabel": "Practice"
+  "practiceIconLabel": "Practice",
+  "rent": "Rent"
 }
