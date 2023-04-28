@@ -270,10 +270,10 @@ class S {
     );
   }
 
-  /// `Jambit meets Pokemon Go`
+  /// `jambit meets Pokemon Go`
   String get jambitMeets {
     return Intl.message(
-      'Jambit meets Pokemon Go',
+      'jambit meets Pokemon Go',
       name: 'jambitMeets',
       desc: '',
       args: [],
@@ -360,10 +360,10 @@ class S {
     );
   }
 
-  /// `Jambit game`
+  /// `jambit game`
   String get JaPoMo {
     return Intl.message(
-      'Jambit game',
+      'jambit game',
       name: 'JaPoMo',
       desc: '',
       args: [],

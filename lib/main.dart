@@ -29,7 +29,7 @@ void main() async {
 
   final IBackend backend = Backend(credentialUtil);
   final UserBloc userBloc = UserBloc(backend);
-  final PlaceBloc placeBloc = PlaceBloc(backend);
+  final PlaceBloc placeBloc = PlaceBloc(backend, userBloc);
   if (accessToken != null && accessToken != '') {
     userBloc.add(UserRequested());
   }

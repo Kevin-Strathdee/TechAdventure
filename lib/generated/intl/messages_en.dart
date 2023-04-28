@@ -25,7 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "JaPoMo": MessageLookupByLibrary.simpleMessage("Jambit game"),
+        "JaPoMo": MessageLookupByLibrary.simpleMessage("jambit game"),
         "discoveredNewPlaceTitle": MessageLookupByLibrary.simpleMessage(
             "You\'ve discovered a new place!"),
         "game": MessageLookupByLibrary.simpleMessage("Game"),
@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
         "highScore": MessageLookupByLibrary.simpleMessage("High Score"),
         "jambitMeets":
-            MessageLookupByLibrary.simpleMessage("Jambit meets Pokemon Go"),
+            MessageLookupByLibrary.simpleMessage("jambit meets Pokemon Go"),
         "loginButton": MessageLookupByLibrary.simpleMessage("login"),
         "loginEmailHint": MessageLookupByLibrary.simpleMessage("email"),
         "loginGoToRegister":
