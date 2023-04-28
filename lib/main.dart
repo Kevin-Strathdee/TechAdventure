@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
           create: (context) => ScanBloc(),
         ),
         BlocProvider(
-          create: (context) => PlaceBloc(backend),
+          create: (context) => PlaceBloc(backend, userBloc),
         )
       ],
       child: MaterialApp(
@@ -65,11 +65,8 @@ class MyApp extends StatelessWidget {
         ],
         supportedLocales: S.delegate.supportedLocales,
         title: 'japomo',
-        theme: ThemeData(
-          primarySwatch: getMaterialColor(jambitOrange),
-          fontFamily: 'Jost'
-        ),
-        home: (accessToken == null || accessToken == "") ? WelcomeScreen(credentialUtil) : HomePage(),
+        theme: ThemeData(primarySwatch: getMaterialColor(jambitOrange), fontFamily: 'Jost'),
+        home: (accessToken == null || accessToken == "") ? WelcomeScreen(credentialUtil) : const HomePage(),
       ),
     );
   }

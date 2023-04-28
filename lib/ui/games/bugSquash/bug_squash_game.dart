@@ -14,13 +14,15 @@ class BugSquashGame extends FlameGame {
   double count = 0;
   late TextComponent scoreDisplay;
   final Function(int score) onGameFinished;
-
+  late List<Sprite> bugSprites;
   BugSquashGame(this.onGameFinished);
 
   @override
   FutureOr<void> onLoad() async {
     final imagesLoader = Images();
     final image = await imagesLoader.load('bugSquash/background.png');
+    bugSprites = await Future.wait([1, 2].map((i) => Sprite.load('bugSquash/bug$i.png', srcSize: Vector2(200, 170))));
+
     final backgroundSprite = Sprite(image);
     final background = Background(backgroundSprite, size);
     scoreDisplay = TextComponent(
@@ -45,8 +47,8 @@ class BugSquashGame extends FlameGame {
     count += dt;
     if (count > (1 - (score * .02))) {
       count = 0;
-      final circle = Bug(size, () => _incrementScore(), () => endGame());
-      add(circle);
+      final bug = Bug(bugSprites, size, () => _incrementScore(), () => endGame(), score);
+      add(bug);
     }
     super.update(dt);
   }

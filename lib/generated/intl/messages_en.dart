@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
         "highScore": MessageLookupByLibrary.simpleMessage("High Score"),
         "jambitMeets":
-            MessageLookupByLibrary.simpleMessage("Jambit meets Pokemeon Go"),
+            MessageLookupByLibrary.simpleMessage("Jambit meets Pokemon Go"),
         "loginButton": MessageLookupByLibrary.simpleMessage("login"),
         "loginEmailHint": MessageLookupByLibrary.simpleMessage("email"),
         "loginGoToRegister":
