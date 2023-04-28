@@ -1,12 +1,12 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/user/user_bloc.dart';
-import 'package:tech_adventure/data/credentials_util.dart';
-import 'package:tech_adventure/generated/l10n.dart';
-import 'package:tech_adventure/theme/colors.dart';
-import 'package:tech_adventure/ui/delayed_animation.dart';
-import 'package:tech_adventure/ui/screens/home_page.dart';
+import 'package:japomo/bloc/user/user_bloc.dart';
+import 'package:japomo/data/credentials_util.dart';
+import 'package:japomo/generated/l10n.dart';
+import 'package:japomo/theme/colors.dart';
+import 'package:japomo/ui/delayed_animation.dart';
+import 'package:japomo/ui/screens/home_page.dart';
 
 class WelcomeScreen extends StatefulWidget {
   CredentialUtil credentialUtil;
@@ -17,8 +17,7 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen>
-    with SingleTickerProviderStateMixin {
+class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
   final int delayedAmount = 500;
   late double _scale;
   late AnimationController _controller;
@@ -72,20 +71,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   delay: delayedAmount + 1000,
                   child: Text(
                     S.of(context).hiThere,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35.0,
-                        color: color),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 35.0, color: color),
                   ),
                 ),
                 DelayedAnimation(
                   delay: delayedAmount + 2000,
                   child: Text(
                     S.of(context).thisIs,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35.0,
-                        color: color),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 35.0, color: color),
                   ),
                 ),
                 const SizedBox(
@@ -157,8 +150,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     bool authenticateSuccess = await widget.credentialUtil.authenticate();
     if (authenticateSuccess) {
       BlocProvider.of<UserBloc>(context).add(UserRequested());
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const HomePage()));
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
     }
   }
 }

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
+import 'package:japomo/bloc/scan/scan_bloc.dart';
 
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});
@@ -42,7 +42,6 @@ class _ScanScreenState extends State<ScanScreen> {
         final code = scanData.code;
         if (code != null && BlocProvider.of<ScanBloc>(context).state is! ScanCompleted) {
           BlocProvider.of<ScanBloc>(context).add(ScanCodeDetected(code));
-          Future.delayed(Duration(seconds: 4), () => BlocProvider.of<ScanBloc>(context).add(ScanStarted()));
         }
       });
     });

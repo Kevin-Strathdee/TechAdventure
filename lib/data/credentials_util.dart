@@ -1,6 +1,6 @@
 import 'package:openid_client/openid_client_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tech_adventure/main.dart';
+import 'package:japomo/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const authenticateUrl = "https://login.microsoftonline.com/e6dbe219-77ef-4b6a-af83-f9de7de08923/v2.0";

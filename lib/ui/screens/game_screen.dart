@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/place/place_bloc.dart';
-import 'package:tech_adventure/data/models/minigame.dart';
-import 'package:tech_adventure/data/models/place.dart';
-import 'package:tech_adventure/theme/colors.dart';
-import 'package:tech_adventure/ui/screens/bug_squash_screen.dart';
-import 'package:tech_adventure/ui/screens/dice_screen.dart';
-import 'package:tech_adventure/ui/screens/flappy_bean_screen.dart';
+import 'package:japomo/bloc/place/place_bloc.dart';
+import 'package:japomo/data/models/minigame.dart';
+import 'package:japomo/data/models/place.dart';
+import 'package:japomo/theme/colors.dart';
+import 'package:japomo/ui/screens/bug_squash_screen.dart';
+import 'package:japomo/ui/screens/dice_screen.dart';
+import 'package:japomo/ui/screens/flappy_bean_screen.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen(this.place, {super.key});

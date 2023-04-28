@@ -1,6 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/ui/games/dice/roll_dice_game.dart';
+import 'package:japomo/ui/games/dice/roll_dice_game.dart';
 
 class GameOverOverlay extends StatelessWidget {
   const GameOverOverlay(this.game, {super.key});
@@ -25,12 +25,10 @@ class GameOverOverlay extends StatelessWidget {
               const SizedBox(height: 50),
               ValueListenableBuilder<int>(
                   valueListenable: (game as RollDiceGame).gameManager.score,
-                  builder: (context, score, child) =>
-                      Text(
+                  builder: (context, score, child) => Text(
                         "Your score: $score",
                         style: Theme.of(context).textTheme.headlineMedium,
-                      )
-              ),
+                      )),
               const SizedBox(
                 height: 50,
               ),
@@ -42,8 +40,7 @@ class GameOverOverlay extends StatelessWidget {
                   minimumSize: MaterialStateProperty.all(
                     const Size(200, 75),
                   ),
-                  textStyle: MaterialStateProperty.all(
-                      Theme.of(context).textTheme.titleLarge),
+                  textStyle: MaterialStateProperty.all(Theme.of(context).textTheme.titleLarge),
                 ),
                 child: const Text('Play Again'),
               ),

@@ -1,6 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/ui/games/dice/roll_dice_game.dart';
+import 'package:japomo/ui/games/dice/roll_dice_game.dart';
 
 class DiceGameManager extends Component with HasGameRef<RollDiceGame> {
   DiceGameManager();

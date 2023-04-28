@@ -1,5 +1,5 @@
-import 'package:tech_adventure/data/models/place.dart';
-import 'package:tech_adventure/graphql/generated/graphql_api.graphql.dart';
+import 'package:japomo/data/models/place.dart';
+import 'package:japomo/graphql/generated/graphql_api.graphql.dart';
 
 import 'geometry.dart';
 import 'minigame.dart';

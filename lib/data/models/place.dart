@@ -1,7 +1,7 @@
-import 'package:tech_adventure/data/models/geometry.dart';
-import 'package:tech_adventure/data/models/minigame.dart';
-import 'package:tech_adventure/data/models/user.dart';
-import 'package:tech_adventure/graphql/generated/graphql_api.dart';
+import 'package:japomo/data/models/geometry.dart';
+import 'package:japomo/data/models/minigame.dart';
+import 'package:japomo/data/models/user.dart';
+import 'package:japomo/graphql/generated/graphql_api.dart';
 
 class Place {
   String id;

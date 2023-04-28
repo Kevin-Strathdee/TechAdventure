@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/user/user_bloc.dart';
-import 'package:tech_adventure/ui/widgets/overview/user_information_card.dart';
-import 'package:tech_adventure/ui/widgets/overview/user_places_card.dart';
+import 'package:japomo/bloc/user/user_bloc.dart';
+import 'package:japomo/ui/widgets/overview/user_information_card.dart';
+import 'package:japomo/ui/widgets/overview/user_places_card.dart';
 
 class OverviewScreen extends StatelessWidget {
   const OverviewScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/ui/games/dice/overlays/start_overlay.dart';
-import 'package:tech_adventure/ui/games/dice/roll_dice_game.dart';
+import 'package:japomo/ui/games/dice/overlays/start_overlay.dart';
+import 'package:japomo/ui/games/dice/roll_dice_game.dart';
 
 import '../games/dice/overlays/game_over_overlay.dart';
 

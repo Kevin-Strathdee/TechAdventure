@@ -1,12 +1,13 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/place/place_bloc.dart';
-import 'package:tech_adventure/data/models/place.dart';
-import 'package:tech_adventure/generated/l10n.dart';
-import 'package:tech_adventure/theme/colors.dart';
-import 'package:tech_adventure/ui/delayed_animation.dart';
-import 'package:tech_adventure/ui/screens/game_screen.dart';
+import 'package:japomo/bloc/place/place_bloc.dart';
+import 'package:japomo/data/models/place.dart';
+import 'package:japomo/generated/l10n.dart';
+import 'package:japomo/theme/colors.dart';
+import 'package:japomo/ui/delayed_animation.dart';
+import 'package:japomo/ui/screens/game_screen.dart';
+import 'package:japomo/ui/screens/home_page.dart';
 
 class PlaceDetailScreen extends StatelessWidget {
   const PlaceDetailScreen({super.key});
@@ -151,7 +152,8 @@ class PlaceDetailScreen extends StatelessWidget {
                   child: IconButton(
                       iconSize: 50,
                       color: Colors.white,
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => Navigator.of(context)
+                          .pushReplacement(MaterialPageRoute(builder: (context) => const HomePage())),
                       icon: Icon(Icons.close))),
               const SizedBox(
                 height: 30,

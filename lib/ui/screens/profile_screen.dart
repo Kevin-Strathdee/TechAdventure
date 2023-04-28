@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/data/models/user.dart';
-import 'package:tech_adventure/generated/l10n.dart';
+import 'package:japomo/data/models/user.dart';
+import 'package:japomo/generated/l10n.dart';
 
 import '../../bloc/user/user_bloc.dart';
 

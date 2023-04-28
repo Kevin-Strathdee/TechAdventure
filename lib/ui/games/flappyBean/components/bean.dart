@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flame/components.dart';
-import 'package:tech_adventure/ui/games/flappyBean/config.dart';
+import 'package:japomo/ui/games/flappyBean/config.dart';
 
 class Bean extends SpriteAnimationComponent {
   double _speed = FlappyBeansDimensions.flapPower;

@@ -1,14 +1,14 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/place/place_bloc.dart';
-import 'package:tech_adventure/data/models/geometry.dart';
-import 'package:tech_adventure/data/models/minigame.dart';
-import 'package:tech_adventure/data/models/place.dart';
-import 'package:tech_adventure/data/models/user.dart';
-import 'package:tech_adventure/ui/games/flappyBean/flappy_bean_game.dart';
-import 'package:tech_adventure/ui/screens/game_screen.dart';
-import 'package:tech_adventure/ui/screens/home_page.dart';
+import 'package:japomo/bloc/place/place_bloc.dart';
+import 'package:japomo/data/models/geometry.dart';
+import 'package:japomo/data/models/minigame.dart';
+import 'package:japomo/data/models/place.dart';
+import 'package:japomo/data/models/user.dart';
+import 'package:japomo/ui/games/flappyBean/flappy_bean_game.dart';
+import 'package:japomo/ui/screens/game_screen.dart';
+import 'package:japomo/ui/screens/home_page.dart';
 
 import '../widgets/flappyBean/game_over_overlay.dart';
 

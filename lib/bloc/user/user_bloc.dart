@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:tech_adventure/data/api/backend.dart';
-import 'package:tech_adventure/data/models/user.dart';
+import 'package:japomo/data/api/backend.dart';
+import 'package:japomo/data/models/user.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';

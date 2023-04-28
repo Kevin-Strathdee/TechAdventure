@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/data/models/place.dart';
+import 'package:japomo/data/models/place.dart';
 
 class PlaceTile extends StatelessWidget {
   const PlaceTile({super.key, required this.place});

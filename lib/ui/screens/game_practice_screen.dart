@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/data/models/minigame.dart';
-import 'package:tech_adventure/ui/screens/bug_squash_screen.dart';
-import 'package:tech_adventure/ui/screens/dice_screen.dart';
-import 'package:tech_adventure/ui/screens/flappy_bean_screen.dart';
+import 'package:japomo/data/models/minigame.dart';
+import 'package:japomo/ui/screens/bug_squash_screen.dart';
+import 'package:japomo/ui/screens/dice_screen.dart';
+import 'package:japomo/ui/screens/flappy_bean_screen.dart';
 
 class GamePracticeScreen extends StatefulWidget {
   const GamePracticeScreen({super.key, required this.game});
