@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jambit.jamopo",
+      "sha256_cert_fingerprints": [
+        "1D:23:A9:9C:80:AA:FA:C3:7F:E2:83:67:B8:52:CC:DC:61:13:9D:57:C7:AF:B1:75:7B:DC:60:4A:75:6A:73:43"
+      ]
+    }
+  }
+]
