@@ -169,6 +169,7 @@ class PlaceDetailScreen extends StatelessWidget {
         const Spacer(),
       ],
     ));
+
   }
 
   Widget noContent(BuildContext context) {
@@ -178,7 +179,8 @@ class PlaceDetailScreen extends StatelessWidget {
         const SizedBox(height: 50),
         Text(
           S.of(context).noPlaceInformationWereProvided,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black),
+          style: const TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black),
         ),
       ],
     );
@@ -207,13 +209,17 @@ class PlaceDetailScreen extends StatelessWidget {
                 delay: delayedAmount + 1000,
                 child: Text(
                   S.of(context).discoveredNewPlaceTitle,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0, color: color),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25.0,
+                      color: color),
                 ),
               ),
               const SizedBox(height: 50),
               BlocBuilder<PlaceBloc, PlaceState>(builder: (context, state) {
                 if (state is PlaceLoadInProgress) {
-                  return const CircularProgressIndicator(backgroundColor: Colors.white);
+                  return const CircularProgressIndicator(
+                      backgroundColor: Colors.white);
                 } else if (state is PlaceLoadedSuccess) {
                   return getContent(context, state.place);
                 }
