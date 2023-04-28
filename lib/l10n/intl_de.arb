@@ -33,16 +33,17 @@
     }
   },
   "hiThere": "Hi There,",
-  "thisIs": "This is JaPoMo",
+  "thisIs": "This is japomo",
   "jambitMeets": "Jambit meets Pokemeon Go",
   "meets": "meets Monopoly",
   "discoveredNewPlaceTitle": "You've discovered a new place!",
-  "noPlaceInformationWereProvided": "No place information were provided",
+  "noPlaceInformationWereProvided": "No place information was provided",
   "highScore": "high score",
   "streetName": "Street name",
   "ownedBy": "Owned by",
   "game": "game",
   "play": "Play",
   "JaPoMo": "Jambit game",
-  "practiceIconLabel": "Practice"
+  "practiceIconLabel": "Practice",
+  "score": "Score"
 }

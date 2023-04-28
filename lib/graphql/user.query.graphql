@@ -8,6 +8,18 @@ query user {
           name
           type
           image
+          owner {
+            id
+          }
+          minigame {
+                type
+                score
+              }
+          geometry {
+                mapLayer
+                x
+                y
+              }
         }
         email
         score

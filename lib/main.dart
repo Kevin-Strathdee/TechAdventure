@@ -89,9 +89,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       title: 'japomo',
-      theme: ThemeData(
-        primarySwatch: getMaterialColor(jambitOrange),
-      ),
+      theme: ThemeData(primarySwatch: getMaterialColor(jambitOrange), fontFamily: 'Jost'),
     );
   }
 }

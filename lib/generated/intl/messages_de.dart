@@ -47,7 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "navbarProfile": MessageLookupByLibrary.simpleMessage("Profile"),
         "navbarScan": MessageLookupByLibrary.simpleMessage("Scan"),
         "noPlaceInformationWereProvided": MessageLookupByLibrary.simpleMessage(
-            "No place information were provided"),
+            "No place information was provided"),
         "overviewPlacesTitle":
             MessageLookupByLibrary.simpleMessage("My Places"),
         "overviewPoints": MessageLookupByLibrary.simpleMessage("Points"),
@@ -67,7 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerRepeatPasswordHint":
             MessageLookupByLibrary.simpleMessage("repeat password"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
+        "score": MessageLookupByLibrary.simpleMessage("Score"),
         "streetName": MessageLookupByLibrary.simpleMessage("Street name"),
-        "thisIs": MessageLookupByLibrary.simpleMessage("This is JaPoMo")
+        "thisIs": MessageLookupByLibrary.simpleMessage("This is japomo")
       };
 }

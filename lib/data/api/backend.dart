@@ -30,7 +30,7 @@ class AuthenticatedClient extends http.BaseClient {
     String? accessToken = credentialUtil.getAccessToken();
     request.headers['Authorization'] = 'Bearer $accessToken';
     http.StreamedResponse response = await _inner.send(request);
-    if (response.statusCode == 401 || response.statusCode == 500) {
+    if (response.statusCode == 401 || response.statusCode == 403) {
       await credentialUtil.refreshCredential();
       String? accessToken = credentialUtil.getAccessToken();
 
