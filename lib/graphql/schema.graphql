@@ -135,4 +135,5 @@ type User {
   places: [Place!]!
   score: Int!
   username: String!
+  rank: Int!
 }

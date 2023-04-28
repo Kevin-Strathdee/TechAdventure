@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "play": MessageLookupByLibrary.simpleMessage("Play"),
         "practiceIconLabel": MessageLookupByLibrary.simpleMessage("Practice"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("My Profile"),
+        "rank": MessageLookupByLibrary.simpleMessage("Rank"),
         "registerCreateAccountButton":
             MessageLookupByLibrary.simpleMessage("Create Account"),
         "registerEmailHint": MessageLookupByLibrary.simpleMessage("email"),

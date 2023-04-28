@@ -23,5 +23,6 @@ query user {
         }
         email
         score
+        rank
     }
 }

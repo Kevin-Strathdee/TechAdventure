@@ -40,6 +40,22 @@ class UserInformationCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Text(
+                          "${S.of(context).rank}: ",
+                          style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
+                        ),
+                        Text(
+                            "${state.user.rank}",
+                            style: Theme.of(context).textTheme.headlineMedium
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
                         Row(
                           children: [
                             Container(
@@ -69,10 +85,10 @@ class UserInformationCard extends StatelessWidget {
                           ]
                         ),
                         Text("${state.user.score}",
-                          style: Theme.of(context).textTheme.headlineLarge,
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
                       ],
-                    ),
+                    )
                   ],
                 ),
               );
@@ -88,7 +104,8 @@ class UserInformationCard extends StatelessWidget {
                           height: 40,
                           width: 300,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8), color: Colors.grey.shade300.withOpacity(.3)),
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.grey.shade300.withOpacity(.3)),
                         ),
                         const SizedBox(
                           height: 20,
@@ -99,7 +116,9 @@ class UserInformationCard extends StatelessWidget {
                             Container(
                                 height: 80,
                                 width: 80,
-                                decoration: const BoxDecoration(color: jambitOrange, shape: BoxShape.circle),
+                                decoration: const BoxDecoration(
+                                    color: jambitOrange,
+                                    shape: BoxShape.circle),
                                 child: const Padding(
                                   padding: EdgeInsets.all(13.0),
                                   child: CoffeeBean(),
@@ -108,7 +127,8 @@ class UserInformationCard extends StatelessWidget {
                               height: 70,
                               width: 200,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8), color: Colors.grey.shade300.withOpacity(.3)),
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.grey.shade300.withOpacity(.3)),
                             )
                           ],
                         ),

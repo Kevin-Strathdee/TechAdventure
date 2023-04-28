@@ -51,8 +51,10 @@ class MinigameOutcome$RootMutationType$MinigameOutcome$Place$User
 
   late int score;
 
+  late int rank;
+
   @override
-  List<Object?> get props => [id, username, name, email, score];
+  List<Object?> get props => [id, username, name, email, score, rank];
   @override
   Map<String, dynamic> toJson() =>
       _$MinigameOutcome$RootMutationType$MinigameOutcome$Place$UserToJson(this);
@@ -254,8 +256,10 @@ class User$RootQueryType$User extends JsonSerializable with EquatableMixin {
 
   late int score;
 
+  late int rank;
+
   @override
-  List<Object?> get props => [id, username, name, places, email, score];
+  List<Object?> get props => [id, username, name, places, email, score, rank];
   @override
   Map<String, dynamic> toJson() => _$User$RootQueryType$UserToJson(this);
 }
@@ -316,8 +320,10 @@ class Place$RootQueryType$Place$User extends JsonSerializable
 
   late int score;
 
+  late int rank;
+
   @override
-  List<Object?> get props => [id, username, name, email, score];
+  List<Object?> get props => [id, username, name, email, score, rank];
   @override
   Map<String, dynamic> toJson() => _$Place$RootQueryType$Place$UserToJson(this);
 }
@@ -571,6 +577,13 @@ final MINIGAME_OUTCOME_MUTATION_DOCUMENT = DocumentNode(definitions: [
                     directives: [],
                     selectionSet: null,
                   ),
+                  FieldNode(
+                    name: NameNode(value: 'rank'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
                 ]),
               ),
               FieldNode(
@@ -782,6 +795,13 @@ final USER_QUERY_DOCUMENT = DocumentNode(definitions: [
             directives: [],
             selectionSet: null,
           ),
+          FieldNode(
+            name: NameNode(value: 'rank'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
         ]),
       )
     ]),
@@ -935,6 +955,13 @@ final PLACE_QUERY_DOCUMENT = DocumentNode(definitions: [
               ),
               FieldNode(
                 name: NameNode(value: 'score'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'rank'),
                 alias: null,
                 arguments: [],
                 directives: [],
