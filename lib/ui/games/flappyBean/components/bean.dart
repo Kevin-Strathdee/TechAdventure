@@ -7,6 +7,8 @@ class Bean extends SpriteAnimationComponent {
   double _speed = FlappyBeansDimensions.flapPower;
   late double _bottom;
   bool shouldMove = false;
+  double elapsed = 0;
+
   Bean(List<Sprite> sprites, Vector2 screenSize)
       : super(
             size: Vector2.all(FlappyBeansDimensions.beanSize),
@@ -30,6 +32,9 @@ class Bean extends SpriteAnimationComponent {
 
   @override
   void update(double dt) {
+    elapsed += dt;
+    if (elapsed < FlappyBeansDimensions.gameSpeed) return;
+    elapsed = 0;
     if (!shouldMove) return;
     _speed = max(_speed - FlappyBeansDimensions.gravity, FlappyBeansDimensions.terminalVelocity);
     position.y = max(min(_bottom + 10, position.y - _speed), 0);
