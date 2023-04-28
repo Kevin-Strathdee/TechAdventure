@@ -42,7 +42,7 @@ class UserInformationCard extends StatelessWidget {
                       children: [
                         Text(
                           "${S.of(context).rank}: ",
-                          style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontSize: 21.0, fontWeight: FontWeight.w500),
                         ),
                         Text(
                             "${state.user.rank}",

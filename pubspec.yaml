@@ -79,6 +79,7 @@ flutter:
     - assets/
     - assets/icon/
     - assets/images/game/
+    - assets/images/background/
     - assets/images/flappyBeans/
     - assets/images/bugSquash/
   # An image asset can refer to one or more resolution-specific "variants", see
