@@ -19,7 +19,7 @@ class Place {
         name = place.name,
         minigame = Minigame(place.minigame.type, place.minigame.score),
         owner = place.owner != null
-            ? User.fromGraphqlPlaceUserWitoutUserPlaces(place.owner!)
+            ? User.fromGraphqlPlaceUserWithoutUserPlaces(place.owner!)
             : null,
         image = place.image,
         geometry = Geometry(Map.MUNICH_4, place.geometry?.x, place.geometry?.y);

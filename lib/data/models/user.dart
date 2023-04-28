@@ -22,7 +22,8 @@ class User {
         places = user.places.map((e) => fromGraphqlUserPlace(e)).toList(),
         score = user.score;
 
-  User.fromGraphqlPlaceUserWitoutUserPlaces(Place$RootQueryType$Place$User user)
+  User.fromGraphqlPlaceUserWithoutUserPlaces(
+      Place$RootQueryType$Place$User user)
       : id = int.parse(user.id),
         email = user.email,
         userName = user.username,
