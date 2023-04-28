@@ -147,6 +147,67 @@ class MinigameOutcome$RootMutationType extends JsonSerializable
 }
 
 @JsonSerializable(explicitToJson: true)
+class User$RootQueryType$User$Place$User extends JsonSerializable
+    with EquatableMixin {
+  User$RootQueryType$User$Place$User();
+
+  factory User$RootQueryType$User$Place$User.fromJson(
+          Map<String, dynamic> json) =>
+      _$User$RootQueryType$User$Place$UserFromJson(json);
+
+  late String id;
+
+  @override
+  List<Object?> get props => [id];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$User$RootQueryType$User$Place$UserToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class User$RootQueryType$User$Place$Minigame extends JsonSerializable
+    with EquatableMixin {
+  User$RootQueryType$User$Place$Minigame();
+
+  factory User$RootQueryType$User$Place$Minigame.fromJson(
+          Map<String, dynamic> json) =>
+      _$User$RootQueryType$User$Place$MinigameFromJson(json);
+
+  late String type;
+
+  late int score;
+
+  @override
+  List<Object?> get props => [type, score];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$User$RootQueryType$User$Place$MinigameToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class User$RootQueryType$User$Place$Geometry extends JsonSerializable
+    with EquatableMixin {
+  User$RootQueryType$User$Place$Geometry();
+
+  factory User$RootQueryType$User$Place$Geometry.fromJson(
+          Map<String, dynamic> json) =>
+      _$User$RootQueryType$User$Place$GeometryFromJson(json);
+
+  @JsonKey(unknownEnumValue: MapLayer.artemisUnknown)
+  late MapLayer mapLayer;
+
+  late double x;
+
+  late double y;
+
+  @override
+  List<Object?> get props => [mapLayer, x, y];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$User$RootQueryType$User$Place$GeometryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class User$RootQueryType$User$Place extends JsonSerializable
     with EquatableMixin {
   User$RootQueryType$User$Place();
@@ -162,8 +223,14 @@ class User$RootQueryType$User$Place extends JsonSerializable
 
   String? image;
 
+  User$RootQueryType$User$Place$User? owner;
+
+  late User$RootQueryType$User$Place$Minigame minigame;
+
+  User$RootQueryType$User$Place$Geometry? geometry;
+
   @override
-  List<Object?> get props => [id, name, type, image];
+  List<Object?> get props => [id, name, type, image, owner, minigame, geometry];
   @override
   Map<String, dynamic> toJson() => _$User$RootQueryType$User$PlaceToJson(this);
 }
@@ -286,6 +353,8 @@ class Place$RootQueryType$Place extends JsonSerializable with EquatableMixin {
 
   late String name;
 
+  late String type;
+
   Place$RootQueryType$Place$Geometry? geometry;
 
   Place$RootQueryType$Place$User? owner;
@@ -295,7 +364,7 @@ class Place$RootQueryType$Place extends JsonSerializable with EquatableMixin {
   String? image;
 
   @override
-  List<Object?> get props => [id, name, geometry, owner, minigame, image];
+  List<Object?> get props => [id, name, type, geometry, owner, minigame, image];
   @override
   Map<String, dynamic> toJson() => _$Place$RootQueryType$PlaceToJson(this);
 }
@@ -631,6 +700,72 @@ final USER_QUERY_DOCUMENT = DocumentNode(definitions: [
                 directives: [],
                 selectionSet: null,
               ),
+              FieldNode(
+                name: NameNode(value: 'owner'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  )
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'minigame'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'type'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'score'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'geometry'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'mapLayer'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'x'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'y'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
             ]),
           ),
           FieldNode(
@@ -723,6 +858,13 @@ final PLACE_QUERY_DOCUMENT = DocumentNode(definitions: [
           ),
           FieldNode(
             name: NameNode(value: 'name'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'type'),
             alias: null,
             arguments: [],
             directives: [],

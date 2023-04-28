@@ -12,6 +12,7 @@ import 'package:japomo/ui/screens/flappy_bean_screen.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen(this.place, {super.key});
+
   final Place place;
 
   @override
@@ -129,7 +130,8 @@ class _GameScreenState extends State<GameScreen> {
                         children: [
                           ElevatedButton(
                               onPressed: () {
-                                BlocProvider.of<PlaceBloc>(context).add(PlaceGameStarted(widget.place));
+                                BlocProvider.of<PlaceBloc>(context)
+                                    .add(PlaceGameStarted(widget.place));
                               },
                               child: Text("Play Again")),
                           ElevatedButton(

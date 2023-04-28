@@ -25,6 +25,7 @@ class _GamePracticeScreenState extends State<GamePracticeScreen> {
   Widget build(BuildContext context) {
     void reportGameScore(int score) {
       showDialog(
+          barrierDismissible: false,
           context: context,
           builder: (context) => AlertDialog(
                 title: Text("Game Over"),

@@ -2,6 +2,7 @@ query place($placeId: ID) {
   place(placeId: $placeId) {
     id
     name
+    type
     geometry {
       mapLayer
       x

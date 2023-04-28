@@ -67,6 +67,7 @@ class MyApp extends StatelessWidget {
         title: 'japomo',
         theme: ThemeData(
           primarySwatch: getMaterialColor(jambitOrange),
+          fontFamily: 'Jost'
         ),
         home: (accessToken == null || accessToken == "") ? WelcomeScreen(credentialUtil) : HomePage(),
       ),
