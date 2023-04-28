@@ -47,7 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "navbarProfile": MessageLookupByLibrary.simpleMessage("Profile"),
         "navbarScan": MessageLookupByLibrary.simpleMessage("Scan"),
         "noPlaceInformationWereProvided": MessageLookupByLibrary.simpleMessage(
-            "No place information were provided"),
+            "No place information was provided"),
         "overviewPlacesTitle":
             MessageLookupByLibrary.simpleMessage("My Places"),
         "overviewPoints": MessageLookupByLibrary.simpleMessage("Points"),

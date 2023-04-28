@@ -5,8 +5,9 @@ import 'package:flutter_svg/svg.dart';
 const String assetName = 'assets/coffee-bean.svg';
 
 class CoffeeBean extends StatelessWidget {
-  const CoffeeBean({super.key, this.color});
+  const CoffeeBean({super.key, this.color, this.size = const Size(30, 30)});
   final Color? color;
+  final Size size;
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,8 @@ class CoffeeBean extends StatelessWidget {
       color: color,
       assetName,
       semanticsLabel: 'Coffee bean',
-      height: 30,
-      width: 30,
+      height: size.height,
+      width: size.width,
     );
   }
 }
