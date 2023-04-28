@@ -42,7 +42,6 @@ class _ScanScreenState extends State<ScanScreen> {
         final code = scanData.code;
         if (code != null && BlocProvider.of<ScanBloc>(context).state is! ScanCompleted) {
           BlocProvider.of<ScanBloc>(context).add(ScanCodeDetected(code));
-          Future.delayed(Duration(seconds: 4), () => BlocProvider.of<ScanBloc>(context).add(ScanStarted()));
         }
       });
     });

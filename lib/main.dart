@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,7 +9,6 @@ import 'package:tech_adventure/data/api/backend.dart';
 import 'package:tech_adventure/data/credentials_util.dart';
 import 'package:tech_adventure/generated/l10n.dart';
 import 'package:tech_adventure/theme/colors.dart';
-import 'package:tech_adventure/ui/screens/bug_squash_screen.dart';
 import 'package:tech_adventure/ui/screens/home_page.dart';
 import 'package:tech_adventure/ui/screens/welcome_screen.dart';
 
@@ -23,6 +23,7 @@ void main() async {
   final CredentialUtil credentialUtil = CredentialUtil();
   await credentialUtil.init();
   String? accessToken = prefs.getString(accessTokenKey);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MyApp(
     accessToken: accessToken,
     credentialUtil: credentialUtil,

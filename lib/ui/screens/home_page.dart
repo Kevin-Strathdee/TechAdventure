@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
         if (state is ScanCompleted) {
           final placeId = state.code.split("/").last;
           BlocProvider.of<PlaceBloc>(context).add(PlaceScanned(placeId));
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PlaceDetailScreen()));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const PlaceDetailScreen()));
         }
       },
       child: Scaffold(
