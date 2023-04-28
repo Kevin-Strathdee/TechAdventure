@@ -200,10 +200,10 @@ class S {
     );
   }
 
-  /// `Points`
+  /// `jambeans`
   String get overviewPoints {
     return Intl.message(
-      'Points',
+      'jambeans',
       name: 'overviewPoints',
       desc: '',
       args: [],

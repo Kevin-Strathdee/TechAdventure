@@ -12,16 +12,18 @@ class OverviewScreen extends StatelessWidget {
     return RefreshIndicator(
         displacement: 1,
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
-        onRefresh: () async => BlocProvider.of<UserBloc>(context).add(UserRequested()),
-        child: ListView(
-          children: [
+        onRefresh: () async =>
+            BlocProvider.of<UserBloc>(context).add(UserRequested()),
+        child: Scaffold(
+          backgroundColor: Colors.grey.shade100,
+          body: ListView(children: [
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: const [UserInformationCard(), UserPlacesCard()],
               ),
             ),
-          ],
+          ]),
         ));
   }
 }
