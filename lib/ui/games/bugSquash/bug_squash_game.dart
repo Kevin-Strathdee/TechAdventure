@@ -45,7 +45,7 @@ class BugSquashGame extends FlameGame {
     count += dt;
     if (count > (1 - (score * .02))) {
       count = 0;
-      final circle = Bug(size, () => score++, () => endGame());
+      final circle = Bug(size, () => _incrementScore(), () => endGame());
       add(circle);
     }
     super.update(dt);
