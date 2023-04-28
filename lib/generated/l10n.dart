@@ -260,10 +260,10 @@ class S {
     );
   }
 
-  /// `This is JaPoMo`
+  /// `This is japomo`
   String get thisIs {
     return Intl.message(
-      'This is JaPoMo',
+      'This is japomo',
       name: 'thisIs',
       desc: '',
       args: [],
@@ -385,6 +385,16 @@ class S {
     return Intl.message(
       'Rent',
       name: 'rent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Score`
+  String get score {
+    return Intl.message(
+      'Score',
+      name: 'score',
       desc: '',
       args: [],
     );

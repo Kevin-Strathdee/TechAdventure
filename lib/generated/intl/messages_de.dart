@@ -67,7 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerRepeatPasswordHint":
             MessageLookupByLibrary.simpleMessage("repeat password"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
+        "score": MessageLookupByLibrary.simpleMessage("Score"),
         "streetName": MessageLookupByLibrary.simpleMessage("Street name"),
-        "thisIs": MessageLookupByLibrary.simpleMessage("This is JaPoMo")
+        "thisIs": MessageLookupByLibrary.simpleMessage("This is japomo")
       };
 }
