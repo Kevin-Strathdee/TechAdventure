@@ -45,7 +45,8 @@ void main() async {
       GoRoute(
         path: '/places/:placeId',
         builder: (context, state) {
-          if (accessToken == null || accessToken == "") {
+          var token = prefs.getString(accessTokenKey);
+          if (token == null || token == "") {
             return WelcomeScreen(credentialUtil);
           } else {
             final placeId = state.params['placeId'];
