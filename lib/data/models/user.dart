@@ -53,6 +53,7 @@ class User {
   }
 
   static Map mapMapLayer(MapLayer? mapLayer) {
-    return Map.values.firstWhere((element) => element.value == mapLayer?.name);
+    return Map.values.firstWhere((element) => element.value == mapLayer?.name,
+        orElse: () => Map.MUNICH_5);
   }
 }
