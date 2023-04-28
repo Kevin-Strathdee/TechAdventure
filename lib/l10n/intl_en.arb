@@ -34,7 +34,7 @@
   },
   "hiThere": "Hi There,",
   "thisIs": "This is japomo",
-  "jambitMeets": "jambit meets Pokemeon Go",
+  "jambitMeets": "jambit meets Pokemon Go",
   "meets": "meets Monopoly",
   "discoveredNewPlaceTitle": "You've discovered a new place!",
   "noPlaceInformationWereProvided": "No place information was provided",
@@ -47,5 +47,6 @@
   "practiceIconLabel": "Practice",
   "rent": "Rent",
   "score": "Score",
-  "rank": "Rank"
+  "rank": "Rank",
+  "miniGame": "Minigame: "
 }

@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
         "highScore": MessageLookupByLibrary.simpleMessage("High Score"),
         "jambitMeets":
-            MessageLookupByLibrary.simpleMessage("jambit meets Pokemeon Go"),
+            MessageLookupByLibrary.simpleMessage("jambit meets Pokemon Go"),
         "loginButton": MessageLookupByLibrary.simpleMessage("login"),
         "loginEmailHint": MessageLookupByLibrary.simpleMessage("email"),
         "loginGoToRegister":
@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginPasswordHint": MessageLookupByLibrary.simpleMessage("password"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "meets": MessageLookupByLibrary.simpleMessage("meets Monopoly"),
+        "miniGame": MessageLookupByLibrary.simpleMessage("Minigame: "),
         "navbarHome": MessageLookupByLibrary.simpleMessage("Home"),
         "navbarProfile": MessageLookupByLibrary.simpleMessage("Profile"),
         "navbarScan": MessageLookupByLibrary.simpleMessage("Scan"),

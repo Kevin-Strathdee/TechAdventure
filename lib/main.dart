@@ -29,21 +29,23 @@ void main() async {
 
   final IBackend backend = Backend(credentialUtil);
   final UserBloc userBloc = UserBloc(backend);
-  final PlaceBloc placeBloc = PlaceBloc(backend);
+  final PlaceBloc placeBloc = PlaceBloc(backend, userBloc);
   if (accessToken != null && accessToken != '') {
     userBloc.add(UserRequested());
   }
   final router = GoRouter(
     routes: [
       GoRoute(
-        path: '/',
-        builder: (context, state) =>
-            (accessToken == null || accessToken == "") ? WelcomeScreen(credentialUtil) : const HomePage(),
-      ),
+          path: '/',
+          builder: (context, state) {
+            var token = prefs.getString(accessTokenKey);
+            return (token == null || token == "") ? WelcomeScreen(credentialUtil) : const HomePage();
+          }),
       GoRoute(
         path: '/places/:placeId',
         builder: (context, state) {
-          if (accessToken == null || accessToken == "") {
+          var token = prefs.getString(accessTokenKey);
+          if (token == null || token == "") {
             return WelcomeScreen(credentialUtil);
           } else {
             final placeId = state.params['placeId'];

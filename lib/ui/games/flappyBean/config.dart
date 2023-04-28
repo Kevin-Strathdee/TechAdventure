@@ -11,5 +11,6 @@ class FlappyBeansDimensions {
   static double defaultPipeGap = 300;
   static double defaultOffset = 200;
   static double minOffset = 50;
-  static double gameSpeed = 5;
+  static double pipeSpeed = 5;
+  static double gameSpeed = .015;
 }

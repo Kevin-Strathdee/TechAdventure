@@ -1,4 +1,5 @@
 class BugsquashConfig {
-  static double bugSpeed = 3;
-  static double bugSize = 20;
+  static double bugSpeed = 2.5;
+  static double bugSize = 50;
+  static double gameSpeed = .015;
 }

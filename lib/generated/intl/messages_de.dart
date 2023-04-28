@@ -28,14 +28,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "JaPoMo": MessageLookupByLibrary.simpleMessage("jambit game"),
         "discoveredNewPlaceTitle": MessageLookupByLibrary.simpleMessage(
             "You\'ve discovered a new place!"),
-        "game": MessageLookupByLibrary.simpleMessage("game"),
+        "game": MessageLookupByLibrary.simpleMessage("Game"),
         "gameOverOverviewMessage": m0,
         "gameOverOverviewTitle":
             MessageLookupByLibrary.simpleMessage("GAME OVER"),
         "hiThere": MessageLookupByLibrary.simpleMessage("Hi There,"),
-        "highScore": MessageLookupByLibrary.simpleMessage("high score"),
+        "highScore": MessageLookupByLibrary.simpleMessage("High Score"),
         "jambitMeets":
-            MessageLookupByLibrary.simpleMessage("jambit meets Pokemeon Go"),
+            MessageLookupByLibrary.simpleMessage("jambit meets Pokemon Go"),
         "loginButton": MessageLookupByLibrary.simpleMessage("login"),
         "loginEmailHint": MessageLookupByLibrary.simpleMessage("email"),
         "loginGoToRegister":
@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginPasswordHint": MessageLookupByLibrary.simpleMessage("password"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "meets": MessageLookupByLibrary.simpleMessage("meets Monopoly"),
+        "miniGame": MessageLookupByLibrary.simpleMessage("Minigame: "),
         "navbarHome": MessageLookupByLibrary.simpleMessage("Home"),
         "navbarProfile": MessageLookupByLibrary.simpleMessage("Profile"),
         "navbarScan": MessageLookupByLibrary.simpleMessage("Scan"),
@@ -53,8 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "overviewPoints": MessageLookupByLibrary.simpleMessage("jambeans"),
         "overviewWelcomeMessage":
             MessageLookupByLibrary.simpleMessage("Welcome"),
-        "ownedBy": MessageLookupByLibrary.simpleMessage("Owned by"),
-        "play": MessageLookupByLibrary.simpleMessage("Play"),
+        "ownedBy": MessageLookupByLibrary.simpleMessage("Owner"),
+        "play": MessageLookupByLibrary.simpleMessage("Challenge"),
         "practiceIconLabel": MessageLookupByLibrary.simpleMessage("Practice"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("My Profile"),
         "rank": MessageLookupByLibrary.simpleMessage("Rank"),
@@ -68,8 +69,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerRepeatPasswordHint":
             MessageLookupByLibrary.simpleMessage("repeat password"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
+        "rent": MessageLookupByLibrary.simpleMessage("Rent"),
         "score": MessageLookupByLibrary.simpleMessage("Score"),
-        "streetName": MessageLookupByLibrary.simpleMessage("Street name"),
+        "streetName": MessageLookupByLibrary.simpleMessage("Street Name"),
         "thisIs": MessageLookupByLibrary.simpleMessage("This is japomo")
       };
 }
