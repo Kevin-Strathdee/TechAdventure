@@ -15,28 +15,27 @@ class OverviewAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: SizedBox(
         height: preferredSize.height,
         width: preferredSize.width,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const AppLogo(),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: BlocBuilder<UserBloc, UserState>(
-                    builder: (context, state) {
-                      if (state is UserLoadSuccess) {
-                        return ScoreDisplay(score: state.user.score);
-                      } else {
-                        return const ScoreDisplay(score: 0);
-                      }
-                    },
-                  )),
-            )
-          ],
-        ),
+        child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const AppLogo(),
+                SizedBox(
+                    height: 40,
+                    width: 40,
+                    child: BlocBuilder<UserBloc, UserState>(
+                      builder: (context, state) {
+                        if (state is UserLoadSuccess) {
+                          return ScoreDisplay(score: state.user.score);
+                        } else {
+                          return const ScoreDisplay(score: 0);
+                        }
+                      },
+                    )),
+              ],
+            )),
       ),
     );
   }

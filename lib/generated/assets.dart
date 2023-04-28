@@ -9,6 +9,8 @@ class Assets {
   static const String assetsLogo = 'assets/logo.png';
   static const String backgroundComicBackground = 'assets/images/background/comic_background.png';
   static const String bugSquashBackground = 'assets/images/bugSquash/background.png';
+  static const String bugSquashBug1 = 'assets/images/bugSquash/bug1.png';
+  static const String bugSquashBug2 = 'assets/images/bugSquash/bug2.png';
   static const String flappyBeansFbs01 = 'assets/images/flappyBeans/fbs-01.png';
   static const String flappyBeansFbs02 = 'assets/images/flappyBeans/fbs-02.png';
   static const String flappyBeansFbs03 = 'assets/images/flappyBeans/fbs-03.png';
@@ -65,5 +67,6 @@ class Assets {
   static const String gameDicePairIcon = 'assets/images/game/dice-pair-icon.png';
   static const String gameDiceRoll = 'assets/images/game/dice-roll.png';
   static const String iconLogo = 'assets/icon/logo.png';
+  static const String techAdventureAssetsLogo = 'assets/logo.svg';
 
 }
