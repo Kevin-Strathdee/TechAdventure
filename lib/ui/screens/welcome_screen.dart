@@ -6,7 +6,7 @@ import 'package:japomo/data/credentials_util.dart';
 import 'package:japomo/generated/l10n.dart';
 import 'package:japomo/theme/colors.dart';
 import 'package:japomo/ui/delayed_animation.dart';
-import 'package:japomo/ui/screens/home_page.dart';
+import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends StatefulWidget {
   CredentialUtil credentialUtil;
@@ -150,7 +150,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     bool authenticateSuccess = await widget.credentialUtil.authenticate();
     if (authenticateSuccess) {
       BlocProvider.of<UserBloc>(context).add(UserRequested());
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
+      context.pushReplacement("/");
     }
   }
 }
