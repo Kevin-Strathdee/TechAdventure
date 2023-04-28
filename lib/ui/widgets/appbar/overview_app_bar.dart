@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/user/user_bloc.dart';
-import 'package:tech_adventure/ui/widgets/appbar/app_logo.dart';
-import 'package:tech_adventure/ui/widgets/appbar/score_display.dart';
+import 'package:japomo/bloc/user/user_bloc.dart';
+import 'package:japomo/ui/widgets/appbar/app_logo.dart';
+import 'package:japomo/ui/widgets/appbar/score_display.dart';
 
 class OverviewAppBar extends StatelessWidget implements PreferredSizeWidget {
   const OverviewAppBar({super.key});

@@ -1,5 +1,5 @@
-import 'package:tech_adventure/data/models/place.dart';
-import 'package:tech_adventure/graphql/generated/graphql_api.graphql.dart';
+import 'package:japomo/data/models/place.dart';
+import 'package:japomo/graphql/generated/graphql_api.graphql.dart';
 
 class User {
   int id;
@@ -29,8 +29,7 @@ class User {
         places = [],
         score = user.score;
 
-  User.fromGraphqlMinigameOutcomePlaceUser(
-      MinigameOutcome$RootMutationType$MinigameOutcome$Place$User user)
+  User.fromGraphqlMinigameOutcomePlaceUser(MinigameOutcome$RootMutationType$MinigameOutcome$Place$User user)
       : id = int.parse(user.id),
         email = user.email,
         userName = user.username,

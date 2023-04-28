@@ -1,10 +1,10 @@
 import 'package:artemis/artemis.dart';
 import 'package:http/http.dart' as http;
-import 'package:tech_adventure/data/credentials_util.dart';
-import 'package:tech_adventure/data/models/minigame_outcome.dart';
-import 'package:tech_adventure/data/models/place.dart';
-import 'package:tech_adventure/data/models/user.dart';
-import 'package:tech_adventure/graphql/generated/graphql_api.graphql.dart';
+import 'package:japomo/data/credentials_util.dart';
+import 'package:japomo/data/models/minigame_outcome.dart';
+import 'package:japomo/data/models/place.dart';
+import 'package:japomo/data/models/user.dart';
+import 'package:japomo/graphql/generated/graphql_api.graphql.dart';
 
 const String url = "https://japomo.prod.techadventure2023.jambit.space/graphql";
 

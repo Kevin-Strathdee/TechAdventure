@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tech_adventure/bloc/place/place_bloc.dart';
-import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
-import 'package:tech_adventure/data/api/backend.dart';
-import 'package:tech_adventure/data/credentials_util.dart';
-import 'package:tech_adventure/generated/l10n.dart';
-import 'package:tech_adventure/theme/colors.dart';
-import 'package:tech_adventure/ui/screens/home_page.dart';
-import 'package:tech_adventure/ui/screens/welcome_screen.dart';
+import 'package:japomo/bloc/place/place_bloc.dart';
+import 'package:japomo/bloc/scan/scan_bloc.dart';
+import 'package:japomo/data/api/backend.dart';
+import 'package:japomo/data/credentials_util.dart';
+import 'package:japomo/generated/l10n.dart';
+import 'package:japomo/theme/colors.dart';
+import 'package:japomo/ui/screens/home_page.dart';
+import 'package:japomo/ui/screens/welcome_screen.dart';
 
 import 'bloc/user/user_bloc.dart';
 
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        title: 'jambit: Das Spiel',
+        title: 'japomo',
         theme: ThemeData(
           primarySwatch: getMaterialColor(jambitOrange),
         ),

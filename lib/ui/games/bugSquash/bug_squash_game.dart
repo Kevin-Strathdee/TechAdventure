@@ -5,8 +5,8 @@ import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/ui/games/bugSquash/components/background.dart';
-import 'package:tech_adventure/ui/games/bugSquash/components/bug.dart';
+import 'package:japomo/ui/games/bugSquash/components/background.dart';
+import 'package:japomo/ui/games/bugSquash/components/bug.dart';
 
 class BugSquashGame extends FlameGame {
   bool _gameover = false;

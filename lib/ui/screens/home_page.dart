@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/place/place_bloc.dart';
-import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
-import 'package:tech_adventure/generated/l10n.dart';
-import 'package:tech_adventure/ui/screens/practice_list_screen.dart';
-import 'package:tech_adventure/ui/screens/maps_page.dart';
-import 'package:tech_adventure/ui/screens/overview_screen.dart';
-import 'package:tech_adventure/ui/screens/place_detail_screen.dart';
-import 'package:tech_adventure/ui/screens/profile_screen.dart';
-import 'package:tech_adventure/ui/screens/scan_screen.dart';
-import 'package:tech_adventure/ui/widgets/appbar/overview_app_bar.dart';
-import 'package:tech_adventure/ui/widgets/coffee_bean.dart';
+import 'package:japomo/bloc/place/place_bloc.dart';
+import 'package:japomo/bloc/scan/scan_bloc.dart';
+import 'package:japomo/generated/l10n.dart';
+import 'package:japomo/ui/screens/practice_list_screen.dart';
+import 'package:japomo/ui/screens/maps_page.dart';
+import 'package:japomo/ui/screens/overview_screen.dart';
+import 'package:japomo/ui/screens/place_detail_screen.dart';
+import 'package:japomo/ui/screens/profile_screen.dart';
+import 'package:japomo/ui/screens/scan_screen.dart';
+import 'package:japomo/ui/widgets/appbar/overview_app_bar.dart';
+import 'package:japomo/ui/widgets/coffee_bean.dart';
 
 import '../../theme/colors.dart';
 

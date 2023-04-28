@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/generated/l10n.dart';
-import 'package:tech_adventure/ui/games/flappyBean/flappy_bean_game.dart';
+import 'package:japomo/generated/l10n.dart';
+import 'package:japomo/ui/games/flappyBean/flappy_bean_game.dart';
 
 class GameOverOverlay extends StatelessWidget {
   const GameOverOverlay({super.key, required this.game});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tech_adventure/bloc/user/user_bloc.dart';
-import 'package:tech_adventure/generated/l10n.dart';
-import 'package:tech_adventure/ui/widgets/overview/place_tile.dart';
+import 'package:japomo/bloc/user/user_bloc.dart';
+import 'package:japomo/generated/l10n.dart';
+import 'package:japomo/ui/widgets/overview/place_tile.dart';
 
 class UserPlacesCard extends StatelessWidget {
   const UserPlacesCard({super.key});

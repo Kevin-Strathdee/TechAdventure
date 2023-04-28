@@ -1,9 +1,9 @@
-import 'package:tech_adventure/data/api/backend.dart';
-import 'package:tech_adventure/data/models/geometry.dart';
-import 'package:tech_adventure/data/models/minigame.dart';
-import 'package:tech_adventure/data/models/minigame_outcome.dart';
-import 'package:tech_adventure/data/models/place.dart';
-import 'package:tech_adventure/data/models/user.dart';
+import 'package:japomo/data/api/backend.dart';
+import 'package:japomo/data/models/geometry.dart';
+import 'package:japomo/data/models/minigame.dart';
+import 'package:japomo/data/models/minigame_outcome.dart';
+import 'package:japomo/data/models/place.dart';
+import 'package:japomo/data/models/user.dart';
 
 class BackendMock extends IBackend {
   //Testing Data

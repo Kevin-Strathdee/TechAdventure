@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/data/models/minigame.dart';
-import 'package:tech_adventure/ui/screens/game_practice_screen.dart';
+import 'package:japomo/data/models/minigame.dart';
+import 'package:japomo/ui/screens/game_practice_screen.dart';
 
 class GameInformationTile extends StatelessWidget {
   const GameInformationTile({super.key, required this.game});

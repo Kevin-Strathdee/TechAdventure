@@ -1,4 +1,4 @@
-# tech_adventure
+# japomo
 
 A new Flutter project.
 

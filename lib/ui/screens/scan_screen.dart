@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:tech_adventure/bloc/scan/scan_bloc.dart';
+import 'package:japomo/bloc/scan/scan_bloc.dart';
 
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});

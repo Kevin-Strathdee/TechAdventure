@@ -1,8 +1,8 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/ui/games/dice/managers/dice_game_manager.dart';
-import 'package:tech_adventure/ui/games/dice/sprites/die.dart';
-import 'package:tech_adventure/ui/screens/scan_screen.dart';
+import 'package:japomo/ui/games/dice/managers/dice_game_manager.dart';
+import 'package:japomo/ui/games/dice/sprites/die.dart';
+import 'package:japomo/ui/screens/scan_screen.dart';
 
 class RollDiceGame extends FlameGame with HasTappables {
   RollDiceGame(this.onGameFinished, {super.children});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/theme/colors.dart';
-import 'package:tech_adventure/ui/widgets/coffee_bean.dart';
+import 'package:japomo/theme/colors.dart';
+import 'package:japomo/ui/widgets/coffee_bean.dart';
 
 class ScoreDisplay extends StatelessWidget {
   const ScoreDisplay({super.key, required this.score});

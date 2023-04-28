@@ -5,11 +5,11 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/ui/games/flappyBean/components/background.dart';
-import 'package:tech_adventure/ui/games/flappyBean/components/bean.dart';
-import 'package:tech_adventure/ui/games/flappyBean/components/floor.dart';
-import 'package:tech_adventure/ui/games/flappyBean/components/pipe.dart';
-import 'package:tech_adventure/ui/games/flappyBean/config.dart';
+import 'package:japomo/ui/games/flappyBean/components/background.dart';
+import 'package:japomo/ui/games/flappyBean/components/bean.dart';
+import 'package:japomo/ui/games/flappyBean/components/floor.dart';
+import 'package:japomo/ui/games/flappyBean/components/pipe.dart';
+import 'package:japomo/ui/games/flappyBean/config.dart';
 
 enum GameState { intial, playing, gameOver }
 

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/ui/games/bugSquash/config.dart';
+import 'package:japomo/ui/games/bugSquash/config.dart';
 
 class Bug extends CircleComponent with TapCallbacks {
   Bug(this.screenSize, this.onTapped, this.onReachedEdge)

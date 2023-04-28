@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tech_adventure/data/models/minigame.dart';
-import 'package:tech_adventure/ui/widgets/game_information_tile.dart';
+import 'package:japomo/data/models/minigame.dart';
+import 'package:japomo/ui/widgets/game_information_tile.dart';
 
 class PracticeListScreen extends StatelessWidget {
   const PracticeListScreen({super.key});

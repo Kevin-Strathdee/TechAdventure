@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
-import 'package:tech_adventure/data/api/backend.dart';
-import 'package:tech_adventure/data/models/place.dart';
+import 'package:japomo/data/api/backend.dart';
+import 'package:japomo/data/models/place.dart';
 
 part 'place_event.dart';
 part 'place_state.dart';
