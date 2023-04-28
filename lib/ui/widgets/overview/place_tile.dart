@@ -18,31 +18,34 @@ class PlaceTile extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(
-                width: 20,
-              ),
-              Text(
+              Flexible(
+                  child: Text(
                 place.name,
                 style: Theme.of(context).textTheme.labelLarge,
-              ),
+              )),
               const Spacer(),
-              Text(
-                S.of(context).score,
-                style: Theme.of(context)
-                    .textTheme
-                    .labelLarge
-                    ?.copyWith(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Text(
-                place.minigame.score.toString(),
-                style: Theme.of(context)
-                    .textTheme
-                    .labelLarge
-                    ?.copyWith(fontWeight: FontWeight.bold),
+              Row(
+                children: [
+                  Text(
+                    S.of(context).score,
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    place.minigame.score.toString(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  )
+                ],
               )
             ],
           ),
