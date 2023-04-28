@@ -10,6 +10,7 @@ import 'package:japomo/ui/delayed_animation.dart';
 import 'package:japomo/ui/screens/game_screen.dart';
 import 'package:japomo/ui/screens/home_page.dart';
 
+import '../../generated/assets.dart';
 import '../widgets/coffee_bean.dart';
 
 class PlaceDetailScreen extends StatelessWidget {
@@ -192,40 +193,49 @@ class PlaceDetailScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.grey.shade500.darken(0.15),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              const SizedBox(
-                height: 30,
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(Assets.backgroundComicBackground),
+                fit: BoxFit.cover,
+                opacity: 0.3,
               ),
-              Align(
-                  alignment: Alignment.centerLeft,
-                  child: IconButton(
-                      iconSize: 50, color: Colors.white, onPressed: () => context.go("/"), icon: Icon(Icons.close))),
-              const SizedBox(
-                height: 30,
-              ),
-              DelayedAnimation(
-                delay: delayedAmount + 1000,
-                child: Text(
-                  S.of(context).discoveredNewPlaceTitle,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
-                      color: color),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const SizedBox(
+                  height: 30,
                 ),
-              ),
-              const SizedBox(height: 50),
-              BlocBuilder<PlaceBloc, PlaceState>(builder: (context, state) {
-                if (state is PlaceLoadInProgress) {
-                  return const CircularProgressIndicator(
-                      backgroundColor: Colors.white);
-                } else if (state is PlaceLoadedSuccess) {
-                  return getContent(context, state.place);
-                }
-                return noContent(context);
-              }),
-            ],
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                        iconSize: 50, color: Colors.white, onPressed: () => context.go("/"), icon: Icon(Icons.close))),
+                const SizedBox(
+                  height: 30,
+                ),
+                DelayedAnimation(
+                  delay: delayedAmount + 1000,
+                  child: Text(
+                    S.of(context).discoveredNewPlaceTitle,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25.0,
+                        color: color),
+                  ),
+                ),
+                const SizedBox(height: 50),
+                BlocBuilder<PlaceBloc, PlaceState>(builder: (context, state) {
+                  if (state is PlaceLoadInProgress) {
+                    return const CircularProgressIndicator(
+                        backgroundColor: Colors.white);
+                  } else if (state is PlaceLoadedSuccess) {
+                    return getContent(context, state.place);
+                  }
+                  return noContent(context);
+                }),
+              ],
+            ),
           ),
         ));
   }
