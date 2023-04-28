@@ -17,19 +17,43 @@ class PlaceTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(8)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
             children: [
-              Flexible(
-                  child: Text(
-                place.name,
-                style: Theme.of(context).textTheme.labelLarge,
-              )),
-              const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                      child: Text(
+                    place.name,
+                    style: Theme.of(context).textTheme.labelLarge,
+                  )),
+                  Row(
+                    children: [
+                      Text(
+                        S.of(context).score,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        place.minigame.score.toString(),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ],
+              ),
               Row(
                 children: [
                   Text(
-                    S.of(context).score,
+                    S.of(context).miniGame,
                     style: Theme.of(context)
                         .textTheme
                         .labelLarge
@@ -39,7 +63,7 @@ class PlaceTile extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    place.minigame.score.toString(),
+                    place.minigame.type.toString(),
                     style: Theme.of(context)
                         .textTheme
                         .labelLarge
