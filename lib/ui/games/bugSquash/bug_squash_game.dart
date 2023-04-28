@@ -26,7 +26,7 @@ class BugSquashGame extends FlameGame {
     scoreDisplay = TextComponent(
         text: "0",
         textRenderer: TextPaint(
-          style: TextStyle(fontSize: 48.0, color: Colors.white),
+          style: const TextStyle(fontSize: 48.0, color: Colors.white),
         ),
         size: Vector2(50, 50),
         position: Vector2(size.x - 80, 50));

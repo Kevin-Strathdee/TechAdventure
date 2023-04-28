@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http" android:host="jamopoly.com" />
+                <data android:scheme="https" android:host="japomo.jambit.space" />
                 <data android:scheme="https" />
             </intent-filter>
         </activity>

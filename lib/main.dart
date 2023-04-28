@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:go_router/go_router.dart';
+import 'package:japomo/ui/screens/place_detail_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:japomo/bloc/place/place_bloc.dart';
 import 'package:japomo/bloc/scan/scan_bloc.dart';
@@ -24,53 +26,70 @@ void main() async {
   await credentialUtil.init();
   String? accessToken = prefs.getString(accessTokenKey);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(MyApp(
-    accessToken: accessToken,
-    credentialUtil: credentialUtil,
+
+  final IBackend backend = Backend(credentialUtil);
+  final UserBloc userBloc = UserBloc(backend);
+  final PlaceBloc placeBloc = PlaceBloc(backend);
+  if (accessToken != null && accessToken != '') {
+    userBloc.add(UserRequested());
+  }
+  final router = GoRouter(
+    routes: [
+      GoRoute(
+        path: '/',
+        builder: (context, state) =>
+            (accessToken == null || accessToken == "") ? WelcomeScreen(credentialUtil) : const HomePage(),
+      ),
+      GoRoute(
+        path: '/places/:placeId',
+        builder: (context, state) {
+          if (accessToken == null || accessToken == "") {
+            return WelcomeScreen(credentialUtil);
+          } else {
+            final placeId = state.params['placeId'];
+            placeBloc.add(PlaceScanned(placeId!));
+            return const PlaceDetailScreen();
+          }
+        },
+      ),
+    ],
+  );
+
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (context) => userBloc,
+      ),
+      BlocProvider(
+        create: (context) => ScanBloc(),
+      ),
+      BlocProvider(
+        create: (context) => placeBloc,
+      )
+    ],
+    child: MyApp(router: router),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  String? accessToken;
-  final CredentialUtil credentialUtil;
-
-  MyApp({super.key, this.accessToken, required this.credentialUtil});
-
+  const MyApp({
+    super.key,
+    required this.router,
+  });
+  final GoRouter router;
   @override
   Widget build(BuildContext context) {
-    final IBackend backend = Backend(credentialUtil);
-    final UserBloc userBloc = UserBloc(backend);
-    if (accessToken != null && accessToken != '') {
-      userBloc.add(UserRequested());
-    }
-
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => userBloc,
-        ),
-        BlocProvider(
-          create: (context) => ScanBloc(),
-        ),
-        BlocProvider(
-          create: (context) => PlaceBloc(backend),
-        )
+    return MaterialApp.router(
+      routerConfig: router,
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
-      child: MaterialApp(
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        title: 'japomo',
-        theme: ThemeData(
-          primarySwatch: getMaterialColor(jambitOrange),
-          fontFamily: 'Jost'
-        ),
-        home: (accessToken == null || accessToken == "") ? WelcomeScreen(credentialUtil) : HomePage(),
-      ),
+      supportedLocales: S.delegate.supportedLocales,
+      title: 'japomo',
+      theme: ThemeData(primarySwatch: getMaterialColor(jambitOrange), fontFamily: 'Jost'),
     );
   }
 }

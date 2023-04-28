@@ -150,7 +150,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     bool authenticateSuccess = await widget.credentialUtil.authenticate();
     if (authenticateSuccess) {
       BlocProvider.of<UserBloc>(context).add(UserRequested());
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
     }
   }
 }
