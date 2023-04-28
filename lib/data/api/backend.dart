@@ -6,7 +6,7 @@ import 'package:tech_adventure/data/models/place.dart';
 import 'package:tech_adventure/data/models/user.dart';
 import 'package:tech_adventure/graphql/generated/graphql_api.graphql.dart';
 
-const String url = "https://japomo.dev.techadventure2023.jambit.space/graphql";
+const String url = "https://japomo.prod.techadventure2023.jambit.space/graphql";
 
 abstract class IBackend {
   Future<User> getUser();
@@ -83,8 +83,7 @@ class Backend extends IBackend {
 
   final userQuery = UserQuery();
 
-  PlaceQuery placeQuery(String id) =>
-      PlaceQuery(variables: PlaceArguments(placeId: id));
+  PlaceQuery placeQuery(String id) => PlaceQuery(variables: PlaceArguments(placeId: id));
 
   @override
   Future<User> getUser() async {
@@ -99,8 +98,7 @@ class Backend extends IBackend {
 
   @override
   Future<MinigameOutcome> submitScore(Place place, int score) async {
-    final query = MinigameOutcomeMutation(
-        variables: MinigameOutcomeArguments(placeId: place.id, score: score));
+    final query = MinigameOutcomeMutation(variables: MinigameOutcomeArguments(placeId: place.id, score: score));
     final result = await client.execute(query);
     final outcome = result.data?.minigameOutcome;
     if (!result.hasErrors && outcome != null) {
@@ -113,9 +111,7 @@ class Backend extends IBackend {
   @override
   Future<Place> getPlace(String id) async {
     final response = await client.execute(placeQuery(id));
-    Place$RootQueryType$Place place = (response.data?.place ?? [])
-        .whereType<Place$RootQueryType$Place>()
-        .first;
+    Place$RootQueryType$Place place = (response.data?.place ?? []).whereType<Place$RootQueryType$Place>().first;
     Place appPlace = Place.fromGraphqlPlace(place);
     return Future.value(appPlace);
   }
