@@ -14,7 +14,7 @@
   "navbarScan": "Scan",
   "navbarProfile": "Profile",
   "overviewWelcomeMessage": "Welcome",
-  "overviewPoints": "Points",
+  "overviewPoints": "jambeans",
   "overviewPlacesTitle": "My Places",
   "profileTitle": "My Profile",
   "gameOverOverviewTitle": "GAME OVER",
@@ -34,6 +34,7 @@
   },
   "hiThere": "Hi There,",
   "thisIs": "This is japomo",
+
   "jambitMeets": "jambit meets Pokemon Go",
   "meets": "meets Monopoly",
   "discoveredNewPlaceTitle": "You've discovered a new place!",

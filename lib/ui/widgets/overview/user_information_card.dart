@@ -40,26 +40,53 @@ class UserInformationCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Spacer(),
-                        Text("${state.user.rank} ${S.of(context).rank}",
-                            style: Theme.of(context).textTheme.headlineLarge)
+                        Text(
+                          "${S.of(context).rank}: ",
+                          style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
+                        ),
+                        Text(
+                            "${state.user.rank}",
+                            style: Theme.of(context).textTheme.headlineMedium
+                        )
                       ],
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                            height: 80,
-                            width: 80,
-                            decoration: const BoxDecoration(
-                                color: jambitOrange, shape: BoxShape.circle),
-                            child: const Padding(
-                              padding: EdgeInsets.all(13.0),
-                              child: CoffeeBean(),
-                            )),
-                        Text(
-                            "${state.user.score} ${S.of(context).overviewPoints}",
-                            style: Theme.of(context).textTheme.headlineLarge)
+                        Row(
+                          children: [
+                            Container(
+                                height: 48,
+                                width: 48,
+                                decoration: BoxDecoration(border: Border.all(color: jambitOrange, width: 4), borderRadius: BorderRadius.circular(48)),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: CoffeeBean(size: Size.square(30)),
+                                )
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 12),
+                              child: Row(
+                                children: [
+                                  Text(
+                                      'jam',
+                                      style: Theme.of(context).textTheme.headlineSmall
+                                  ),
+                                  Text(
+                                      'beans',
+                                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: jambitOrange)
+                                  ),
+                               ]
+                              ),
+                            ),
+                          ]
+                        ),
+                        Text("${state.user.score}",
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
                       ],
                     )
                   ],

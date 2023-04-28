@@ -7,15 +7,18 @@ class PracticeListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(30),
-      child: ListView(
-        children: [
-          Text("Games", style: Theme.of(context).textTheme.displayMedium),
-          ...[minigameIdentifierDice, minigameIdentifierFlappy, minigameIdentifierSquash]
-              .map((e) => GameInformationTile(game: e))
-        ],
-      ),
+    return Scaffold(
+        backgroundColor: Colors.grey.shade100,
+        body: Padding(
+          padding: const EdgeInsets.all(30),
+          child: ListView(
+            children: [
+              Text("Games", style: Theme.of(context).textTheme.displayMedium),
+              ...[minigameIdentifierDice, minigameIdentifierFlappy, minigameIdentifierSquash]
+                  .map((e) => GameInformationTile(game: e))
+            ],
+          ),
+        )
     );
   }
 }

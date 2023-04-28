@@ -51,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "No place information was provided"),
         "overviewPlacesTitle":
             MessageLookupByLibrary.simpleMessage("My Places"),
-        "overviewPoints": MessageLookupByLibrary.simpleMessage("Points"),
+        "overviewPoints": MessageLookupByLibrary.simpleMessage("jambeans"),
         "overviewWelcomeMessage":
             MessageLookupByLibrary.simpleMessage("Welcome"),
         "ownedBy": MessageLookupByLibrary.simpleMessage("Owner"),
