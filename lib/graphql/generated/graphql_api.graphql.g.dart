@@ -48,7 +48,8 @@ MinigameOutcome$RootMutationType$MinigameOutcome$Place$User
           ..username = json['username'] as String
           ..name = json['name'] as String
           ..email = json['email'] as String
-          ..score = json['score'] as int;
+          ..score = json['score'] as int
+          ..rank = json['rank'] as int;
 
 Map<String, dynamic>
     _$MinigameOutcome$RootMutationType$MinigameOutcome$Place$UserToJson(
@@ -60,6 +61,7 @@ Map<String, dynamic>
           'name': instance.name,
           'email': instance.email,
           'score': instance.score,
+          'rank': instance.rank,
         };
 
 MinigameOutcome$RootMutationType$MinigameOutcome$Place$Minigame
@@ -220,7 +222,8 @@ User$RootQueryType$User _$User$RootQueryType$UserFromJson(
               User$RootQueryType$User$Place.fromJson(e as Map<String, dynamic>))
           .toList()
       ..email = json['email'] as String
-      ..score = json['score'] as int;
+      ..score = json['score'] as int
+      ..rank = json['rank'] as int;
 
 Map<String, dynamic> _$User$RootQueryType$UserToJson(
         User$RootQueryType$User instance) =>
@@ -231,6 +234,7 @@ Map<String, dynamic> _$User$RootQueryType$UserToJson(
       'places': instance.places.map((e) => e.toJson()).toList(),
       'email': instance.email,
       'score': instance.score,
+      'rank': instance.rank,
     };
 
 User$RootQueryType _$User$RootQueryTypeFromJson(Map<String, dynamic> json) =>
@@ -266,7 +270,8 @@ Place$RootQueryType$Place$User _$Place$RootQueryType$Place$UserFromJson(
       ..username = json['username'] as String
       ..name = json['name'] as String
       ..email = json['email'] as String
-      ..score = json['score'] as int;
+      ..score = json['score'] as int
+      ..rank = json['rank'] as int;
 
 Map<String, dynamic> _$Place$RootQueryType$Place$UserToJson(
         Place$RootQueryType$Place$User instance) =>
@@ -276,6 +281,7 @@ Map<String, dynamic> _$Place$RootQueryType$Place$UserToJson(
       'name': instance.name,
       'email': instance.email,
       'score': instance.score,
+      'rank': instance.rank,
     };
 
 Place$RootQueryType$Place$Minigame _$Place$RootQueryType$Place$MinigameFromJson(

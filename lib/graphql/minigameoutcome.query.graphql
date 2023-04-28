@@ -15,6 +15,7 @@ mutation minigameOutcome($placeId: ID!, $score: Int!) {
         name
         email
         score
+        rank
       }
       minigame {
         type

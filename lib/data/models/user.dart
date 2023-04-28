@@ -11,8 +11,10 @@ class User {
   String name;
   List<Place> places;
   int score;
+  int rank;
 
-  User(this.id, this.email, this.name, this.userName, this.places, this.score);
+  User(this.id, this.email, this.name, this.userName, this.places, this.score,
+      this.rank);
 
   User.fromGraphqlUser(User$RootQueryType$User user)
       : id = int.parse(user.id),
@@ -20,7 +22,8 @@ class User {
         userName = user.username,
         name = user.name,
         places = user.places.map((e) => fromGraphqlUserPlace(e)).toList(),
-        score = user.score;
+        score = user.score,
+        rank = user.rank;
 
   User.fromGraphqlPlaceUserWithoutUserPlaces(
       Place$RootQueryType$Place$User user)
@@ -30,7 +33,8 @@ class User {
         name = user.name,
         //set places empty because it is not relevant in this context
         places = [],
-        score = user.score;
+        score = user.score,
+        rank = user.rank;
 
   User.fromGraphqlMinigameOutcomePlaceUserWithoutUserPlaces(
       MinigameOutcome$RootMutationType$MinigameOutcome$Place$User user)
@@ -40,7 +44,8 @@ class User {
         name = user.name,
         //set places empty because it is not relevant in this context
         places = [],
-        score = user.score;
+        score = user.score,
+        rank = user.rank;
 
   static Place fromGraphqlUserPlace(User$RootQueryType$User$Place place) {
     return Place(
