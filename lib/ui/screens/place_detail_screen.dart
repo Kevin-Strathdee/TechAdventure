@@ -1,6 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:japomo/bloc/place/place_bloc.dart';
 import 'package:japomo/data/models/place.dart';
 import 'package:japomo/generated/l10n.dart';
@@ -150,11 +151,7 @@ class PlaceDetailScreen extends StatelessWidget {
               Align(
                   alignment: Alignment.centerLeft,
                   child: IconButton(
-                      iconSize: 50,
-                      color: Colors.white,
-                      onPressed: () => Navigator.of(context)
-                          .pushReplacement(MaterialPageRoute(builder: (context) => const HomePage())),
-                      icon: Icon(Icons.close))),
+                      iconSize: 50, color: Colors.white, onPressed: () => context.go("/"), icon: Icon(Icons.close))),
               const SizedBox(
                 height: 30,
               ),

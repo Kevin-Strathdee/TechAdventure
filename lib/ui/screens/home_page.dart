@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:japomo/bloc/place/place_bloc.dart';
 import 'package:japomo/bloc/scan/scan_bloc.dart';
 import 'package:japomo/generated/l10n.dart';
@@ -30,8 +31,7 @@ class _HomePageState extends State<HomePage> {
       listener: (context, state) {
         if (state is ScanCompleted) {
           final placeId = state.code.split("/").last;
-          BlocProvider.of<PlaceBloc>(context).add(PlaceScanned(placeId));
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const PlaceDetailScreen()));
+          context.go('/places/$placeId');
         }
       },
       child: Scaffold(
