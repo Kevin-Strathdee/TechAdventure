@@ -63,11 +63,11 @@ class GameInformationTile extends StatelessWidget {
   String _getDescriptionForGame(String game) {
     switch (game) {
       case minigameIdentifierDice:
-        return "Roll 3 dice and aim for the highest combine score.";
+        return "Roll 3 dice and aim for the highest combined score.";
       case minigameIdentifierFlappy:
         return 'Tap the screen to flap your way through as many pipes as possible. Highest score wins!';
       case minigameIdentifierSquash:
-        return "Tap the bugs to squash as many as possible and score points. The game ends when the first bug touches the side";
+        return "Tap the bugs to squash as many as possible and score points. The game ends when the first bug touches the side.";
       default:
         return 'Name';
     }
