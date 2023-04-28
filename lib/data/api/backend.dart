@@ -30,14 +30,42 @@ class AuthenticatedClient extends http.BaseClient {
     String? accessToken = credentialUtil.getAccessToken();
     request.headers['Authorization'] = 'Bearer $accessToken';
     http.StreamedResponse response = await _inner.send(request);
-    if (response.statusCode == 401) {
+    if (response.statusCode == 401 || response.statusCode == 500) {
       await credentialUtil.refreshCredential();
       String? accessToken = credentialUtil.getAccessToken();
 
-      request.headers['Authorization'] = 'Bearer $accessToken';
-      response = await _inner.send(request);
+      // To resend a request, we have to copy it
+      var newRequest = _copyRequest(request);
+      newRequest.headers['Authorization'] = 'Bearer $accessToken';
+      response = await _inner.send(newRequest);
     }
     return response;
+  }
+
+  http.BaseRequest _copyRequest(http.BaseRequest request) {
+    http.BaseRequest requestCopy;
+
+    if (request is http.Request) {
+      requestCopy = http.Request(request.method, request.url)
+        ..encoding = request.encoding
+        ..bodyBytes = request.bodyBytes;
+    } else if (request is http.MultipartRequest) {
+      requestCopy = http.MultipartRequest(request.method, request.url)
+        ..fields.addAll(request.fields)
+        ..files.addAll(request.files);
+    } else if (request is http.StreamedRequest) {
+      throw Exception('copying streamed requests is not supported');
+    } else {
+      throw Exception('request type is unknown, cannot copy');
+    }
+
+    requestCopy
+      ..persistentConnection = request.persistentConnection
+      ..followRedirects = request.followRedirects
+      ..maxRedirects = request.maxRedirects
+      ..headers.addAll(request.headers);
+
+    return requestCopy;
   }
 }
 
@@ -55,7 +83,8 @@ class Backend extends IBackend {
 
   final userQuery = UserQuery();
 
-  PlaceQuery placeQuery(String id) => PlaceQuery(variables: PlaceArguments(placeId: id));
+  PlaceQuery placeQuery(String id) =>
+      PlaceQuery(variables: PlaceArguments(placeId: id));
 
   @override
   Future<User> getUser() async {
@@ -70,7 +99,8 @@ class Backend extends IBackend {
 
   @override
   Future<MinigameOutcome> submitScore(Place place, int score) async {
-    final query = MinigameOutcomeMutation(variables: MinigameOutcomeArguments(placeId: place.id, score: score));
+    final query = MinigameOutcomeMutation(
+        variables: MinigameOutcomeArguments(placeId: place.id, score: score));
     final result = await client.execute(query);
     final outcome = result.data?.minigameOutcome;
     if (!result.hasErrors && outcome != null) {
@@ -83,7 +113,9 @@ class Backend extends IBackend {
   @override
   Future<Place> getPlace(String id) async {
     final response = await client.execute(placeQuery(id));
-    Place$RootQueryType$Place place = (response.data?.place ?? []).whereType<Place$RootQueryType$Place>().first;
+    Place$RootQueryType$Place place = (response.data?.place ?? [])
+        .whereType<Place$RootQueryType$Place>()
+        .first;
     Place appPlace = Place.fromGraphqlPlace(place);
     return Future.value(appPlace);
   }
