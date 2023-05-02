@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:japomo/bloc/place/place_bloc.dart';
 import 'package:japomo/bloc/scan/scan_bloc.dart';
+import 'package:japomo/bloc/user/user_bloc.dart';
 import 'package:japomo/generated/l10n.dart';
 import 'package:japomo/ui/screens/practice_list_screen.dart';
 import 'package:japomo/ui/screens/maps_page.dart';
 import 'package:japomo/ui/screens/overview_screen.dart';
-import 'package:japomo/ui/screens/place_detail_screen.dart';
-import 'package:japomo/ui/screens/profile_screen.dart';
 import 'package:japomo/ui/screens/scan_screen.dart';
 import 'package:japomo/ui/widgets/appbar/overview_app_bar.dart';
 import 'package:japomo/ui/widgets/coffee_bean.dart';
@@ -27,13 +25,22 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ScanBloc, ScanState>(
-      listener: (context, state) {
-        if (state is ScanCompleted) {
-          final placeId = state.code.split("/").last;
-          context.go('/places/$placeId');
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<ScanBloc, ScanState>(
+          listener: (context, state) {
+            if (state is ScanCompleted) {
+              final placeId = state.code.split("/").last;
+              context.go('/places/$placeId');
+            }
+          },
+        ),
+        BlocListener<UserBloc, UserState>(
+          listener: (context, state) {
+            context.go("/");
+          },
+        ),
+      ],
       child: Scaffold(
         appBar: const OverviewAppBar(),
         bottomNavigationBar: BottomNavigationBar(
@@ -60,6 +67,28 @@ class _HomePageState extends State<HomePage> {
           currentIndex: _selectedTab,
         ),
         body: _getHomeScreenContent(_selectedTab),
+        endDrawer: Drawer(
+          width: 200,
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "Profile",
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                TextButton(
+                  child: const Text(
+                    "Logout",
+                  ),
+                  onPressed: () {
+                    BlocProvider.of<UserBloc>(context).add(UserSignedOut());
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

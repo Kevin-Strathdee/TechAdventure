@@ -5,6 +5,8 @@ abstract class UserEvent {}
 
 class UserRequested extends UserEvent {}
 
+class UserSignedOut extends UserEvent {}
+
 class UserUpdated extends UserEvent {
   final User user;
 

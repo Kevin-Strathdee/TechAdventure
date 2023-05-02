@@ -64,4 +64,8 @@ class CredentialUtil {
   String? getAccessToken() {
     return sharedPreferences.getString(accessTokenKey);
   }
+
+  Future<void> logout() async {
+    await sharedPreferences.clear();
+  }
 }

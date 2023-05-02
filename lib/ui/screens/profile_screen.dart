@@ -13,8 +13,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  // late TextEditingController _firstNameController;
-  // late TextEditingController _lastNameController;
   late TextEditingController _usernameController;
   bool _inEditMode = false;
 

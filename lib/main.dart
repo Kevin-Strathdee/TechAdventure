@@ -28,7 +28,7 @@ void main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   final IBackend backend = Backend(credentialUtil);
-  final UserBloc userBloc = UserBloc(backend);
+  final UserBloc userBloc = UserBloc(backend, credentialUtil);
   final PlaceBloc placeBloc = PlaceBloc(backend, userBloc);
   if (accessToken != null && accessToken != '') {
     userBloc.add(UserRequested());

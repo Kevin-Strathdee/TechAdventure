@@ -1,24 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../theme/colors.dart';
-
-const String assetName = 'assets/logo.svg';
+const String assetName = 'assets/icon/logo.svg';
 
 class AppLogo extends StatelessWidget {
   const AppLogo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const logoTextStyle = TextStyle(
-      fontWeight: FontWeight.w800,
-      fontFamily: 'Open Sans',
-      fontSize: 28,
-    );
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       SvgPicture.asset(
         assetName,
         semanticsLabel: 'japomo logo',
@@ -26,12 +16,6 @@ class AppLogo extends StatelessWidget {
         height: 35,
       ),
       const SizedBox(width: 10),
-      Row(children: [
-        const Text('japo', style: logoTextStyle),
-        Text('mo',
-            style: logoTextStyle.copyWith(color: jambitOrange)
-        ),
-      ])
     ]);
   }
 }

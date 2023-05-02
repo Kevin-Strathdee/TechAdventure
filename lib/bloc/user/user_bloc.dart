@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:japomo/data/credentials_util.dart';
 import 'package:meta/meta.dart';
 import 'package:japomo/data/api/backend.dart';
 import 'package:japomo/data/models/user.dart';
@@ -12,8 +13,9 @@ const String office = "office";
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final IBackend backend;
+  final CredentialUtil credentialUtil;
 
-  UserBloc(this.backend) : super(UserInitial()) {
+  UserBloc(this.backend, this.credentialUtil) : super(UserInitial()) {
     on<UserRequested>((event, emit) async {
       emit(UserLoadInProgress());
       try {
@@ -31,6 +33,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       } catch (e) {
         emit(UserLoadFailure(e.toString()));
       }
+    });
+    on<UserSignedOut>((event, emit) async {
+      credentialUtil.logout();
+      emit(UserSignedOutSuccess());
     });
   }
 }
