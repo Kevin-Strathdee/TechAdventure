@@ -8,6 +8,7 @@ import 'package:japomo/ui/screens/practice_list_screen.dart';
 import 'package:japomo/ui/screens/maps_page.dart';
 import 'package:japomo/ui/screens/overview_screen.dart';
 import 'package:japomo/ui/screens/scan_screen.dart';
+import 'package:japomo/ui/screens/welcome_screen.dart';
 import 'package:japomo/ui/widgets/appbar/overview_app_bar.dart';
 import 'package:japomo/ui/widgets/coffee_bean.dart';
 
@@ -25,22 +26,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<ScanBloc, ScanState>(
-          listener: (context, state) {
-            if (state is ScanCompleted) {
-              final placeId = state.code.split("/").last;
-              context.go('/places/$placeId');
-            }
-          },
-        ),
-        BlocListener<UserBloc, UserState>(
-          listener: (context, state) {
-            context.go("/");
-          },
-        ),
-      ],
+    return BlocListener<ScanBloc, ScanState>(
+      listener: (context, state) {
+        if (state is ScanCompleted) {
+          final placeId = state.code.split("/").last;
+          context.go('/places/$placeId');
+        }
+      },
       child: Scaffold(
         appBar: const OverviewAppBar(),
         bottomNavigationBar: BottomNavigationBar(
@@ -82,6 +74,7 @@ class _HomePageState extends State<HomePage> {
                     "Logout",
                   ),
                   onPressed: () {
+                    Navigator.of(context).pop();
                     BlocProvider.of<UserBloc>(context).add(UserSignedOut());
                   },
                 ),

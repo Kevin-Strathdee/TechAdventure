@@ -5,7 +5,7 @@ abstract class UserState {}
 
 class UserInitial extends UserState {}
 
-class UserSignedOutSuccess extends UserInitial {}
+class UserSignedOutSuccess extends UserState {}
 
 class UserLoadInProgress extends UserState {}
 

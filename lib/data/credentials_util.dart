@@ -32,7 +32,6 @@ class CredentialUtil {
 
     // create an authenticator
     var authenticator = Authenticator(client, scopes: scopes, port: 4000, urlLancher: urlLauncher);
-
     // starts the authentication
     var credentials = await authenticator.authorize();
 
@@ -45,10 +44,15 @@ class CredentialUtil {
     return tokenResponse.accessToken != null;
   }
 
-  Future<Credential> refreshCredential() async {
-    Credential credential = client.createCredential(refreshToken: sharedPreferences.getString(refreshTokenKey));
-    await saveToken(credential);
-    return credential;
+  Future<Credential?> refreshCredential() async {
+    final refreshToken = sharedPreferences.getString(refreshTokenKey);
+    if (refreshToken == null || refreshToken.isEmpty) {
+      await authenticate();
+    } else {
+      Credential credential = client.createCredential(refreshToken: sharedPreferences.getString(refreshTokenKey));
+      await saveToken(credential);
+      return credential;
+    }
   }
 
   Future<void> saveToken(Credential credential) async {

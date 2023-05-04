@@ -12,8 +12,7 @@ class DelayedAnimation extends StatefulWidget {
   _DelayedAnimationState createState() => _DelayedAnimationState();
 }
 
-class _DelayedAnimationState extends State<DelayedAnimation>
-    with TickerProviderStateMixin {
+class _DelayedAnimationState extends State<DelayedAnimation> with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animOffset;
 
@@ -21,13 +20,9 @@ class _DelayedAnimationState extends State<DelayedAnimation>
   void initState() {
     super.initState();
 
-    _controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 800));
-    final curve =
-        CurvedAnimation(curve: Curves.decelerate, parent: _controller);
-    _animOffset =
-        Tween<Offset>(begin: const Offset(0.0, 0.35), end: Offset.zero)
-            .animate(curve);
+    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 800));
+    final curve = CurvedAnimation(curve: Curves.decelerate, parent: _controller);
+    _animOffset = Tween<Offset>(begin: const Offset(0.0, 0.35), end: Offset.zero).animate(curve);
 
     if (widget.delay == null) {
       _controller.forward();
@@ -42,8 +37,8 @@ class _DelayedAnimationState extends State<DelayedAnimation>
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

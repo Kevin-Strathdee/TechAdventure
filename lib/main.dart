@@ -81,17 +81,24 @@ class MyApp extends StatelessWidget {
   final GoRouter router;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      title: 'japomo',
-      theme: ThemeData(primarySwatch: getMaterialColor(jambitOrange), fontFamily: 'Jost'),
+    return BlocListener<UserBloc, UserState>(
+      listener: (context, state) {
+        if (state is UserSignedOutSuccess) {
+          router.pushReplacement("/");
+        }
+      },
+      child: MaterialApp.router(
+        routerConfig: router,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        title: 'japomo',
+        theme: ThemeData(primarySwatch: getMaterialColor(jambitOrange), fontFamily: 'Jost'),
+      ),
     );
   }
 }

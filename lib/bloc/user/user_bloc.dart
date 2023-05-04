@@ -35,7 +35,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       }
     });
     on<UserSignedOut>((event, emit) async {
-      credentialUtil.logout();
+      await credentialUtil.logout();
       emit(UserSignedOutSuccess());
     });
   }
